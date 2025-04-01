@@ -1,0 +1,37 @@
+color: null
+fieldLayouts:
+  03fffa92-f2b5-44de-92c8-114e48dab164:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-04-01T21:52:54+00:00'
+            elementCondition: null
+            fieldUid: 629c7cb8-ada5-4eb5-99a9-f7550f234d98 # Page Nav Bar
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 49889b60-919d-422f-bf56-ad3beddfaf64
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: a1e3b30f-26c2-437a-b739-4177748c4626
+        userCondition: null
+handle: universeIndex
+hasTitleField: false
+icon: null
+name: 'Universe Index'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -1,0 +1,91 @@
+{% set footer = craft.app.globals.getSetByHandle('footer') %}
+
+<footer>
+	<div class="outer-content-wrap">
+		
+		<!--Start Top Row-->
+		<div class="top-row">
+			<div class="column left">
+				<img class="logo" src="{{ alias('@web') }}/assets/svgs/main-logo_light.svg" />
+				{% if footer.companyInfo|length %}
+					<h5 class="company-info">{{ footer.companyInfo }}</h5>
+				{% endif %}
+			</div>
+
+			{% if footer and footer.pageMenu.exists() %}
+				<div class="column right">
+					{% for block in footer.pageMenu.all() %}
+						{% if block.type == 'linkList' and block.linkElement %}
+							{% set link = block.linkElement %}
+							{% if link.url %}
+								<h3 class="size-04">
+									<a href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer">
+										{{ link.label ?: link.url }}
+									</a>
+								</h3>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endif %}
+			
+		</div>
+		<!--End Top Row-->
+		
+		<!--Start Bottom Row-->
+		<div class="bottom-row">
+			<div class="column left">
+				{% if footer.companyAddress|length %}
+				<div class="inner-column">
+					<h6>{{ footer.companyAddress | nl2br  }}</h6>
+				</div>
+				{% endif %}
+
+				{% if footer and footer.socialLinks.exists() %}
+					<div class="inner-column social-links">
+						{% for block in footer.socialLinks.all() %}
+							{% if block.type == 'linkList' and block.linkElement %}
+								{% set link = block.linkElement %}
+								{% if link.url %}
+									<h6>
+										<a class="underlined-link" href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer">
+											{{ link.label ?: link.url }}
+										</a>
+									</h6>
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+			
+			<div class="column right">
+				{% if footer and footer.legalMenu.exists() %}
+					<div class="legal-menu">
+						{% for block in footer.legalMenu.all() %}
+							{% if block.type == 'linkList' and block.linkElement %}
+								{% set link = block.linkElement %}
+								{% if link.url %}
+									<h3 class="size-04">
+										<a href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer">
+											{{ link.label ?: link.url }}
+										</a>
+									</h3>
+								{% endif %}
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endif %}
+				
+				<h3 class="copyright size-04">© {{ 'now' | date('Y') }} Avdoo. All Rights Reserved.</br>Branding by <a href="https://duncanfenech.com" target="_blank">Duncan Fenech</a></h3>
+			</div>
+		</div>
+		<!--End Bottom Row-->
+		
+	</div>
+</footer>
+
+<!--END SMOOTH WRAPPER-->
+</div>
+</div>
+<!--END SMOOTH WRAPPER-->

@@ -1,0 +1,162 @@
+/*
+PAGE WRAP ------------------
+*/
+
+.page-wrap#portfolio-page {
+	padding: 0 0 0 0;
+	
+	//PAGE TITLE MODULE
+	.page-title-module {
+		padding-bottom: get-rem-desktop(90);	
+		border-bottom: none;	
+	}
+	
+	//PORTFOLIO GRID
+	.portfolio-grid {
+		width: 100%; height: auto;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		column-gap: percentage(20/1760);
+		row-gap: get-rem-desktop(84);
+		padding-bottom: get-rem-desktop(102);
+		
+		@media only screen and (max-width: 768px) {
+			@include calc( width, '100% + #{get-rem-mobile(40)}');
+			margin-left: get-rem-mobile(-20);
+			column-gap: 0px;
+			row-gap: get-rem-mobile(40);	
+			padding-bottom: get-rem-mobile(77);
+		}
+		
+		article {
+			position: relative;
+			width: 100%; height: auto;
+			
+			//Thumbnail Image
+			.thumbnail-image {
+				width: 100%; height: auto;
+				@include aspect-ratio(1760, 829);
+				overflow: hidden;
+				margin-bottom: get-rem-desktop(25);
+				will-change: opacity;
+				transition: opacity 250ms cubic-bezier(0.25,0.1,0.25,1);
+				
+				//––Coming Soon Text
+				h1.coming-soon {
+					position: absolute;
+					top: 50%; left: 50%;
+					width: 100%; height: auto;
+					text-align: center;
+					transform: translate(-50%,-50%);
+					color: #F5F3EC;
+					z-index: 50;
+				}
+				
+				@media only screen and (max-width: 768px) {
+					@include aspect-ratio(402, 318);
+					margin-bottom: get-rem-mobile(25);
+				}
+				
+			}
+			
+			//Thumbnail Titles
+			.thumbnail-titles {
+				width: 100%; height: auto;
+				display: flex;
+				align-items: flex-start;
+				justify-content: space-between;
+				
+				//––Titles Col
+				.titles-col {
+					h1 { margin-bottom: 0px; }
+				}
+				
+				//––Info Col
+				.info-col {
+					width: get-rem-desktop(284); height: auto;
+					
+					h3.info-row {
+						width: 100%; height: auto;
+						border-top: 1px solid #5A5A5A;
+						border-width: 0.5px;
+						margin-bottom: 0px;
+						padding: get-rem-desktop(3.5) 0;
+					}
+					
+				}
+				
+				@media only screen and (max-width: 768px) {
+					display: block;
+					padding: 0 get-rem-mobile(40) 0 get-rem-mobile(20);
+					
+					//––Titles Col
+					.titles-col {
+						margin-bottom: get-rem-mobile(24);
+					}
+					
+					//––Info Col
+					.info-col {
+						width: get-rem-mobile(223); height: auto;
+						
+						h3.info-row {
+							padding: get-rem-mobile(4) 0;
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+			//Link
+			a.portfolio-link {
+				position: absolute;
+				width: 100%; height: 100%;
+				top: 0; left: 0;
+				z-index: 50;
+			}
+			
+			//––HALF WIDTH SPECIFICS
+			&.halfWidth {
+				width: percentage(870/1760);
+				
+				.thumbnail-image {
+					@include aspect-ratio(870, 829);
+				}
+				
+				@media only screen and (max-width: 768px) {
+					width: 100%;
+						
+					.thumbnail-image {
+						@include aspect-ratio(402, 318);
+					}
+					
+				}
+				
+			}
+			
+			//––COMING SOON SPECIFICS
+			&.coming-soon {
+				.thumbnail-image {
+					.media-module {
+						filter: grayscale(1) brightness(0.7);
+					}
+				}
+			}
+			
+			//––AVAILABLE SPECIFICS
+			&.available {
+				&:hover {
+					.thumbnail-image {
+						opacity: 0.75;
+					}
+				}
+			}
+			
+		}
+		
+	}
+	
+}

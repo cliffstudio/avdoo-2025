@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: seniorLeadship
+instructions: null
+name: 'Senior Leadship'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: 'Add Person'
+  showCardsInGrid: false
+  showSiteMenu: false
+  sources:
+    - 'section:a92f7955-7e53-499e-adab-e6e93a58c620' # People
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

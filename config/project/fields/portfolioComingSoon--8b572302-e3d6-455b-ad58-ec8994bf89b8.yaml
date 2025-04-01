@@ -1,0 +1,12 @@
+columnSuffix: null
+handle: portfolioComingSoon
+instructions: null
+name: 'Coming Soon?'
+searchable: false
+settings:
+  default: false
+  offLabel: 'No'
+  onLabel: 'Yes'
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

@@ -1,0 +1,61 @@
+{% set menuOverlay = craft.app.globals.getSetByHandle('menuOverlay') %}
+{% set footer = craft.app.globals.getSetByHandle('footer') %}
+
+<div class="menu-overlay">
+	<div class="inner-wrap">
+		
+		<!--Start Main Menu-->
+		{% if menuOverlay and menuOverlay.pageMenu.exists() %}
+			<div class="main-menu">
+			{% set menuCounter = 1 %}
+			{% for block in menuOverlay.pageMenu.all() %}
+				{% if block.type == 'linkList' and block.linkElement %}
+					{% set link = block.linkElement %}
+					{% if link.url %}
+						<div class="main-menu-item">
+							<h2 class="number size-04">{{ "%02d"|format(menuCounter) }}.</h2>
+							<h2 class="text size-01">
+								<a href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer">
+									{{ link.label ?: link.url }}
+								</a>
+							</h2>
+						</div>
+						{% set menuCounter = menuCounter + 1 %}
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+			</div>
+		{% endif %}
+		<!--End Main Menu-->
+		
+		<!--Start Company Info-->
+		<div class="company-info">
+			
+			{% if footer and footer.socialLinks.exists() %}
+				<div class="inner-column social-links">
+					{% for block in footer.socialLinks.all() %}
+						{% if block.type == 'linkList' and block.linkElement %}
+							{% set link = block.linkElement %}
+							{% if link.url %}
+								<h6>
+									<a class="underlined-link" href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer">
+										{{ link.label ?: link.url }}
+									</a>
+								</h6>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endif %}
+			
+			{% if footer.companyAddress|length %}
+			<div class="inner-column address">
+				<h6>{{ footer.companyAddress | nl2br  }}</h6>
+			</div>
+			{% endif %}
+			
+		</div>
+		<!--End Company Info-->
+	
+	</div>
+</div>

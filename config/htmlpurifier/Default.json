@@ -1,0 +1,12 @@
+{
+  "Attr.AllowedClasses": ["x-large", "size-01", "size-02", "size-03", "size-04", "size-05", "size-06", "size-07", "size-08", "size-09", "size-10", "body-copy"],
+  "Attr.AllowedFrameTargets": [
+    "_blank"
+  ],
+  "Attr.EnableID": true,
+  "HTML.AllowedComments": [
+    "pagebreak"
+  ],
+  "HTML.SafeIframe": true,
+  "URI.SafeIframeRegexp": "%^(https?:)?//(www.youtube.com/|player.vimeo.com/)%"
+}

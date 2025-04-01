@@ -1,0 +1,21 @@
+columnSuffix: null
+handle: universeCategory
+instructions: null
+name: Category
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: 1
+  selectionLabel: null
+  showCardsInGrid: false
+  showSiteMenu: false
+  source: 'group:808f3692-7a45-4bd1-ac2f-efc095156c57' # Category
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Categories

@@ -1,0 +1,35 @@
+columnSuffix: null
+handle: contactPageContent
+instructions: null
+name: 'Page Content'
+searchable: false
+settings:
+  createButtonLabel: 'New Panel'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - af5f86ce-f1bf-4f3f-a677-cedd3b22e3ef # Image / Text Panel
+    -
+      __assoc__:
+        -
+          - uid
+          - e14aaedd-fb32-4e58-805a-4cecb9aa611f # Contact Details
+    -
+      __assoc__:
+        -
+          - uid
+          - 7d9895e7-7470-46c7-b8ba-c0ac0f53cb6a # Invest Panel
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

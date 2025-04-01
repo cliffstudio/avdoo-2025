@@ -1,0 +1,101 @@
+color: null
+fieldLayouts:
+  d751aa29-80c2-4631-ac2a-b4fa405c2abd:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-21T00:03:18+00:00'
+            elementCondition: null
+            fieldUid: be003824-00b0-4e16-b298-bd049a72b32d # Large Title
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4561d45a-db2a-4eef-912e-5e6535cd504a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-21T10:26:20+00:00'
+            elementCondition: null
+            fieldUid: 29f7b4d4-d020-4798-9635-eb09d65df0e0 # Founder Select
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 009126f2-8ecf-4dfa-8db3-04c9471ba892
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-21T00:03:18+00:00'
+            elementCondition: null
+            fieldUid: cb07ea78-f11a-4d8f-9c74-c7b98efd05ab # Text Content
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 440e0a9f-35f0-4648-8107-da3e14088b07
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-03-21T09:48:53+00:00'
+            elementCondition: null
+            fieldUid: ee23eee0-31b7-4cda-b63d-134aa4586e5d # Image Module
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0b9105eb-16cc-4fdd-85ca-68781a840935
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-03-21T10:45:16+00:00'
+            elementCondition: null
+            fieldUid: db37ee35-ab34-43ab-af0f-ca227d3585ce # Founder Signature
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 5eb221fb-1dc1-4944-8aca-c4278d1dbdad
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 8b40abd3-9c77-4469-93b1-d24a153a2a5d
+        userCondition: null
+handle: founderPanel
+hasTitleField: false
+icon: null
+name: 'Founder Panel'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

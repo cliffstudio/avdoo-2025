@@ -1,0 +1,12 @@
+{% extends "_layout.twig" %}
+
+{% block content %}
+	<article>
+		<h1>{{ entry.title }}</h1>
+		<p>{{ entry.postDate|date('F j, Y') }}</p>
+
+		<div>
+			{{ entry.body }}
+		</div>
+	</article>
+{% endblock %}

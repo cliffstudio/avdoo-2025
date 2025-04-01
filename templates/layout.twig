@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="grid">
+    
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+    <title>{% block title %}Avdoo{% endblock %}</title>
+   
+    <!--START FAVICONS-->
+    <link rel="icon" type="image/png" href="{{ alias('@web') }}/assets/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{{ alias('@web') }}/assets/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="{{ alias('@web') }}/assets/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ alias('@web') }}/assets/favicons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Avdoo" />
+    <link rel="manifest" href="{{ alias('@web') }}/assets/favicons/site.webmanifest" />
+    <!--END FAVICONS-->
+    
+    <meta name="description" content="Buildings that make an impact are not built overnight. At Avdoo & Partners Development, they are built to transform lives and communities.">
+    <meta name="keywords" content="development,design,marketing,acquisitions,construction,architectural">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Neuton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/qtl8cfr.css">
+    <link rel="stylesheet" id="dist-style-css" href="{{ alias('@web') }}/dist/css/style.css?ver=1" type="text/css" media="all">
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/jquery.min.js" id="jquery-core-js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" id="gsap"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" id="scrollTrigger"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/ScrollSmoother.min.js" id="scrollSmoother"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/inViewport.js" id="in-viewport"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/isotope.pkgd.min.js" id="isotope"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/packery-mode.pkgd.min.js" id="packery-mode"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/imagesloaded.pkgd.min.js" id="imagesLoaded"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/lazyload.min.js" id="lazyload-js"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/flickity.pkgd.js" id="flickity-js"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/flickity-fade.js" id="flickity-fade"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/jquery.easing.min.js" id="easing-js"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/jquery.nicefileinput.min.js" id="nice-file-js"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/infinite-scroll.pkgd.min.js" id="infinite"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/jquery.animateNumber.min.js" id="animate-number"></script>
+    <script type="text/javascript" src="{{ alias('@web') }}/dist/js/app.min.js?ver=1" id="app-js"></script>
+    
+</head>
+
+<body class="{{ craft.app.request.segments|join(' ') }} {{ entry.section.handle ?? '' }} {{ entry.slug ?? '' }}">
+    
+<!--START HEADER-->
+<header>
+    <div class="outer-content-wrap">
+        
+        <div class="menu-opener">
+            <span class="line"></span><span class="line"></span><span class="line"></span>
+        </div>
+        
+        <div class="logo-wrap">
+            <img src="{{ alias('@web') }}/assets/svgs/main-logo_dark.svg" />
+        </div>
+    
+        <h3 class="contact-button header-text"><a class="underlined-link" href="{{ craft.entries.id(21).one().url }}">Contact</a></h3>
+    
+    </div>
+</header>
+<!--END HEADER-->
+
+<!--START MENU OVERLAY-->
+{% include '00_site-wide/menu-overlay.twig' %}
+<!--END MENU OVERLAY-->
+
+<!--START SMOOTH WRAPPER-->
+<div id="smooth-wrapper">
+<div id="smooth-content">
+<!--START SMOOTH WRAPPER-->
+    
+    <!--START MAIN CONTENT-->
+    {% block content %}{% endblock %}
+    <!--END MAIN CONTENT-->
+    
+</body>
+
+</html>

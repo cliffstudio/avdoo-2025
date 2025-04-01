@@ -1,0 +1,33 @@
+columnSuffix: null
+handle: portfolioThumbnailSize
+instructions: null
+name: 'Thumbnail Size'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Full Width'
+        -
+          - value
+          - fullWidth
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - 'Half Width'
+        -
+          - value
+          - halfWidth
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

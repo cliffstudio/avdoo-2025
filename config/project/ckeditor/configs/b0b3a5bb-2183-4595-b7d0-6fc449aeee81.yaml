@@ -1,0 +1,30 @@
+headingLevels:
+  - 1
+  - 2
+name: 'Custom Styles'
+options:
+  heading:
+    options:
+      -
+        model: paragraph
+        title: Paragraph
+        view:
+          classes: body-copy
+          name: p
+      -
+        model: heading1
+        title: 'Large Title'
+        view:
+          classes: size-03
+          name: h1
+      -
+        model: heading2
+        title: 'Small Header'
+        view:
+          classes: size-02
+          name: h2
+toolbar:
+  - heading
+  - bold
+  - italic
+  - link

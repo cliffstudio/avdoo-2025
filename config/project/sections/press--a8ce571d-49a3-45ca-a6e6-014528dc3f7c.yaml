@@ -1,0 +1,28 @@
+defaultPlacement: end
+enableVersioning: false
+entryTypes:
+  -
+    uid: 2dcf5147-1b7b-4daa-9a54-752d637359c6 # Press Page
+handle: press
+maxAuthors: 1
+name: Press
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  966432a0-b4ee-458a-a839-f2381951a549: # Avdoo
+    enabledByDefault: true
+    hasUrls: true
+    template: press/_entry.twig
+    uriFormat: 'press/{slug}'
+type: channel

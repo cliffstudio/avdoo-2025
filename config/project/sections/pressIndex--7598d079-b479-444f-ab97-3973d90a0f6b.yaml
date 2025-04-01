@@ -1,0 +1,28 @@
+defaultPlacement: end
+enableVersioning: false
+entryTypes:
+  -
+    uid: 36f20234-2575-4641-8a7a-1af6bb03cd51 # Press Index
+handle: pressIndex
+maxAuthors: 1
+name: 'Press Index'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  966432a0-b4ee-458a-a839-f2381951a549: # Avdoo
+    enabledByDefault: true
+    hasUrls: true
+    template: press/index.twig
+    uriFormat: press
+type: single

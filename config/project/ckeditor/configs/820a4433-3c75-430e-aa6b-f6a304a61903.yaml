@@ -1,0 +1,23 @@
+headingLevels:
+  - 1
+  - 2
+name: 'Quote Section Styles'
+options:
+  heading:
+    options:
+      -
+        model: heading1
+        title: 'Large Title'
+        view:
+          classes: size-05
+          name: h1
+      -
+        model: heading2
+        title: 'Small Header'
+        view:
+          classes: size-03
+          name: h2
+toolbar:
+  - heading
+  - italic
+  - link

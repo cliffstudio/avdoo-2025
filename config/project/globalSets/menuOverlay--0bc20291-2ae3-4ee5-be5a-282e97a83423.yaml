@@ -1,0 +1,28 @@
+fieldLayouts:
+  5dcef0c1-ac00-4486-af06-820a30c73f8e:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-31T15:36:22+00:00'
+            elementCondition: null
+            fieldUid: 2d79132e-b3a1-4e2b-a975-d51c33390bb5 # Page Menu
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ab2503e3-c950-431f-b3ef-c1a7a3f7948b
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Main Menu'
+        uid: 1483b699-74fb-45ba-ae9f-53939859cfbb
+        userCondition: null
+handle: menuOverlay
+name: 'Menu Overlay'
+sortOrder: 3

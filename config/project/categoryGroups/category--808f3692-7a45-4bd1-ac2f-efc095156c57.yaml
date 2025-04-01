@@ -1,0 +1,50 @@
+defaultPlacement: end
+fieldLayouts:
+  fe451641-6838-4142-bcee-66a56536a8b3:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-03-28T12:02:19+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            uid: 17ec8277-5167-45d7-92ec-fe0a55838ac3
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: a331d6f9-6a2a-4947-a986-90ea6ba1da3d
+        userCondition: null
+handle: category
+name: Category
+siteSettings:
+  966432a0-b4ee-458a-a839-f2381951a549: # Avdoo
+    hasUrls: true
+    template: category/_category.twig
+    uriFormat: 'category/{slug}'
+structure:
+  maxLevels: null
+  uid: 6e879c3f-eed8-45de-b7fd-8db2c6dc841e

@@ -1,0 +1,67 @@
+color: null
+fieldLayouts:
+  091e1d76-a0db-47dc-abec-9538e85234d4:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-03-20T12:04:59+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 5790c992-b406-4a21-b120-cd9a41eaaeb9
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-20T12:07:38+00:00'
+            elementCondition: null
+            fieldUid: c4fdd5ce-34b0-424a-8625-0d1236549f54 # Senior Leadship
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: 'Senior Leadership'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 618eb42f-a7fb-4b36-90c7-9e2838d06bf4
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2c11299d-a116-40b3-84f0-e8d056bae75f
+        userCondition: null
+handle: seniorLeadershipPanel
+hasTitleField: true
+icon: null
+name: 'Senior Leadership Panel'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

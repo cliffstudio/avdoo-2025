@@ -1,0 +1,110 @@
+fieldLayouts:
+  70e4a5da-6e8a-4a62-81fc-7fe3cf5760e1:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-15T21:07:19+00:00'
+            elementCondition: null
+            fieldUid: 2557cd4f-f93e-4445-ab7f-8a7234dc9f13 # Company Info
+            handle: companyInfo
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 039682d8-9ed7-44bd-80bd-d5726ca62af5
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Company Info'
+        uid: 35b17df1-0cd8-4ef6-b71f-2d0d550121ec
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-15T21:15:40+00:00'
+            elementCondition: null
+            fieldUid: b15bd279-659a-4b6d-8f32-89bce704dfdc # Company Address
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 265e7d18-37be-477f-a755-c4601489520a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Address
+        uid: a01f9207-ac1d-49b4-9e45-5a5fd1c28eaa
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-15T21:37:26+00:00'
+            elementCondition: null
+            fieldUid: 002f8da7-3561-4074-ae51-115fdd081145 # Social Links
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 87354275-94e4-46b6-a2d4-adb0fe475ef6
+            userCondition: null
+            warning: null
+            width: 100
+        name: Social
+        uid: 1c487b6e-4708-45c1-80ee-1f8c0bfd837f
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-15T23:37:11+00:00'
+            elementCondition: null
+            fieldUid: 2d79132e-b3a1-4e2b-a975-d51c33390bb5 # Page Menu
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 44eb73cb-e684-4905-ac6a-80a707a06ec7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-15T23:47:41+00:00'
+            elementCondition: null
+            fieldUid: ef82962e-bbeb-4e31-a83e-3f96354ee908 # Legal Menu
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: da956902-ad53-42a3-b222-67e089dbbbbe
+            userCondition: null
+            warning: null
+            width: 100
+        name: Menus
+        uid: 3f8c9fd1-6b7f-4dbf-9c45-643c1ca72f24
+        userCondition: null
+handle: footer
+name: Footer
+sortOrder: 1

@@ -1,0 +1,28 @@
+defaultPlacement: end
+enableVersioning: false
+entryTypes:
+  -
+    uid: b40eb897-8acf-4611-a4d4-6b90184105f1 # People Bios
+handle: peopleBios
+maxAuthors: 1
+name: People
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  966432a0-b4ee-458a-a839-f2381951a549: # Avdoo
+    enabledByDefault: true
+    hasUrls: true
+    template: people-bios/_entry.twig
+    uriFormat: 'people-bios/{slug}'
+type: channel

@@ -1,0 +1,202 @@
+{% extends "layout.twig" %}
+
+{% block title %}
+	{% set entry = craft.entries.section('people').one() %}
+	{{ entry.title }} - Avdoo
+{% endblock %}
+
+{% block content %}
+<main>
+
+	{% set entry = craft.entries.section('people').one() %}
+	
+	{# START PEOPLE PAGE CONTENT #}
+	<div id="people-page" class="page-wrap">
+		
+		{# START TWO UP SPLASH PANEL #}
+		{% include '00_site-wide/two-up-splash-panel.twig' %}
+		{# END TWO UP SPLASH PANEL #}
+		
+		{# START PAGE CONTENT #}
+		{% for block in entry.peoplePageContent.all() %}
+			{% switch block.type %}
+				
+				{# 01–––TEXT PANEL #}
+				{% case 'textSection' %}
+					
+					{% include '00_site-wide/text-section.twig' %}
+				
+				{# 02–––IMAGE / TEXT PANEL #}
+				{% case 'imageTextPanel' %}
+					
+					{% include '00_site-wide/image-text-panel.twig' %}
+					
+				{# 03–––SENIOR LEADERSHIP PANEL #}
+				{% case 'seniorLeadershipPanel' %}
+					
+					<div class="senior-leadership-panel">
+						<div class="outer-content-wrap">
+							
+							{# Start Panel Title #}
+							{% if block.title|length %}
+								<h2 class="size-02 panel-title shift-on-scroll">{{ block.title }}</h2>
+							{% endif %}
+							{# End Panel Title #}
+							
+							{# Start Senior Leadership Grid #}
+							{% set seniorLeadershipPersons = block.seniorLeadship.all() %}
+							<div class="senior-leadership-grid">
+							{% for seniorLeadershipPerson in seniorLeadershipPersons %}
+								
+								<div class="person-wrap shift-on-scroll">
+									
+									<div class="photo">
+										{% set image = seniorLeadershipPerson.imageModule.one() %}
+										{% include '00_site-wide/image-module_fb.twig' %}
+									</div>
+									
+									<div class="name-job-title">
+										<h1 class="size-08 name">{{ seniorLeadershipPerson.title }}</h1>
+										{% if seniorLeadershipPerson.peopleJobTitle|length %}
+											<h1 class="size-08 job-title"><em>{{ seniorLeadershipPerson.peopleJobTitle }}</em></h1>
+										{% endif %}
+									</div>
+									
+									{% if seniorLeadershipPerson.peopleBio|length %}
+										{% set bioWords = seniorLeadershipPerson.peopleBio|split(' ') %}
+										{% if bioWords|length > 35 %}
+											<h6 class="bio">{{ bioWords|slice(0, 35)|join(' ') ~ '...' }}</h6>
+										{% else %}
+											<h6 class="bio"{{ seniorLeadershipPerson.peopleBio }}</h6>
+										{% endif %}
+									{% endif %}
+									
+									<h3 class="person-bio-opener size-03"><a class="underlined-link" data-url="{{ seniorLeadershipPerson.url }}">Read More</a></h3>
+									
+								</div>
+								
+							{% endfor %}
+							</div>
+							{# End Senior Leadership Grid #}
+					
+						</div>
+					</div>
+				
+				{# 04–––WIDER TEAM PANEL #}	
+				{% case 'widerTeamPanel' %}
+					
+					<div class="wider-team-panel">
+						<div class="outer-content-wrap shift-on-scroll">
+							
+							{# Start Panel Title #}
+							{% if block.title|length %}
+								<h2 class="size-02 panel-title">{{ block.title }}</h2>
+							{% endif %}
+							{# End Panel Title #}
+							
+							{# Start Wider Team Grid #}
+							{% set widerTeamPersons = block.widerTeam.all() %}
+							{% set totalEntries = widerTeamPersons|length %}
+							
+							<div class="wider-team-grid">
+							{% for widerTeamPerson in widerTeamPersons %}
+								
+								<div class="person-wrap{% if loop.index > 3 %} hidden{% endif %}">
+									<div class="inner-person">
+										
+										<div class="name-job-title">
+											<h1 class="size-08 name">{{ widerTeamPerson.title }}</h1>
+											{% if widerTeamPerson.peopleJobTitle|length %}
+												<h1 class="size-08 job-title">{{ widerTeamPerson.peopleJobTitle }}</h1>
+											{% endif %}
+										</div>
+										
+										<h3 class="person-bio-opener size-03"><a class="underlined-link" data-url="{{ widerTeamPerson.url }}">Read Bio</a></h3>
+										
+									</div>
+								</div>
+								
+							{% endfor %}
+							</div>
+							{# End Wider Team Grid #}
+							
+							{# Start View More Button #}
+							{% if totalEntries > 3 %}
+							<div class="view-more-posts">
+								<img class="plus" src="{{ alias('@web') }}/assets/svgs/view-more-plus.svg" />
+								<h2 class="size-04">view more</h2>
+							</div>
+							{% endif %}
+							{# End View More Button #}
+							
+						</div>
+					</div>
+				
+				{# 05–––FOUNDER PANEL #}	
+				{% case 'founderPanel' %}
+					{% set founder = block.founderSelect.one() %}
+					
+					<div class="image-text-panel founder-panel textImage-order">
+						
+						{# Start Image Column #}
+						<div class="image-column">
+							{% set image = block.imageModule.one() %}
+							{% include '00_site-wide/image-module_fb.twig' %}
+						</div>
+						{# End Image Column #}
+						
+						{# Start Text Column #}
+						<div class="text-column">
+							<div class="text-wrap shift-on-scroll">
+								
+								{% if block.largeTitle|length %}
+									{% set allowedTags = '<em><strong><i><b>' %}
+									<h1 class="size-03">
+										{{ block.largeTitle|striptags(allowedTags)|nl2br|raw }}
+									</h1>
+								{% endif %}
+								
+								{% if founder %}
+									<h1 class="size-08">{{ founder.title }}{% if founder.peopleJobTitle|length %}, <em>{{ founder.peopleJobTitle }}</em>{% endif %}</h1>
+								{% endif %}
+								
+								{% if block.textContent|length %}
+									<p class="text-content">{{ block.textContent }}</p>
+								{% endif %}
+								
+								{% if block.founderSignature|length %}
+									<img class="signature" src="{{ block.founderSignature.one().url }}" />
+								{% endif %}
+								
+								{% if founder %}
+								<h3 class="person-bio-opener size-03"><a class="underlined-link" data-url="{{ founder.url }}">Read Bio</a></h3>
+								{% endif %}
+								
+							</div>
+						</div>
+						{# End Text Column #}
+					
+					</div>
+					
+			{% endswitch %}
+		{% endfor %}
+		{# END PAGE CONTENT #}
+		
+		{# START PAGE NAV BAR #}	
+		{% include '00_site-wide/page-nav-bar.twig' %}
+		{# END PAGE NAV BAR #}
+		
+	</div>
+	{# END PEOPLE PAGE CONTENT #}
+
+</main>	
+			
+<!--START FOOTER-->
+{% include '00_site-wide/footer.twig' %}
+<!--END FOOTER-->
+
+<div class="people-popup-overlay">
+	
+</div>
+	
+{% endblock %}

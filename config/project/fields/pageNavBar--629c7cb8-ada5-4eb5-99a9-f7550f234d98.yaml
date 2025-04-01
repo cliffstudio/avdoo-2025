@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: pageNavBar
+instructions: null
+name: 'Page Nav Bar'
+searchable: false
+settings:
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 5bf3fd5b-e843-4a6b-8ad2-71dd202686f8 # Nav Buttons
+  includeTableView: false
+  maxEntries: 1
+  minEntries: 1
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

@@ -1,0 +1,140 @@
+{% extends "layout.twig" %}
+
+{% block title %}
+	{% set entry = craft.entries.section('contact').one() %}
+	{{ entry.title }} - Avdoo
+{% endblock %}
+
+{% block content %}
+<main>
+
+	{% set entry = craft.entries.section('contact').one() %}
+	
+	{# START CONTACT PAGE CONTENT #}
+	<div id="contact-page" class="page-wrap">
+		
+		{# START PAGE TITLES MODULE #}
+		{% set pageTitleBlock = entry.contactPageTitles.type('pageTitles').one() %}
+		{% if pageTitleBlock %}
+			
+			<div class="page-title-module">
+				<div class="outer-content-wrap shift-on-scroll">
+					<div class="text-wrap">
+						{% if pageTitleBlock.title|length %}
+							<h2 class="size-02">{{ pageTitleBlock.title }}</h2>
+						{% endif %}
+						{% if pageTitleBlock.pageIntro|length %}
+							{% set allowedTags = '<em><strong><br></br><i><b>' %}
+							<h1 class="size-03">{{ pageTitleBlock.pageIntro|striptags(allowedTags)|raw }}</h1>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			
+		{% endif %}
+		{# END PAGE TITLES MODULE #}
+
+		{# START PAGE CONTENT #}
+		{% for block in entry.contactPageContent.all() %}
+			{% switch block.type %}
+				
+				{# 01–––IMAGE / TEXT PANEL #}
+				{% case 'imageTextPanel' %}
+					
+					{% include '00_site-wide/image-text-panel.twig' %}
+				
+				{# 02–––CONTACT DETAILS PANEL #}
+				{% case 'contactDetails' %}
+					
+					<div class="contact-details-panel">
+						
+						{% if block.contactLeftColumn|length %}
+						<div class="details-column">
+							<div class="shift-on-scroll">
+							{{ block.contactLeftColumn }}
+							</div>
+						</div>
+						{% endif %}
+						
+						{% if block.contactCentreColumn|length %}
+						<div class="details-column">
+							<div class="shift-on-scroll">
+							{{ block.contactCentreColumn }}
+							</div>
+						</div>
+						{% endif %}
+						
+						{% if block.contactRightColumn|length %}
+						<div class="details-column">
+							<div class="shift-on-scroll">
+							{{ block.contactRightColumn }}
+							</div>
+						</div>
+						{% endif %}
+						
+					</div>
+					
+				{# 03–––INVEST PANEL #}
+				{% case 'investPanel' %}
+					
+					<div class="invest-panel">
+						<div class="outer-content-wrap shift-on-scroll">
+							<div class="text-wrap">
+								
+								<h2 class="size-02 mobile">Invest</h2>
+								
+								{% if block.textContent|length %}
+									{{ block.textContent }}
+								{% endif %}
+								
+								{% if block.linkElement %}
+									{% set link = block.linkElement %}
+									{% if link.url %}
+									<div class="button">
+										<h2 class="size-04">{{ link.label ?: link.url }}</h2>
+										<a href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer"></a>
+									</div>
+									{% endif %}
+								{% endif %}
+							
+							</div>
+						</div>
+					</div>
+			
+			{% endswitch %}
+		{% endfor %}
+		{# END PAGE CONTENT #}
+		
+		{# START CONTACT FORM PANEL #}
+		<div class="contact-form-panel">
+			<div class="outer-content-wrap shift-on-scroll">
+				<div class="inner-wrap">
+					
+					{% if entry.contactFormIntro|length %}
+						<h2 class="panel-intro size-02">{{ entry.contactFormIntro|raw }}</h2>
+					{% endif %}
+					
+					{{ craft.formie.renderForm('contactForm', {
+						renderCss: false,
+						renderJs: false,
+					}) }}
+		
+				</div>
+			</div>
+		</div>
+		{# END CONTACT FORM PANEL #}
+		
+		{# START PAGE NAV BAR #}	
+		{% include '00_site-wide/page-nav-bar.twig' %}
+		{# END PAGE NAV BAR #}
+		
+	</div>
+	{# END CONTACT PAGE CONTENT #}
+
+</main>	
+	
+<!--START FOOTER-->
+{% include '00_site-wide/footer.twig' %}
+<!--END FOOTER-->
+	
+{% endblock %}

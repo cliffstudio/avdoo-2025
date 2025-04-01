@@ -1,0 +1,87 @@
+{% extends "layout.twig" %}
+{% block content %}
+<main>
+
+	{# START PRESS PAGE CONTENT #}
+	<div id="press-page" class="page-wrap">
+		
+		{# START PAGE TITLES MODULE #}
+		{% set pageTitleBlock = entry.pressPageTitles.type('pageTitles').one() %}
+		{% if pageTitleBlock %}
+			
+			<div class="page-title-module">
+				<div class="outer-content-wrap shift-on-scroll">
+					<div class="text-wrap">
+						{% if pageTitleBlock.title|length %}
+							<h2 class="size-02">{{ pageTitleBlock.title }}</h2>
+						{% endif %}
+						{% if pageTitleBlock.pageIntro|length %}
+							{% set allowedTags = '<em><strong><br></br><i><b>' %}
+							<h1 class="size-03">{{ pageTitleBlock.pageIntro|striptags(allowedTags)|raw }}</h1>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			
+		{% endif %}
+		{# END PAGE TITLES MODULE #}
+	
+		{# START ARTICLES GRID #}
+		<div class="articles-grid infinite-grid shift-on-scroll">
+		{% set pressQuery = craft.entries().section('press').orderBy('postDate desc') %}
+		{% paginate pressQuery.limit(6) as pageInfo, pressEntries %}
+	
+		{% for entry in pressEntries %}
+			<article>
+				<div class="article-thumbnail">
+					{% set image = entry.imageModule.one() %}
+					{% include '00_site-wide/image-module_fb.twig' %}
+				</div>
+				
+				{% if entry.pressArticleSource|length %}
+					<h2 class="article-source size-04">{{ entry.pressArticleSource }}</h2>
+				{% endif %}
+				<h1 class="article-title size-08">
+					{{ entry.title }}
+				</h1>
+				{% if entry.pressArticleLink|length %}
+					<h3 class="article-link size-03"><a class="underlined-link" href="{{ entry.pressArticleLink }}">View Article</a></h3>
+				{% endif %}
+			</article>
+		{% endfor %}
+		</div>
+		{# END ARTICLES GRID #}
+		
+		{# START VIEW MORE POSTS BUTTON #}
+		{% if pageInfo.totalPages > 1 %}
+		<div class="view-more-posts">
+			<img class="plus" src="{{ alias('@web') }}/assets/svgs/view-more-plus.svg" />
+			<h2 class="size-04">view more</h2>
+		</div>
+		{% endif %}
+		{# END VIEW MORE POSTS BUTTON #}
+		
+		{# START PAGINATION LINKS #}
+		{% if pageInfo.totalPages > 1 %}
+		  <nav class="pagination">
+			{% if pageInfo.nextUrl %}
+			  <a href="{{ pageInfo.nextUrl }}">Next</a>
+			{% endif %}
+		  </nav>
+		{% endif %}
+		{# END PAGINATION LINKS #}
+		
+		{# START PAGE NAV BAR #}	
+		{% include '00_site-wide/page-nav-bar.twig' %}
+		{# END PAGE NAV BAR #}
+		
+	</div>
+	{# END PRESS PAGE CONTENT #}
+
+</main>	
+			
+<!--START FOOTER-->
+{% include '00_site-wide/footer.twig' %}
+<!--END FOOTER-->
+	
+{% endblock %}

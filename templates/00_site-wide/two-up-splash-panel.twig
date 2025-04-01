@@ -1,0 +1,22 @@
+{% set twoUpSplash = entry.twoUpSplashPanel.type('twoUpSplash').one() %}
+{% if twoUpSplash %}
+
+	<div class="two-up-splash-panel">
+		
+		<div class="image-col left">
+		{% set image = twoUpSplash.leftImageModule.one() %}
+		{% include '00_site-wide/image-module_fb.twig' %}
+		</div>
+		
+		<div class="image-col right">
+		{% set image = twoUpSplash.rightImageModule.one() %}
+		{% include '00_site-wide/image-module_fb.twig' %}
+		</div>
+		
+		{% if twoUpSplash.title|length %}
+			<h1 class="title-overlay x-large">{{ twoUpSplash.title }}</h1>
+		{% endif %}
+		
+	</div>
+
+{% endif %}

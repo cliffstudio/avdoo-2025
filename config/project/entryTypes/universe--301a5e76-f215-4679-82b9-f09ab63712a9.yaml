@@ -1,0 +1,127 @@
+color: null
+fieldLayouts:
+  da1c7b57-bb09-413c-aedc-afdb4a176c44:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-03-27T23:01:34+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: def00633-149d-4d98-8da2-4afb6b34237a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-28T10:33:18+00:00'
+            elementCondition: null
+            fieldUid: 0cee4245-682f-4229-9cbe-8541ff4a8458 # Subtitle
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8da7804a-93b9-413d-951e-ad79dc627e45
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-03-28T10:33:18+00:00'
+            elementCondition: null
+            fieldUid: 0cee4245-682f-4229-9cbe-8541ff4a8458 # Subtitle
+            handle: credit
+            includeInCards: false
+            instructions: null
+            label: Credit
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1a9e53d8-fda5-4537-be95-19eb3c7e7911
+            userCondition: null
+            warning: null
+            width: 50
+        name: Titles
+        uid: 29441e1f-eadc-4c96-86f1-dbf3d1d6314c
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-28T10:34:16+00:00'
+            elementCondition: null
+            fieldUid: ee23eee0-31b7-4cda-b63d-134aa4586e5d # Image Module
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: true
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ddd2bfcf-dd34-415e-86ce-9a07a527c748
+            userCondition: null
+            warning: null
+            width: 100
+        name: Image
+        uid: 64731a27-8116-4782-a60e-6a97e8d7fc5b
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-28T12:07:36+00:00'
+            elementCondition: null
+            fieldUid: 9994361f-6fd5-4a90-a024-adffa448b930 # Category
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6c491a91-0513-4917-90d3-33b85c5dab6c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Category
+        uid: b0342ebe-6efc-4de8-bcf1-847b79367636
+        userCondition: null
+handle: universe
+hasTitleField: true
+icon: earth-africa
+name: Universe
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

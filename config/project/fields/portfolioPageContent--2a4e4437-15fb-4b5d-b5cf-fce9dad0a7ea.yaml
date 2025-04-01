@@ -1,0 +1,46 @@
+columnSuffix: null
+handle: portfolioPageContent
+instructions: null
+name: 'Page Content'
+searchable: false
+settings:
+  createButtonLabel: 'New Section'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 52f8c504-8a68-48f2-b2a4-591cc6e63d11 # Quote Section
+    -
+      __assoc__:
+        -
+          - uid
+          - 552bdc84-e103-4df8-a682-5b5fe2c36e87 # Capabilities Section
+        -
+          - name
+          - 'Design Team Section'
+        -
+          - handle
+          - designTeamSection
+    -
+      __assoc__:
+        -
+          - uid
+          - 52b4dd4c-9480-435c-a83e-aab10b7010e2 # Full Bleed Image Section
+    -
+      __assoc__:
+        -
+          - uid
+          - 1f7f5b36-6bfd-4543-8a3f-1eefbd28f976 # Gallery Section
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

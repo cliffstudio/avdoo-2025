@@ -1,0 +1,54 @@
+{% if image %}
+	{% set loadingImage = {
+		mode: 'crop',
+		width: 200,
+		quality: 50,
+		format: 'webp'
+	} %}
+	
+	{% set smallImage = {
+		mode: 'crop',
+		width: 600,
+		quality: 80,
+		format: 'webp'
+	} %}
+	
+	{% set mediumImage = {
+		mode: 'crop',
+		width: 1000,
+		quality: 80,
+		format: 'webp'
+	} %}
+	
+	{% set largeImage = {
+		mode: 'crop',
+		width: 1400,
+		quality: 80,
+		format: 'webp'
+	} %}
+	
+	{% set xlargeImage = {
+		mode: 'crop',
+		width: 2000,
+		quality: 80,
+		format: 'webp'
+	} %}
+	
+	<div class="media-module full-bleed">
+	
+		<img class="lazy full-bleed-image" src="{{ image.getUrl(loadingImage) }}" data-src="{{ image.getUrl(largeImage) }}"
+		data-srcset="
+		{{ image.getUrl(smallImage) }} 600w,
+		{{ image.getUrl(mediumImage) }} 1000w,
+		{{ image.getUrl(largeImage) }} 1400w,
+		{{ image.getUrl(xlargeImage) }} 2000w"
+		data-sizes="
+		(max-width: 600px) 100vw, 
+		(max-width: 1200px) 75vw, 
+		(max-width: 1800px) 50vw, 
+		100vw" alt="{{ image.alt ?: image.title }}">
+		
+		<div class="loading-overlay"></div>
+	</div>
+	
+{% endif %}

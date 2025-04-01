@@ -1,0 +1,37 @@
+color: null
+fieldLayouts:
+  b88f976c-2b1d-4a2c-9175-065e267935e8:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-15T21:37:16+00:00'
+            elementCondition: null
+            fieldUid: 7909f48a-c93c-4744-b777-adfa4e087c46 # Link
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 49e9b7df-77c6-4869-b390-a38f59fa5176
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 0178161b-243d-4d1e-892f-efd85b3fd3f4
+        userCondition: null
+handle: linkList
+hasTitleField: false
+icon: link
+name: 'Link List'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

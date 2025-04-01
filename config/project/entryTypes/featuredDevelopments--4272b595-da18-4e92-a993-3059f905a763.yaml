@@ -1,0 +1,53 @@
+color: null
+fieldLayouts:
+  9986f72d-1adc-4f84-b144-b70cd711d90c:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-30T21:33:35+00:00'
+            elementCondition: null
+            fieldUid: cb07ea78-f11a-4d8f-9c74-c7b98efd05ab # Text Content
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: Intro
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b8b2b203-7ebd-4182-ad09-d4ccdaf3863b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-30T21:33:35+00:00'
+            elementCondition: null
+            fieldUid: 97dec0b0-d9a9-4ae3-8e1d-5998e32e4847 # Selected Developments
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3cfd941d-7a47-4048-bb19-f58608b1d130
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 7b45befb-5613-4765-86f1-9b733334a3cb
+        userCondition: null
+handle: featuredDevelopments
+hasTitleField: false
+icon: null
+name: 'Featured Developments'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

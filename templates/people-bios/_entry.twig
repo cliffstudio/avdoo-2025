@@ -1,0 +1,32 @@
+{% extends "/layout.twig" %}
+
+{% block content %}
+
+	<div id="popup-modal">
+		<div class="close-button"></div>
+		
+		<div class="image-column">
+			{% set image = entry.imageModule.one() %}
+			{% include '00_site-wide/image-module_fb.twig' %}
+		</div>
+		
+		<div class="text-column">
+			<div class="inner-column">
+				<div class="people-titles">
+					<h1 class="size-08">{{ entry.title }}</h1>
+					{% if entry.peopleJobTitle|length %}
+						<h1 class="size-08"><em>{{ entry.peopleJobTitle }}</em></h1>
+					{% endif %}
+				</div>
+				
+				<div class="people-bio">
+				{% if entry.peopleBio|length %}
+					<h6>{{ entry.peopleBio|replace({'<p>':'','</p>':''})|raw }}</h6>
+				{% endif %}
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+{% endblock %}

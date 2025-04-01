@@ -1,0 +1,245 @@
+{% extends "layout.twig" %}
+
+{% block title %}
+	{% set entry = craft.entries.section('expertise').one() %}
+	{{ entry.title }} - Avdoo
+{% endblock %}
+
+{% block content %}
+<main>
+
+	{% set entry = craft.entries.section('expertise').one() %}
+	
+	{# START EXPERTISE PAGE CONTENT #}
+	<div id="expertise-page" class="page-wrap">
+		
+		{# START TWO UP SPLASH PANEL #}
+		{% include '00_site-wide/two-up-splash-panel.twig' %}
+		{# END TWO UP SPLASH PANEL #}
+		
+		{# START PAGE CONTENT #}
+		{% for block in entry.expertisePageContent.all() %}
+			{% switch block.type %}
+				
+				{# 01–––TEXT PANEL #}
+				{% case 'textSection' %}
+					
+					{% include '00_site-wide/text-section.twig' %}
+				
+				{# 02–––IMAGE / TEXT PANEL #}
+				{% case 'imageTextPanel' %}
+					
+					{% include '00_site-wide/image-text-panel.twig' %}
+					
+				{# 03–––FACTS SECTION #}
+				{% case 'factsSection' %}
+					
+					<div class="facts-panel">
+						<div class="outer-content-wrap">
+						
+							{# Start Panel Title #}
+							{% if block.title|length %}
+								<h2 class="size-02 panel-title shift-on-scroll">{{ block.title }}</h2>
+							{% endif %}
+							{# End Panel Title #}
+							
+							{# Start Facts #}
+							<div class="facts shift-on-scroll">
+							{% for factBlock in block.facts.all() %}
+								{% if factBlock.type == 'fact' %}
+								
+									<div class="fact">
+										<h3 class="size-01 number"><span class="animated-number" data-stat="{{ factBlock.number }}">0</span>{% if factBlock.extraText|length %}{{ factBlock.extraText }}{% endif %}</h3>
+										<h3 class="size-02 sub-text">{{ factBlock.subtext }}</h3>
+									</div>
+									
+								{% endif %}
+							{% endfor %}
+							</div>
+							{# End Facts #}
+							
+						</div>
+					</div>
+				
+				{# 04–––TIMELINE SECTION #}
+				{% case 'timelineSection' %}
+					
+					<div class="timeline-panel">
+						<div class="outer-content-wrap shift-on-scroll">
+							
+							{# Start Panel Title #}
+							{% if block.title|length %}
+								<h2 class="size-02 panel-title">{{ block.title }}</h2>
+							{% endif %}
+							{# End Panel Title #}
+							
+							{# Start Timeline Carousel – DESKTOP #}
+							<div class="timeline-carousel-wrap">
+								<div class="timeline-carousel">
+								{% for timelineSlideBlock in block.timeline.all() %}
+									{% if timelineSlideBlock.type == 'timelineSlide' %}
+										
+										<div class="timeline-slide">
+											<div class="slide-content">
+												
+												<div class="year">
+													{% if timelineSlideBlock.timelineYear|length %}
+														<h3 class="size-01">{{ timelineSlideBlock.timelineYear }}</h3>
+													{% endif %}
+												</div>
+												
+												<div class="slide-info">
+													{% if timelineSlideBlock.timelineImage|length %}
+														{% set image = timelineSlideBlock.timelineImage.one() %}
+														{% include '00_site-wide/image-module_regular.twig' %}
+													{% endif %}
+													<div class="timeline-text">
+														{% if timelineSlideBlock.timelineTitle|length %}
+															<h3 class="size-02">{{ timelineSlideBlock.timelineTitle }}</h3>
+														{% endif %}
+														{% if timelineSlideBlock.timelineSubtitle|length %}
+															<h3 class="size-02">{{ timelineSlideBlock.timelineSubtitle }}</h3>
+														{% else %}
+															<h3 class="size-02 dummy">dummy</h3>
+														{% endif %}
+													</div>
+												</div>
+												
+											</div>
+										</div>
+										
+									{% endif %}
+								{% endfor %}
+								</div>
+							</div>
+							{# End Timeline Carousel – DESKTOP #}
+							
+							{# Start Timeline List – MOBILE #}
+							<div class="timeline-list-wrap">
+								{% for timelineSlideBlock in block.timeline.all() %}
+									{% if timelineSlideBlock.type == 'timelineSlide' %}
+										
+										<div class="timeline-list-row">
+											
+											<div class="year">
+												{% if timelineSlideBlock.timelineYear|length %}
+													<h3 class="size-01">{{ timelineSlideBlock.timelineYear }}</h3>
+												{% endif %}
+											</div>
+											
+											<div class="text">
+												{% if timelineSlideBlock.timelineTitle|length %}
+													<h3 class="size-02">{{ timelineSlideBlock.timelineTitle }}</h3>
+												{% endif %}
+												{% if timelineSlideBlock.timelineSubtitle|length %}
+													<h3 class="size-02">{{ timelineSlideBlock.timelineSubtitle }}</h3>
+												{% endif %}
+											</div>
+											
+										</div>
+										
+									{% endif %}
+								{% endfor %}
+							</div>
+							{# End Timeline List – MOBILE #}
+							
+						</div>
+					</div>
+				
+				{# 05–––QUOTE SECTION #}
+				{% case 'quoteSection' %}
+					
+					{% include '00_site-wide/quote-section.twig' %}
+				
+				{# 06–––CAPABILITIES SECTION #}
+				{% case 'capabilitiesSection' %}
+					
+					<div class="capabilities-panel tabbed-carousel-panel">
+						
+						{# START NAV PANEL #}
+						<div class="nav-panel">
+							<div class="outer-content-wrap shift-on-scroll">
+							
+								{# Start Panel Title #}
+								{% if block.title|length %}
+									<h2 class="size-02 panel-title">{{ block.title }}</h2>
+								{% endif %}
+								{# End Panel Title #}
+								
+								{# Start Nav Menu #}
+								<div class="nav-menu">
+								{% for capabilityBlock in block.capabilities.all() %}
+									{% if capabilityBlock.type == 'capability' %}
+										
+										{% if capabilityBlock.title|length %}
+										<div class="nav-block nav-block-{{ loop.index }}{% if loop.index < 2 %} selected{% endif %}" data-nav-hook="{{ loop.index }}">
+											<div class="thumb">
+												{% set image = capabilityBlock.imageModule.one() %}
+												{% include '00_site-wide/image-module_fb.twig' %}
+											</div>
+											
+											<h3 class="size-02">{{ capabilityBlock.title }}</h3>
+										</div>
+										{% endif %}
+										
+									{% endif %}
+								{% endfor %}
+								</div>
+								{# End Nav Menu #}
+								
+							</div>
+						</div>
+						{# END NAV PANEL #}
+						
+						{# START CAROUSEL PANEL #}
+						<div class="carousel-panel">
+							<div class="capabilities-carousel tabbed-carousel">
+							{% for capabilityBlock in block.capabilities.all() %}
+								{% if capabilityBlock.type == 'capability' %}
+									
+									<div class="capability-slide carousel-slide">
+										
+										<div class="text-column">
+											<div class="text-wrap">
+												{% if capabilityBlock.title|length %}
+													<h1 class="capability-title size-03">{{ capabilityBlock.title }}</h1>
+												{% endif %}
+												{% if capabilityBlock.capabilityInfo|length %}
+													{{ capabilityBlock.capabilityInfo }}
+												{% endif %}
+											</div>
+										</div>
+										
+										<div class="image-column">
+											{% set image = capabilityBlock.imageModule.one() %}
+											{% include '00_site-wide/image-module_fb.twig' %}
+										</div>
+										
+									</div>
+									
+								{% endif %}
+							{% endfor %}
+							</div> 
+						</div>
+						{# END CAROUSEL PANEL #}
+						
+					</div>
+					
+			{% endswitch %}
+		{% endfor %}
+		{# END PAGE CONTENT #}
+		
+		{# START PAGE NAV BAR #}	
+		{% include '00_site-wide/page-nav-bar.twig' %}
+		{# END PAGE NAV BAR #}
+		
+	</div>
+	{# END EXPERTISE PAGE CONTENT #}
+
+</main>	
+		
+<!--START FOOTER-->
+{% include '00_site-wide/footer.twig' %}
+<!--END FOOTER-->
+	
+{% endblock %}

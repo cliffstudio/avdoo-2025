@@ -1,0 +1,6 @@
+headingLevels: false
+name: 'Restricted Editor'
+toolbar:
+  - bold
+  - italic
+  - link

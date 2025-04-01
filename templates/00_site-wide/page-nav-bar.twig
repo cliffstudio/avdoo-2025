@@ -1,0 +1,35 @@
+<div class="page-nav-bar">
+	<div class="outer-content-wrap opacity-on-scroll">
+		
+		{% for block in entry.pageNavBar.all() %}
+			{% if block.type == 'navButtons' %}
+				{% if block.leftNavButton|length %}
+					{% if block.leftNavButton.url %}
+						<div class="nav-button left">
+							<span class="arrow"><</span>
+							<h2 class="size-03">{{ block.leftNavButton.label }}</h2>
+							<a href="{{ block.leftNavButton.url }}"></a>
+						</div>
+					{% endif %}
+				{% else %}
+					<div class="nav-button left">
+					</div>
+				{% endif %}
+				
+				{% if block.rightNavButton|length %}
+					{% if block.rightNavButton.url %}
+						<div class="nav-button right">
+							<h2 class="size-03">{{ block.rightNavButton.label }}</h2>
+							<span class="arrow">></span>
+							<a href="{{ block.rightNavButton.url }}"></a>
+						</div>						
+					{% endif %}
+				{% else %}
+					<div class="nav-button right">
+					</div>
+				{% endif %}
+			{% endif %}
+		{% endfor %}
+		
+	</div>
+</div>

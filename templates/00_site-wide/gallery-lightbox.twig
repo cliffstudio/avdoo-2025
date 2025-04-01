@@ -1,0 +1,59 @@
+<div class="gallery-lightbox-overlay">
+	
+	<div class="gallery-lightbox-carousel">
+	{% for block in entry.portfolioPageContent.all() %}
+	{% switch block.type %}
+		
+		{% case 'gallerySection' %}
+		
+		{% set galleryImages = block.gallery.all() %}
+		{% if galleryImages|length %}
+
+			{% for image in galleryImages %}
+			
+				{% if image %}
+					
+					{% set loadingImage = {
+						mode: 'crop',
+						width: 200,
+						quality: 50,
+						format: 'webp'
+					} %}
+					
+					{% set galleryLightboxSize = {
+						mode: 'crop',
+						width: 2000,
+						quality: 100,
+						format: 'webp'
+					} %}
+					
+					{# Detect orientation and assign class #}
+					{% set orientationClass = (image.width >= image.height) ? 'landscape' : 'portrait' %}
+					
+					<div class="gallery-lightbox-slide {{ orientationClass }}">
+						
+						<div class="gallery-lightbox-img">
+						
+							<img class="gallery-img full-bleed-image" src="{{ image.getUrl(loadingImage) }}" 
+								data-flickity-lazyload="{{ image.getUrl(galleryLightboxSize) }}"
+								alt="{{ image.alt ?: image.title }}">
+							
+							<div class="loading-overlay"></div>
+							
+							<img class="close-button" src="{{ alias('@web') }}/assets/svgs/close-icon.svg" />
+							<img class="next-arrow" src="{{ alias('@web') }}/assets/svgs/right-arrow.svg" />
+						</div>
+						
+					</div>
+					
+				{% endif %}
+			
+			{% endfor %}
+			
+		{% endif %}
+	
+	{% endswitch %}
+	{% endfor %}
+	</div>
+	
+</div>

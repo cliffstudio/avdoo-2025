@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: pageMenu
+instructions: null
+name: 'Page Menu'
+searchable: false
+settings:
+  createButtonLabel: 'New Link'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - ee69ab96-7a58-4ddd-97b9-95bbd0c9f722 # Link List
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

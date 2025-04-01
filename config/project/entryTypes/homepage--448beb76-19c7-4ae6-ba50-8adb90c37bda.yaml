@@ -1,0 +1,97 @@
+color: null
+fieldLayouts:
+  229a2a48-d50b-430a-a359-5e87b6a1467f:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-31T10:42:21+00:00'
+            elementCondition: null
+            fieldUid: 93a21b80-1a9f-481b-9acf-6a87bcfe19f7 # Left Side
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b75bb9dc-2f20-4599-8a3e-a2dc0582f533
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-03-31T10:48:06+00:00'
+            elementCondition: null
+            fieldUid: 1cee652f-9ec8-4d32-8392-bf9a511b117f # Right Side
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 577a3fe3-42ab-4d99-8893-aac49440522b
+            userCondition: null
+            warning: null
+            width: 50
+        name: Splash
+        uid: 3dbfd908-0806-469b-abbe-8a171ed6341d
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-29T15:53:40+00:00'
+            elementCondition: null
+            fieldUid: 093cefb6-0149-4be7-bc93-4bcd716c5ce2 # Page Content
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2dba7c02-d9d2-4982-ae60-23442ca91166
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Page Content'
+        uid: 3c468419-5e56-42b7-a349-0cf0f73ad978
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-29T00:39:26+00:00'
+            elementCondition: null
+            fieldUid: 629c7cb8-ada5-4eb5-99a9-f7550f234d98 # Page Nav Bar
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a5d3e0c6-49ba-4bc3-8c04-af5ba01ada37
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Nav Bar'
+        uid: a5e8252f-fc07-41df-9e65-7ed69cdff8a2
+        userCondition: null
+handle: homepage
+hasTitleField: false
+icon: house
+name: Homepage
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

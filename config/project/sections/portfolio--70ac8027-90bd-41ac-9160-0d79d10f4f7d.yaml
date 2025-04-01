@@ -1,0 +1,28 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 65ae3946-acb4-49fa-8461-b6e2e0f4d27f # Portfolio
+handle: portfolio
+maxAuthors: 1
+name: Portfolio
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  966432a0-b4ee-458a-a839-f2381951a549: # Avdoo
+    enabledByDefault: true
+    hasUrls: true
+    template: portfolio/_entry.twig
+    uriFormat: 'portfolio/{slug}'
+type: channel

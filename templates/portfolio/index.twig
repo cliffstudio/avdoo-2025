@@ -1,0 +1,97 @@
+{% extends "layout.twig" %}
+{% block content %}
+<main>	
+	
+	{# START PORTFOLIO PAGE CONTENT #}
+	<div id="portfolio-page" class="page-wrap">
+		<div class="outer-content-wrap">
+			
+			{# START PAGE TITLES MODULE #}
+			{% set pageTitleBlock = entry.pressPageTitles.type('pageTitles').one() %}
+			{% if pageTitleBlock %}
+				
+				<div class="page-title-module">
+					<div class="text-wrap shift-on-scroll">
+						{% if pageTitleBlock.title|length %}
+							<h2 class="size-02">{{ pageTitleBlock.title }}</h2>
+						{% endif %}
+						{% if pageTitleBlock.pageIntro|length %}
+							{% set allowedTags = '<em><strong><br></br><i><b>' %}
+							<h1 class="size-03">{{ pageTitleBlock.pageIntro|striptags(allowedTags)|raw }}</h1>
+						{% endif %}
+					</div>
+				</div>
+				
+			{% endif %}
+			{# END PAGE TITLES MODULE #}
+			
+			{# START PORTFOLIO GRID #}
+			<div class="portfolio-grid">
+			
+				{% set portfolioEntries = craft.entries().section('portfolio').orderBy('postDate desc') %}
+			
+				{% for entry in portfolioEntries %}
+					<article class="{{ entry.portfolioThumbnailSize }} {{ entry.portfolioComingSoon ? 'coming-soon' : 'available' }} shift-on-scroll">
+						
+						{# Start Thumbnail Image #}
+						<div class="thumbnail-image">
+							{% set image = entry.thumbnailImageModule.one() %}
+							{% include '00_site-wide/image-module_fb.twig' %}
+							
+							{% if entry.portfolioComingSoon %}
+							<h1 class="size-03 coming-soon">Coming Soon</h1>
+							{% endif %}
+						</div>
+						{# End Thumbnail Image #}
+						
+						{# Start Thumbnail Titles #}
+						<div class="thumbnail-titles">
+							
+							<div class="titles-col">
+								<h1 class="size-07">{{ entry.title }}{% if entry.portfolioCity|length %}, {{ entry.portfolioCity }}{% endif %}</h1>
+								{% if entry.portfolioComingSoon %}
+									<h1 class="size-07"><em>Coming Soon</em></h1>
+								{% else %}
+									{% if entry.portfolioSubtitle|length %}<h1 class="size-07"><em>{{ entry.portfolioSubtitle }}</em></h1>{% endif %}
+								{% endif %}
+							</div>
+							
+							<div class="info-col">
+								<h3 class="size-03 info-row">{% if entry.portfolioCity|length %}{{ entry.portfolioCity }}{% endif %}{% if entry.portfolioState|length %}, {{ entry.portfolioState }}{% endif %}</h3>
+								{% if entry.portfolioUse|length %}<h3 class="size-03 info-row">Use: {{ entry.portfolioUse }}</h3>{% endif %}
+								{% if entry.portfolioSize|length %}<h3 class="size-03 info-row">Size: {{ entry.portfolioSize }}</h3>{% endif %}
+								{% if entry.portfolioArchitect|length %}<h3 class="size-03 info-row">Architect: {{ entry.portfolioArchitect }}</h3>{% endif %}
+								{% if entry.portfolioInteriorDesign|length %}<h3 class="size-03 info-row">Interior Design: {{ entry.portfolioInteriorDesign }}</h3>{% endif %}
+							</div>
+							
+						</div>
+						{# End Thumbnail Titles #}
+						
+						{# Start Portfolio Link #}
+						{% if entry.portfolioComingSoon %}{% else %}
+						<a class="portfolio-link" href="{{ entry.url }}"></a>
+						{% endif %}
+						{# End Portfolio Link #}
+						
+					</article>
+				{% endfor %}
+			
+			</div>
+			{# END PORTFOLIO GRID #}
+		
+		</div>
+		
+		{# START PAGE NAV BAR #}	
+		{% include '00_site-wide/page-nav-bar.twig' %}
+		{# END PAGE NAV BAR #}
+		
+	</div>
+	{# END PORTFOLIO PAGE CONTENT #}
+
+</main>	
+			
+<!--START FOOTER-->
+{% include '00_site-wide/footer.twig' %}
+<!--END FOOTER-->
+	
+{% endblock %}

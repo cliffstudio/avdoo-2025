@@ -1,0 +1,26 @@
+columnSuffix: null
+handle: portfolioWebsite
+instructions: null
+name: Website
+searchable: false
+settings:
+  fullGraphqlData: true
+  maxLength: 255
+  showLabelField: true
+  typeSettings:
+    __assoc__:
+      -
+        - url
+        -
+          __assoc__:
+            -
+              - allowRootRelativeUrls
+              - ''
+            -
+              - allowAnchors
+              - ''
+  types:
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Link

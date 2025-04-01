@@ -1,0 +1,103 @@
+color: null
+fieldLayouts:
+  15dd966e-543a-40cb-9752-d9a7ab74be88:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-16T11:44:29+00:00'
+            elementCondition: null
+            fieldUid: 988ca401-000e-42bb-a470-96a844f8bea3 # Page Titles
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e23e3a87-48e9-4c1b-983f-3d50f94ce510
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Page Titles'
+        uid: c34bdaa5-fbf5-4d7d-9a15-f6bfa7f3cf96
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-16T12:26:29+00:00'
+            elementCondition: null
+            fieldUid: b1354549-8a93-4bd6-aa6c-822676e1018a # Page Content
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 385aecc9-1305-4d67-8d7e-f336537ac4f0
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Page Content'
+        uid: 28d3352d-7c6f-4884-95a8-aa1321a31515
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-17T23:00:21+00:00'
+            elementCondition: null
+            fieldUid: dbf4f2a6-e23c-4839-87c5-135267e5613d # Contact Form Intro
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ff4956ef-6b80-4de1-b099-6332a9d836ff
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Contact Form'
+        uid: 9b236c52-0998-4b6f-8341-c4db86572877
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-18T00:14:55+00:00'
+            elementCondition: null
+            fieldUid: 629c7cb8-ada5-4eb5-99a9-f7550f234d98 # Page Nav Bar
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e4581f5e-b3b1-4f77-9b50-aba105dd2f43
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Nav Bar'
+        uid: 805d7009-3798-4573-89bd-53ee5aeb5997
+        userCondition: null
+handle: contactPage
+hasTitleField: false
+icon: phone
+name: 'Contact Page'
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

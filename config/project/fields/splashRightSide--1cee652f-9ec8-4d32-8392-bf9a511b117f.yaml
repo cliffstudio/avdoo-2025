@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: splashRightSide
+instructions: null
+name: 'Right Side'
+searchable: false
+settings:
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 552bf36e-73bd-4e9a-ab5d-33be2eb164e4 # Right Side
+  includeTableView: false
+  maxEntries: 1
+  minEntries: 1
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

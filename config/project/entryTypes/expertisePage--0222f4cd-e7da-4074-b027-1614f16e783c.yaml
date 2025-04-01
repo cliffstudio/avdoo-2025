@@ -1,0 +1,81 @@
+color: null
+fieldLayouts:
+  be869e02-0b60-493f-8ee6-d61b5da6f0f5:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-22T12:31:21+00:00'
+            elementCondition: null
+            fieldUid: 049e4a9f-aa51-49d5-8312-6cf5e348dcd3 # Two Up Splash Panel
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0d8d985f-6ae8-424e-a895-af99657206aa
+            userCondition: null
+            warning: null
+            width: 100
+        name: Splash
+        uid: 881fba8f-b96a-4749-ab8d-2a3af90b369a
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-22T13:13:40+00:00'
+            elementCondition: null
+            fieldUid: 279b9ff2-1168-4a1b-9ccc-51a6b64a8e3a # Page Content
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b260b9a0-bcbf-409b-bdee-54b32169f18d
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Page Content'
+        uid: 17e5ca90-9060-4106-804f-fed34221c131
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-22T12:34:59+00:00'
+            elementCondition: null
+            fieldUid: 629c7cb8-ada5-4eb5-99a9-f7550f234d98 # Page Nav Bar
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 47b4c8ea-adb5-4dc7-8567-4624a4ce7ed5
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Nav Bar'
+        uid: 83aff757-62a9-4d8d-b542-6d1d2b54d6d7
+        userCondition: null
+handle: expertisePage
+hasTitleField: false
+icon: pen-line
+name: 'Expertise Page'
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

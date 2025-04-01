@@ -1,0 +1,99 @@
+color: null
+fieldLayouts:
+  f813d933-4281-4ce7-b582-f8fb396041b3:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-03-18T11:25:26+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 2012355f-097a-4e19-92ef-78b100e51cfe
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-18T16:14:56+00:00'
+            elementCondition: null
+            fieldUid: 3c453cea-53e1-4216-b378-026881dcded6 # Article Source
+            handle: null
+            includeInCards: false
+            instructions: 'e.g. New York Times'
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 572b00a1-e648-4c92-8197-b0bbeb55e46f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-18T15:20:47+00:00'
+            elementCondition: null
+            fieldUid: ee23eee0-31b7-4cda-b63d-134aa4586e5d # Image Module
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: 'Article Thumbnail'
+            providesThumbs: true
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 950d2550-1b58-4395-833d-ebf3bade9dbf
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-18T15:01:09+00:00'
+            elementCondition: null
+            fieldUid: 78c17554-dbd3-4b78-908e-572751622711 # Article Link
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9ac85d27-78b9-48ac-b90f-48315990d0f5
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 4afed95e-f207-45ff-81ed-90822a0fb121
+        userCondition: null
+handle: pressPage
+hasTitleField: true
+icon: newspaper
+name: 'Press Page'
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

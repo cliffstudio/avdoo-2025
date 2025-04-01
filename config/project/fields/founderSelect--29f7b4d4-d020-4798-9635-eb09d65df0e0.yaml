@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: founderSelect
+instructions: null
+name: 'Founder Select'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  maintainHierarchy: false
+  maxRelations: 1
+  minRelations: null
+  selectionLabel: 'Add Founder'
+  showCardsInGrid: false
+  showSiteMenu: false
+  sources:
+    - 'section:a92f7955-7e53-499e-adab-e6e93a58c620' # People
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

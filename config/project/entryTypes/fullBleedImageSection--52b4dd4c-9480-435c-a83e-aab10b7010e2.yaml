@@ -1,0 +1,67 @@
+color: null
+fieldLayouts:
+  44a65cc5-7c46-4387-ab77-aba6db40c888:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-03-27T00:05:02+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 0ddbea08-da28-47b9-9260-2dc7bfe1a5e5
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-27T00:06:37+00:00'
+            elementCondition: null
+            fieldUid: ee23eee0-31b7-4cda-b63d-134aa4586e5d # Image Module
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 6f6ffbb3-1713-42a4-bdd9-b9855554c2c3
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2190ac4b-0c99-456f-ab04-6f751c381048
+        userCondition: null
+handle: fullBleedImageSection
+hasTitleField: true
+icon: null
+name: 'Full Bleed Image Section'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

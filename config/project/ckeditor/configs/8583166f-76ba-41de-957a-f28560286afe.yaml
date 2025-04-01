@@ -1,0 +1,17 @@
+headingLevels:
+  - 3
+name: 'Contact Details'
+options:
+  heading:
+    options:
+      -
+        model: heading3
+        title: 'Contact Text'
+        view:
+          classes: size-02
+          name: h3
+toolbar:
+  - heading
+  - bold
+  - italic
+  - link

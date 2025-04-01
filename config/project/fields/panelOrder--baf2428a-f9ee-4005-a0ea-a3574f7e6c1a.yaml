@@ -1,0 +1,33 @@
+columnSuffix: null
+handle: panelOrder
+instructions: null
+name: 'Panel Order'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Image / Text'
+        -
+          - value
+          - imageText
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - 'Text / Image'
+        -
+          - value
+          - textImage
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

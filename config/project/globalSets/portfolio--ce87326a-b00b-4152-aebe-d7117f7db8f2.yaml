@@ -1,0 +1,28 @@
+fieldLayouts:
+  e049a252-866e-4c7a-b054-e92d9c0c9951:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-27T22:06:13+00:00'
+            elementCondition: null
+            fieldUid: 629c7cb8-ada5-4eb5-99a9-f7550f234d98 # Page Nav Bar
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3f1ce5df-f7d2-4232-a3f4-5047922d6aa1
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: b5f4543a-fd0b-4f77-90a0-171d42a75d6e
+        userCondition: null
+handle: portfolio
+name: Portfolio
+sortOrder: 2

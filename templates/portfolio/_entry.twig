@@ -1,0 +1,244 @@
+{% extends "layout.twig" %}
+{% block content %}
+<main>
+	
+	{# START PROPERTY PAGE CONTENT #}
+	<div id="property-page" class="page-wrap">
+	
+		{# START SPLASH PANEL #}
+		<div class="splash-panel">
+			
+			{% if entry.portfolioSplashType.value == 'image' %}
+			
+				{% set image = entry.splashImageModule.one() %}
+				{% include '00_site-wide/image-module_fb.twig' %}
+			
+			{% elseif entry.portfolioSplashType.value == 'video' %}
+				
+				{% set video = entry.splashVideoModule %}
+				{% set videoPlaceholder = entry.splashVideoPlaceholder.one() %}
+				
+				{% include '00_site-wide/video-module_fb.twig' %}
+				
+			{% endif %}
+			
+		</div>
+		{# END SPLASH PANEL #}
+		
+		{# START PROPERTY INFO #}
+		<div class="property-info-panel">
+			<div class="outer-content-wrap shift-on-scroll">
+				<div class="inner-wrap">
+					
+					{# Start Titles Row #}
+					<div class="titles-row">
+						<h2 class="post-type size-02">PORTFOLIO</h2>
+						<h1 class="property-title size-01">{{ entry.title }}{% if entry.portfolioCity|length %} {{ entry.portfolioCity }}{% endif %}</h1>
+						{% if entry.portfolioSubtitle|length %}<h1 class="property-subtitle size-06"><em>{{ entry.portfolioSubtitle }}</em></h1>{% endif %}
+						{% if entry.portfolioAddress|length %}<h3 class="property-address size-03">{{ entry.portfolioAddress }}</h3>{% endif %}
+						{% set website = entry.portfolioWebsite %}
+						{% if website.url %}
+							<h3 class="property-website size-03">
+								<a class="underlined-link" href="{{ website.url }}" target="_blank" rel="noopener noreferrer">
+									{{ website.label ?: website.url }}
+								</a>
+							</h3>
+						{% endif %}
+					</div>
+					{# End Titles Row #}
+					
+					{# Start Description Row #}
+					{% if entry.portfolioDescription|length %}
+					<div class="description-row">
+						<p class="size-02">{{ entry.portfolioDescription }}</p>
+					</div>
+					{% endif %}
+					{# End Description Row #}
+					
+					{# Start Info Row #}
+					<div class="info-row">
+						<h3 class="size-03 inner-info-row">{% if entry.portfolioCity|length %}{{ entry.portfolioCity }}{% endif %}{% if entry.portfolioState|length %}, {{ entry.portfolioState }}{% endif %}</h3>
+						{% if entry.portfolioUse|length %}<h3 class="size-03 inner-info-row">Use: {{ entry.portfolioUse }}</h3>{% endif %}
+						{% if entry.portfolioSize|length %}<h3 class="size-03 inner-info-row">Size: {{ entry.portfolioSize }}</h3>{% endif %}
+					</div>
+					{# End Info Row #}
+	
+				</div>
+			</div>
+		</div>
+		{# END PROPERTY INFO #}
+		
+		{# START PAGE CONTENT #}
+		{% for block in entry.portfolioPageContent.all() %}
+			{% switch block.type %}
+			
+				{# 01–––QUOTE SECTION #}
+				{% case 'quoteSection' %}
+					
+					{% include '00_site-wide/quote-section.twig' %}
+				
+				{# 02–––DESIGN TEAM SECTION #}
+				{% case 'designTeamSection' %}
+					
+					<div class="design-team-panel tabbed-carousel-panel">
+						
+						{# START NAV PANEL #}
+						<div class="nav-panel">
+							<div class="outer-content-wrap shift-on-scroll">
+							
+								{# Start Panel Title #}
+								{% if block.title|length %}
+									<h2 class="size-02 panel-title">{{ block.title }}</h2>
+								{% endif %}
+								{# End Panel Title #}
+								
+								{# Start Nav Menu #}
+								{% set totalRows = block.capabilities.type('capability').count() %}	
+								
+								<div class="nav-menu{% if totalRows < 4 %} smaller-menu{% endif %}">
+								{% for capabilityBlock in block.capabilities.all() %}
+									{% if capabilityBlock.type == 'capability' %}
+										
+										{% if capabilityBlock.title|length %}
+										<div class="nav-block nav-block-{{ loop.index }}{% if loop.index < 2 %} selected{% endif %}" data-nav-hook="{{ loop.index }}">
+											<div class="thumb">
+												{% set image = capabilityBlock.imageModule.one() %}
+												{% include '00_site-wide/image-module_fb.twig' %}
+											</div>
+											
+											<h3 class="size-02">{{ capabilityBlock.title }}</h3>
+											{% if capabilityBlock.subtitle|length %}
+												<h3 class="subtitle size-02">{{ capabilityBlock.subtitle }}</h3>
+											{% endif %}
+										</div>
+										{% endif %}
+										
+									{% endif %}
+								{% endfor %}
+								</div>
+								{# End Nav Menu #}
+								
+							</div>
+						</div>
+						{# END NAV PANEL #}
+						
+						{# START CAROUSEL PANEL #}
+						<div class="carousel-panel">
+							<div class="design-team-carousel tabbed-carousel">
+							{% for capabilityBlock in block.capabilities.all() %}
+								{% if capabilityBlock.type == 'capability' %}
+									
+									<div class="design-team-slide carousel-slide">
+										
+										<div class="text-column">
+											<div class="text-wrap">
+												{% if capabilityBlock.title|length %}
+													<h1 class="capability-title size-03">{{ capabilityBlock.title }}</h1>
+												{% endif %}
+												{% if capabilityBlock.subtitle|length %}
+													<h2 class="capability-subtitle size-02">{{ capabilityBlock.subtitle }}</h2>
+												{% endif %}
+												{% if capabilityBlock.capabilityInfo|length %}
+													{{ capabilityBlock.capabilityInfo }}
+												{% endif %}
+											</div>
+										</div>
+										
+										<div class="image-column">
+											{% set image = capabilityBlock.imageModule.one() %}
+											{% include '00_site-wide/image-module_fb.twig' %}
+										</div>
+										
+									</div>
+									
+								{% endif %}
+							{% endfor %}
+							</div> 
+						</div>
+						{# END CAROUSEL PANEL #}
+						
+					</div>
+				
+				{# 03–––FULL BLEED IMAGE SECTION #}
+				{% case 'fullBleedImageSection' %}
+					
+					<div class="full-bleed-image-panel{% if block.title|length %} title-present{% endif %}">
+						
+						{# Start Panel Title #}
+						{% if block.title|length %}
+							<h2 class="size-02 panel-title">{{ block.title }}</h2>
+						{% endif %}
+						{# End Panel Title #}
+						
+						{# Start FB Image #}
+						{% set image = block.imageModule.one() %}
+						{% include '00_site-wide/image-module_fb.twig' %}
+						{# End FB Image #}
+						
+					</div>
+				
+				{# 04–––GALLERY SECTION #}
+				{% case 'gallerySection' %}
+					
+					<div class="gallery-panel">
+						<div class="outer-content-wrap shift-on-scroll">
+							
+							{# Start Panel Title #}
+							{% if block.title|length %}
+								<h2 class="size-02 panel-title">{{ block.title }}</h2>
+							{% endif %}
+							{# End Panel Title #}
+							
+							{# Start Gallery Grid #}
+							{% set galleryImages = block.gallery.all() %}
+							{% if galleryImages|length %}
+								<div class="gallery-grid">
+									<div class="gutter-sizer"></div>
+									
+									{% for image in galleryImages %}
+									
+										{% include '00_site-wide/gallery-module.twig' %}
+									
+									{% endfor %}
+								
+								</div>
+							{% endif %}
+							{# End Gallery Grid #}
+						
+						</div>
+					</div>
+					
+			{% endswitch %}
+		{% endfor %}
+		{# END PAGE CONTENT #}
+		
+		{# START NEXT PROJECT #}
+		{% set nextProject = entry.getNext({ section: 'portfolio' }) %}
+		{% if nextProject %}
+			<div class="next-project-module shift-on-scroll">
+			
+				<h2 class="size-02">next project</h2>
+				<h1 class="size-03"><a class="underlined-link" href="{{ nextProject.url }}">{{ nextProject.title }}</a></h1>
+			
+			</div>
+		{% endif %}
+		{# END NEXT PROJECT #}
+		
+		{# START PAGE NAV BAR #}	
+		{% include '00_site-wide/page-nav-bar_global.twig' %}
+		{# END PAGE NAV BAR #}
+		
+	</div>
+	{# END PROPERTY PAGE CONTENT #}
+
+</main>	
+			
+<!--START FOOTER-->
+{% include '00_site-wide/footer.twig' %}
+<!--END FOOTER-->
+	
+{# START GALLERY LIGHTBOX OVERLAY #}
+{% include '00_site-wide/gallery-lightbox.twig' %}
+{# END GALLERY LIGHTBOX OVERLAY #}
+	
+{% endblock %}

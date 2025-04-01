@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: facts
+instructions: null
+name: Facts
+searchable: false
+settings:
+  createButtonLabel: 'New Fact'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 994a959d-bd44-4aac-aaa1-e77317f41ac3 # Fact
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

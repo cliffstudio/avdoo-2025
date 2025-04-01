@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: contactPageTitles
+instructions: null
+name: 'Page Titles'
+searchable: false
+settings:
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 0d26f9e9-ae28-4786-958d-46a9d06968d6 # Page Titles
+  includeTableView: false
+  maxEntries: 1
+  minEntries: 1
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

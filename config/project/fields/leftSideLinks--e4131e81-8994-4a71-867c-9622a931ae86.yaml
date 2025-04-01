@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: leftSideLinks
+instructions: null
+name: Links
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: null
+  selectionLabel: 'Add Project'
+  showCardsInGrid: false
+  showSiteMenu: false
+  sources:
+    - 'section:70ac8027-90bd-41ac-9160-0d79d10f4f7d' # Portfolio
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

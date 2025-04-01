@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: quoteText
+instructions: null
+name: 'Quote Text'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  ckeConfig: 820a4433-3c75-430e-aa6b-f6a304a61903 # Quote Section Styles
+  createButtonLabel: null
+  defaultTransform: null
+  purifierConfig: null
+  purifyHtml: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field

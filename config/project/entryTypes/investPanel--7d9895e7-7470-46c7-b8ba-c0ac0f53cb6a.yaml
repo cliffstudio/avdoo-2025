@@ -1,0 +1,53 @@
+color: null
+fieldLayouts:
+  caffa55d-2868-421e-aa03-8b600c364b82:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-17T00:40:23+00:00'
+            elementCondition: null
+            fieldUid: cb07ea78-f11a-4d8f-9c74-c7b98efd05ab # Text Content
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 106ab34a-c330-4bd3-a8e2-ad2acc0b29f2
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-17T00:40:23+00:00'
+            elementCondition: null
+            fieldUid: 7909f48a-c93c-4744-b777-adfa4e087c46 # Link
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a7202b59-923a-4541-bbe6-2abb6aaaf16c
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 2ddf4d16-afe6-4d6e-88c3-e95ca3592418
+        userCondition: null
+handle: investPanel
+hasTitleField: false
+icon: null
+name: 'Invest Panel'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

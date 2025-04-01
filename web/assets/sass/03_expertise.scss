@@ -1,0 +1,251 @@
+/*
+PAGE WRAP ------------------
+*/
+
+.page-wrap#expertise-page {
+	
+	//02–––IMAGE / TEXT PANEL
+	.image-text-panel {
+		
+		//TEXT COLUMN
+		.text-column {
+			text-align: left;
+			
+			.text-wrap {
+				width: percentage(639/960);
+			}
+			
+			@media only screen and (max-width: 768px) {
+				text-align: justify;
+				padding: get-rem-mobile(41) 0 get-rem-mobile(57) 0;
+				
+				.text-wrap {
+					width: percentage(321/402);
+				}
+			}
+				
+		}
+		
+	}
+	
+	//03–––FACTS SECTION
+	.facts-panel {
+		width: 100%; height: auto;
+		text-align: center;
+		padding: get-rem-desktop(135) 0 get-rem-desktop(173) 0;
+		border-bottom: 1px solid $colour-black;
+		border-width: 0.5px;
+		
+		//PANEL TITLE
+		h2.panel-title {
+			margin-bottom: get-rem-desktop(64);
+		}
+		
+		@media only screen and (max-width: 768px) {
+			padding: get-rem-mobile(35) 0 get-rem-mobile(62) 0;
+			
+			//PANEL TITLE
+			h2.panel-title {
+				margin-bottom: get-rem-mobile(56);
+			}
+			
+		}
+		
+		//FACTS
+		.facts {
+			width: 100%; height: auto;
+			display: flex;
+			justify-content: center;
+			column-gap: get-rem-desktop(20);
+			
+			.fact {
+				width: 100%;
+				
+				h3.number {
+					margin-bottom: get-rem-desktop(38);
+				}
+				
+			}
+			
+			@media only screen and (max-width: 768px) {
+				flex-wrap: wrap;
+				justify-content: flex-start;
+				column-gap: 0px;
+				padding: 0 get-rem-mobile(25);
+				row-gap: get-rem-mobile(37);
+				
+				.fact {
+					width: 50%;
+					padding: 0 get-rem-mobile(15);
+					
+					h3.number {
+						margin-bottom: get-rem-mobile(26);
+					}
+					
+				}
+				
+			}	
+			
+		}
+		
+	}
+	
+	//04–––TIMELINE SECTION
+	.timeline-panel {
+		width: 100%; height: auto;
+		text-align: center;
+		padding: get-rem-desktop(83) 0 get-rem-desktop(175) 0;
+		border-bottom: 1px solid $colour-black;
+		border-width: 0.5px;
+		overflow: hidden;
+		
+		//PANEL TITLE
+		h2.panel-title {
+			margin-bottom: get-rem-desktop(73);
+		}
+		
+		@media only screen and (max-width: 768px) {
+			padding: get-rem-mobile(39) 0 get-rem-mobile(74) 0;
+			background-color: #EEE9DF;
+			
+			//PANEL TITLE
+			h2.panel-title {
+				margin-bottom: get-rem-mobile(46);
+			}
+			
+		}
+		
+		//TIMELINE CAROUSEL – DESKTOP
+		.timeline-carousel-wrap {
+			width: 100%; height: auto;
+			padding-left: get-rem-desktop(148);
+			
+			@media only screen and (max-width: 768px) {
+				display: none;	
+			}
+			
+			.timeline-carousel {
+				width: 100%; height: auto;
+				
+				//Timeline Slide
+				.timeline-slide {
+					@include aspect-ratio(297, 763);
+					width: get-rem-desktop(297); height: auto;
+					border-left: 1px solid $colour-black;
+					border-width: 0.5px;
+					text-align: left;
+					
+					.slide-content {
+						position: absolute;
+						width: 100%; height: 100%;
+						top: 0; left: 0;
+						display: flex;
+						flex-direction: column;
+						justify-content: space-between;
+						padding: 0 get-rem-desktop(20);
+						
+						//––Year
+						.year {
+							width: 100%; height: auto;
+							h3 { writing-mode: vertical-lr; }
+						}
+						
+						//––Slide Info
+						.slide-info {
+							width: 100%; height: auto;
+							
+							.timeline-text {
+								width: 100%; height: auto;
+								margin-top: get-rem-desktop(47);
+								
+								h3 { 
+									position: relative;
+									display: block;
+									width: 100%; height: auto;
+								}
+								
+								h3.dummy {
+									opacity: 0;
+									pointer-events: none;
+								}
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+				//Prev / Next Buttons
+				.flickity-prev-next-button {
+					@include reset-input();
+					position: absolute;
+					width: get-rem-desktop(42); height: get-rem-desktop(42);
+					top: 50%;
+					transform: translateY(-50%);
+					z-index: 199;
+					will-change: opacity;
+					
+					&.previous {
+						left: get-rem-desktop(-80);
+					}
+					
+					&.next {
+						right: get-rem-desktop(14);
+					}
+					
+					//––Disabled
+					&:disabled {
+						opacity: 0;
+						pointer-events: none;
+						transition: opacity 200ms cubic-bezier(0.25,0.1,0.25,1);
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		//TIMELINE LIST – MOBILE
+		.timeline-list-wrap {
+			display: none;
+			
+			.timeline-list-row {
+				width: 100%; height: auto;
+				min-height: get-rem-mobile(120);
+				text-align: left;
+				display: flex;
+				align-items: flex-start;
+				justify-content: space-between;
+				padding: get-rem-mobile(16) 0 get-rem-mobile(44) 0;
+				border-top: 1px solid $colour-black;
+				border-width: 0.5px;
+				&:last-child { min-height: 0px; }
+				
+				.year {
+					width: percentage(187/363);
+				}
+				
+				.text {
+					width: percentage(176/363);
+					h3 { line-height: 142.8%; }
+				}
+				
+			}
+			
+			@media only screen and (max-width: 768px) {
+				display: block;	
+			}
+			
+		}
+		
+	}
+	
+	//06–––CAPABILITIES SECTION
+	.tabbed-carousel-panel.capabilities-panel {
+
+	}
+
+}

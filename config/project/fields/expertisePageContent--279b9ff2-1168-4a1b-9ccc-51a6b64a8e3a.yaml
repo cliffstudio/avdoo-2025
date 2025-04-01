@@ -1,0 +1,50 @@
+columnSuffix: null
+handle: expertisePageContent
+instructions: null
+name: 'Page Content'
+searchable: false
+settings:
+  createButtonLabel: 'New Section'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 79abe01f-5a70-47c5-9bae-f800cd7bee9b # Text Section
+    -
+      __assoc__:
+        -
+          - uid
+          - af5f86ce-f1bf-4f3f-a677-cedd3b22e3ef # Image / Text Panel
+    -
+      __assoc__:
+        -
+          - uid
+          - c198bddd-11b9-486b-af6c-21e20f930cd6 # Facts Section
+    -
+      __assoc__:
+        -
+          - uid
+          - 5883cee1-b0dd-49e2-82a3-4fd3b9ea9540 # Timeline Section
+    -
+      __assoc__:
+        -
+          - uid
+          - 52f8c504-8a68-48f2-b2a4-591cc6e63d11 # Quote Section
+    -
+      __assoc__:
+        -
+          - uid
+          - 552bdc84-e103-4df8-a682-5b5fe2c36e87 # Capabilities Section
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

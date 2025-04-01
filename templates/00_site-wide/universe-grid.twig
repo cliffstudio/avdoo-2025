@@ -1,0 +1,42 @@
+<div class="universe-grid">		
+
+	{% set universeEntries = craft.entries().section('universe').orderBy('RAND()') %}
+	{% set sizeClasses = ['size-01', 'size-02', 'size-03', 'size-04', 'size-05', 'size-06'] %}
+	{% set speedClasses = ['0.9', '0.8', '1.0'] %}
+	
+	{% for entry in universeEntries %}
+		{% set image = entry.imageModule.one() %}
+		{% set orientationClass = (image.width >= image.height) ? 'landscape' : 'portrait' %}
+		{% set randomSizeClass = random(sizeClasses) %}
+		{% set randomSpeedAttr = random(speedClasses) %}
+		{% set category = entry.universeCategory.one() %}
+		
+		<div class="universe-block {{ orientationClass }} {{ randomSizeClass }}{% if category %} {{ category.slug }}{% endif %}" data-entry-id="{{ entry.id }}" data-speed="{{ randomSpeedAttr }}">
+			
+			{# Start Media #}
+			<div class="media-wrap">
+				{% include '00_site-wide/image-module_regular.twig' %}
+			</div>
+			{# End Media #}
+			
+			{# Start Captions #}
+			<div class="caption-overlay">
+				<div class="caption">
+					{% if entry.title|length %}
+						<h3 class="size-02">{{ entry.title }}</h3>
+					{% endif %}
+					{% if entry.subtitle|length %}
+						<h3 class="size-02">{{ entry.subtitle }}</h3>
+					{% endif %}
+					{% if entry.credit|length %}
+						<h3 class="size-02">{{ entry.credit }}</h3>
+					{% endif %}
+				</div>
+			</div>
+			{# End Captions #}
+			
+		</div>
+		
+	{% endfor %}
+
+</div>

@@ -1,0 +1,222 @@
+/*
+PAGE WRAP ------------------
+*/
+
+.page-wrap#contact-page {
+
+	//02–––CONTACT DETAILS
+	.contact-details-panel {
+		width: 100%; height: auto;
+		border-bottom: 1px solid $colour-black;
+		border-width: 0.5px;
+		display: flex;
+		align-items: stretch;
+		justify-content: space-between;
+		
+		@media only screen and (max-width: 768px) {
+			align-items: center;
+			flex-direction: column;
+			justify-content: flex-start;	
+		}
+		
+		.details-column {
+			width: 100%;
+			text-align: center;
+			border-right: 1px solid $colour-black;
+			border-width: 0.5px;
+			padding: get-rem-desktop(66) get-rem-desktop(20) get-rem-desktop(63) get-rem-desktop(20);
+			color: #5A5A5A;
+			&:last-child { border: none; }
+			
+			h3 { line-height: 140%; }
+			
+			a {
+				color: #5A5A5A;
+				text-decoration-line: underline;
+				text-decoration-style: solid;
+				text-decoration-skip-ink: none;
+				text-decoration-thickness: 0.03em;
+				text-underline-offset: 0.15em;
+				text-underline-position: from-font;
+			}
+			
+			@media only screen and (max-width: 768px) {
+				border-bottom: 1px solid $colour-black;
+				border-width: 0.5px;
+				padding: get-rem-mobile(22) get-rem-mobile(20) get-rem-mobile(20) get-rem-mobile(20);
+				&:last-child { border: none !important; }
+			}
+			
+		}
+		
+	}
+	
+	//03–––INVEST PANEL
+	.invest-panel {
+		width: 100%; height: auto;
+		text-align: center;
+		padding: get-rem-desktop(137) 0 get-rem-desktop(116) 0;
+		border-bottom: 1px solid $colour-black;
+		border-width: 0.5px;
+		
+		.text-wrap {
+			width: percentage(1150/1760);
+			margin: 0 auto;
+			
+			h2.mobile {
+				display: none;
+			}
+			h1 { margin-bottom: get-rem-desktop(42); }
+			
+			.button {
+				margin: 0 auto;
+				margin-top: get-rem-desktop(36);
+			}
+			
+		}
+		
+		@media only screen and (max-width: 768px) {
+			padding: get-rem-mobile(67) 0 get-rem-mobile(83) 0;
+			
+			.text-wrap {
+				width: percentage(325/362);
+			
+				h2.mobile {
+					display: block;
+					margin-bottom: get-rem-mobile(4);
+				}
+				
+				h1 { margin-bottom: get-rem-mobile(25); }
+			
+				.button {
+					margin-top: get-rem-mobile(25);
+				}
+			
+			}
+			
+		}
+		
+	}
+	
+	.contact-form-panel {
+		width: 100%; height: auto;
+		background-color: #EEE9DF;
+		padding: get-rem-desktop(93) 0 get-rem-desktop(124) 0;
+		
+		.inner-wrap {
+			width: percentage(1520/1760);
+			margin: 0 auto;
+		}
+		
+		@media only screen and (max-width: 768px) {
+			padding: get-rem-mobile(61) 0 get-rem-mobile(46) 0;
+			
+			.inner-wrap {
+				width: percentage(322/362);
+			
+			}
+			
+		}
+		
+		//PANEL INTRO
+		.panel-intro {
+			width: 100%; height: auto;
+			text-align: center;
+			margin-bottom: get-rem-desktop(75);
+			
+			@media only screen and (max-width: 768px) {
+				line-height: 142% !important; 
+				padding: 0 2em;
+				margin-bottom: get-rem-mobile(75);
+			}
+			
+		}
+		
+		//FORM
+		.fui-form {
+			width: 100%; height: auto;
+			
+			//–FORM FIELDS
+			.fui-page-container {
+				width: 100%; height: auto;
+				display: flex;
+				align-items: flex-start;
+				justify-content: flex-start;
+				flex-wrap: wrap;
+				row-gap: get-rem-desktop(32);
+				
+				@media only screen and (max-width: 768px) {
+					row-gap: get-rem-mobile(24);	
+				}
+				
+				.fui-row {
+					width: 100%; height: auto;
+					display: flex;
+					align-items: flex-start;
+					justify-content: flex-start;
+					
+					//Form Field
+					.fui-field {
+						
+						//–Textarea
+						&.fui-type-multi-line-text {
+							padding-top: get-rem-desktop(46);
+						}
+						
+						@media only screen and (max-width: 768px) {
+							//–Textarea
+							&.fui-type-multi-line-text {
+								padding-top: get-rem-mobile(16);
+							}
+						}
+						
+					}
+					
+					//––1 field specific
+					&[data-fui-field-count="1"] {
+						.fui-field {
+							width: 100%;
+						}
+					}
+					
+					//––2 field specific
+					&[data-fui-field-count="2"] {
+						justify-content: space-between;
+						.fui-field {
+							width: percentage(750/1520);
+						}
+						
+						@media only screen and (max-width: 768px) {
+							flex-wrap: wrap;
+							row-gap: get-rem-mobile(24);
+							
+							.fui-field {
+								width: 100%;
+							}
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+			//–SUBMIT BUTTON WRAPPER
+			.fui-btn-wrapper {
+				width: 100%; height: auto;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-top: get-rem-desktop(56);
+				
+				@media only screen and (max-width: 768px) {
+					margin-top: get-rem-mobile(23);
+				}
+				
+			}
+			
+		}
+		
+	}
+
+}

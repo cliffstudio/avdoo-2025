@@ -1,0 +1,30 @@
+<div class="image-text-panel {{ block.panelOrder }}-order">
+	
+	{# Start Image Column #}
+	<div class="image-column">
+		{% set image = block.imageModule.one() %}
+		{% include '00_site-wide/image-module_fb.twig' %}
+	</div>
+	{# End Image Column #}
+	
+	{# Start Text Column #}
+	<div class="text-column">
+		<div class="text-wrap shift-on-scroll">
+		{% if block.textContent|length %}
+			{{ block.textContent }}
+		{% endif %}
+		
+		{% if block.linkElement %}
+			{% set link = block.linkElement %}
+			{% if link.url %}
+			<div class="button">
+				<h2 class="size-04">{{ link.label ?: link.url }}</h2>
+				<a href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer"></a>
+			</div>
+			{% endif %}
+		{% endif %}
+		</div>
+	</div>
+	{# End Text Column #}
+
+</div>

@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: twoUpSplashPanel
+instructions: null
+name: 'Two Up Splash Panel'
+searchable: false
+settings:
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 785fcd62-dd34-4735-a8ef-b63355de60b9 # Two Up Splash
+  includeTableView: false
+  maxEntries: 1
+  minEntries: 1
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

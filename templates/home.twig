@@ -1,0 +1,282 @@
+{% extends "layout.twig" %}
+
+{% block title %}
+	{% set entry = craft.entries.section('home').one() %}
+	{{ entry.title }} - Avdoo
+{% endblock %}
+
+{% block content %}
+<main>
+
+	{% set entry = craft.entries.section('home').one() %}
+	
+	{# START HOME PAGE CONTENT #}
+	<div id="home-page" class="page-wrap">
+		
+		{# START PAGE SPLASH #}
+		<div class="splash-panel">
+			
+			{# Start Left Side #}
+			<div class="side left">
+			
+				{% for block in entry.splashLeftSide.all() %}
+					{% if block.type == 'leftSide' %}
+						
+						<div class="background">
+							{% set image = block.imageModule.one() %}
+							{% include '00_site-wide/image-module_fb.twig' %}
+						</div>
+						
+						<div class="title-overlay">
+							<h1 class="size-02">Spaces that <em>inspire</em>.</h1>
+						</div>
+						
+						<div class="blur-overlay"></div>
+						
+						<div class="menu">
+							<h3 class="header size-03">Spaces that Inspire</h3>
+							
+							{% set linkedEntries = block.leftSideLinks.all() %}
+							{% if linkedEntries|length %}
+								<ul>
+									{% for linkedEntry in linkedEntries %}
+										<li>
+											<a href="{{ linkedEntry.url }}">
+												<h1 class="size-08">{{ linkedEntry.title }}</h1>
+											</a>
+										</li>
+									{% endfor %}
+								</ul>
+							{% endif %}
+							
+							<h3 class="footer size-03">Full Portfolio</h3>
+						</div>
+						
+					{% endif %}
+				{% endfor %}
+			
+			</div>
+			{# End Left Side #}
+			
+			{# Start Right Side #}
+			<div class="side right">
+				
+				{% for block in entry.splashRightSide.all() %}
+					{% if block.type == 'rightSide' %}
+						
+						<div class="background">
+							{% set image = block.imageModule.one() %}
+							{% include '00_site-wide/image-module_fb.twig' %}
+						</div>
+						
+						<div class="title-overlay">
+							<h1 class="size-02">Stories that <em>endure</em>.</h1>
+						</div>
+						
+						<div class="blur-overlay"></div>
+						
+						<div class="menu">
+							<h3 class="header size-03">Stories that Endure</h3>
+							
+							<ul>
+							{% for block in block.rightSideLinks.all() %}
+								{% if block.type == 'linkList' and block.linkElement %}
+									{% set link = block.linkElement %}
+									{% if link.url %}
+										<li>
+											<a href="{{ link.url }}" target="{{ link.target }}" rel="noopener noreferrer">
+												<h1 class="size-08">{{ link.label ?: link.url }}</h1>
+											</a>
+										</li>
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+							</ul>
+							
+						</div>
+						
+					{% endif %}
+				{% endfor %}
+				
+			</div>
+			{# End Right Side #}
+			
+			{# Start Logo #}
+			<div class="logo-wrap">
+				<img src="{{ alias('@web') }}/assets/svgs/main-logo_light.svg" />
+			</div>
+			{# End Logo #}
+			
+		</div>
+		{# START PAGE SPLASH #}
+
+		{# START PAGE CONTENT #}
+		{% for block in entry.homePageContent.all() %}
+			{% switch block.type %}
+				
+				{# 01–––TEXT PANEL #}
+				{% case 'textSection' %}
+					
+					{% include '00_site-wide/text-section.twig' %}
+				
+				{# 02–––IMAGE / TEXT PANEL #}
+				{% case 'imageTextPanel' %}
+					
+					{% include '00_site-wide/image-text-panel.twig' %}
+					
+				{# 03–––CAROUSEL SECTION #}
+				{% case 'carouselSection' %}
+					
+					<div class="carousel-section">
+						<div class="outer-content-wrap">
+							
+							{# Start Intro #}
+							{% if block.textContent|length %}
+							<div class="intro-wrap shift-on-scroll">
+								{{ block.textContent }}
+							</div>
+							{% endif %}
+							{# End Intro #}
+							
+							{# Start Carousel #}
+							<div class="carousel-section-carousel shift-on-scroll">
+							{% for carouselSlideBlock in block.carouselSlides.all() %}
+								{% if carouselSlideBlock.type == 'carouselSlide' %}
+									
+									<div class="carousel-slide">
+										
+										<div class="image">
+											{% set image = carouselSlideBlock.imageModule.one() %}
+											{% include '00_site-wide/image-module_fb.twig' %}
+										</div>
+										
+										<div class="text">	
+											{% if carouselSlideBlock.title|length %}
+												<h4 class="title{% if carouselSlideBlock.description|length %}{% else %} grey{% endif %}">{{ carouselSlideBlock.title }}</h4>
+											{% endif %}
+											
+											{% if carouselSlideBlock.description|length %}
+											<h4 class="description grey">
+												{{ carouselSlideBlock.description|replace({'<p>':'','</p>':''})|raw }}
+											</h4>
+											{% endif %}
+										</div>
+									
+									</div>
+									
+								{% endif %}
+							{% endfor %}
+							{% for carouselSlideBlock in block.carouselSlides.all() %}
+								{% if carouselSlideBlock.type == 'carouselSlide' %}
+									
+									<div class="carousel-slide">
+										
+										<div class="image">
+											{% set image = carouselSlideBlock.imageModule.one() %}
+											{% include '00_site-wide/image-module_fb.twig' %}
+										</div>
+										
+										<div class="text">	
+											{% if carouselSlideBlock.title|length %}
+												<h4 class="title{% if carouselSlideBlock.description|length %}{% else %} grey{% endif %}">{{ carouselSlideBlock.title }}</h4>
+											{% endif %}
+											
+											{% if carouselSlideBlock.description|length %}
+											<h4 class="description grey">
+												{{ carouselSlideBlock.description|replace({'<p>':'','</p>':''})|raw }}
+											</h4>
+											{% endif %}
+										</div>
+									
+									</div>
+									
+								{% endif %}
+							{% endfor %}
+							</div>
+							{# End Carousel #}
+							
+						</div>
+					</div>
+				
+				{# 04–––FEATURED DEVELOPMENTS #}
+				{% case 'featuredDevelopments' %}
+					
+					<div class="carousel-section featured-developments">
+						<div class="outer-content-wrap">
+							
+							{# Start Intro #}
+							{% if block.textContent|length %}
+							<div class="intro-wrap shift-on-scroll">
+								{{ block.textContent|replace({'class="size-03"':'class="size-05"'})|raw }}
+							</div>
+							{% endif %}
+							{# End Intro #}
+							
+							{# Start Featured Developments Carousel #}
+							{% set selectedDevelopments = block.selectedDevelopments.all() %}
+							<div class="carousel-section-carousel selected-devs shift-on-scroll">
+							{% for selectedDevelopment in selectedDevelopments %}
+								
+								<div class="carousel-slide">
+									
+									<div class="image">
+										{% set image = selectedDevelopment.thumbnailImageModule.one() %}
+										{% include '00_site-wide/image-module_fb.twig' %}
+									</div>
+									
+									<div class="text">
+										<h3 class="title size-02">{{ selectedDevelopment.title }}</h3>
+										<h3 class="link size-02"><a class="underlined-link" href="{{ selectedDevelopment.url }}">Case Study ></a></h3>
+									</div>
+								
+								</div>
+								
+							{% endfor %}
+							</div>
+							{# End Featured Developments Carousel #}
+							
+						</div>
+					</div>
+				
+				{# 05–––AVDOO UNIVERSE #}
+				{% case 'universeSection' %}
+					
+					<div class="universe-section">
+						
+						{# Start Universe Grid #}
+						{% include '00_site-wide/universe-grid.twig' %}
+						{# End Universe Grid #}
+						
+						{# Start Text #}
+						{% if block.textContent|length %}
+						<div class="text-wrap">
+							{{ block.textContent }}
+							
+							<div class="button">
+								<h2 class="size-04">OUR UNIVERSE  ></h2>
+								<a href="/" rel="noopener noreferrer"></a>
+							</div>
+						</div>
+						{% endif %}
+						{# End Text #}
+						
+					</div>
+					
+			{% endswitch %}
+		{% endfor %}
+		{# END PAGE CONTENT #}
+		
+		{# START PAGE NAV BAR #}	
+		{% include '00_site-wide/page-nav-bar.twig' %}
+		{# END PAGE NAV BAR #}
+		
+	</div>
+	{# END HOME PAGE CONTENT #}
+
+</main>	
+	
+<!--START FOOTER-->
+{% include '00_site-wide/footer.twig' %}
+<!--END FOOTER-->
+	
+{% endblock %}

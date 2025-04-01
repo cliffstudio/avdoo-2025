@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: peopleTextContent
+instructions: null
+name: 'Text Content'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: ''
+  ckeConfig: e5c1af38-a5d3-4f83-92ba-75686d0155ec # People Text Styles
+  createButtonLabel: null
+  defaultTransform: null
+  purifierConfig: null
+  purifyHtml: true
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field

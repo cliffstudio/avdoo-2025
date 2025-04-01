@@ -1,0 +1,99 @@
+color: null
+fieldLayouts:
+  1cd82dc3-da1c-48d1-9a7e-6e35fa6a70a6:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-03-20T11:06:46+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 801d6270-9830-4e85-b7be-35ff7ff21808
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-03-20T11:25:08+00:00'
+            elementCondition: null
+            fieldUid: 64ddfa6f-31ee-46e6-ac79-c6e20e9b6521 # Job Title
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 43765943-76da-4ebe-92a3-c2062fb6cf03
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-03-20T11:42:02+00:00'
+            elementCondition: null
+            fieldUid: ee23eee0-31b7-4cda-b63d-134aa4586e5d # Image Module
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: true
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 38bd2a46-fa03-4dc1-8c78-e6d5f5576ce9
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-20T11:48:43+00:00'
+            elementCondition: null
+            fieldUid: fdf722ff-1e93-4f41-b3d8-643fbdca5f45 # Bio
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ee4464ff-ddf7-4ee5-a8c7-66cc71fb1153
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 60eb4fc2-b14f-43ce-b4ea-41602904b1f6
+        userCondition: null
+handle: peopleBios
+hasTitleField: true
+icon: user-group
+name: 'People Bios'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

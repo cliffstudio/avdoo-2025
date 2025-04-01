@@ -1,0 +1,113 @@
+/*
+RESETS ------------------------
+*/ 
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;background: transparent;}
+
+/*
+RESETS END --------------------
+*/
+
+@font-face {
+  font-family: 'Kostic Serif';
+  src: url('/assets/fonts/KosticSerif-Regular.woff2') format('woff2'),
+	   url('/assets/fonts/KosticSerif-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Kostic Serif';
+  src: url('/assets/fonts/KosticSerif-Italic.woff2') format('woff2'),
+	   url('/assets/fonts/KosticSerif-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+	font-family: 'Austin';
+	src: url('/assets/fonts/Austin-Light-Cy-Web.woff2') format('woff2'),
+	     url('/assets/fonts/Austin-Light-Cy-Web.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Austin';
+	src: url('/assets/fonts/Austin-LightItalic-Cy-Web.woff2') format('woff2'),
+	     url('/assets/fonts/Austin-LightItalic-Cy-Web.woff') format('woff');
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'AustinText';
+	src: url('/assets/fonts/AustinText-Roman-Web.woff2') format('woff2'),
+		 url('/assets/fonts/AustinText-Roman-Web.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'AustinText';
+	src: url('/assets/fonts/AustinText-Italic-Web.woff2') format('woff2'),
+		 url('/assets/fonts/AustinText-Italic-Web.woff') format('woff');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Haas Grotesk Display';
+	src: url('/assets/fonts/NeueHaasGroteskDisplay-55Roman.woff2') format('woff2'),
+	     url('/assets/fonts/NeueHaasGroteskDisplay-55Roman.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+  font-family: 'Haas Grotesk Display';
+  src: url('/assets/fonts/NeueHaasGroteskDisplay-65Medium.woff2') format('woff2'),
+	   url('/assets/fonts/NeueHaasGroteskDisplay-65Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@import "00_mixins";
+@import "00-1_base";
+@import "00-2_site-wide";
+@import "00-3_text-styles";
+
+/*
+MULTI PAGE CONTENT ------------------
+*/
+
+main {
+	z-index: 10;
+}
+
+.page-wrap {
+	width: 100%; height: auto;
+	min-height: 100svh;
+
+	@import "00-4_universal-modules";
+	
+}
+
+@import "01_header";
+@import "02_homepage";
+@import "03_expertise";
+@import "04_portfolio";
+@import "05_property";
+@import "06_people";
+@import "07_press";
+@import "08_universe";
+@import "09_contact";
+@import "100_footer";

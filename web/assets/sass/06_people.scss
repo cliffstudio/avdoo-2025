@@ -1,0 +1,400 @@
+body.people {
+	
+	//00–––PEOPLE POPUP OVERLAY
+	.people-popup-overlay {
+		position: fixed;
+		display: none;
+		width: 100%; height: 100%;
+		top: 0; left: 0;
+		background-color: rgba(255, 252, 241, 0.75);
+		z-index: 999999;
+		
+		#popup-modal {
+			position: absolute;
+			width: percentage(1281/1920);
+			top: 50%; left: 50%;
+			transform: translate(-50%,-50%);
+			background: #FFFCF1;
+			box-shadow: 10px 10px 20px 10px rgba(0, 0, 0, 0.25);
+			@include aspect-ratio(1281, 716);
+			overflow: hidden;
+			opacity: 0;
+			transition: opacity 600ms cubic-bezier(0.25,0.1,0.25,1);
+			pointer-events: none;
+			will-change: opacity;
+			
+			@media only screen and (max-width: 768px) {
+				width: 100%;	
+				height: 50svh;
+			}
+			
+			//Close Button
+			.close-button {
+				position: absolute;
+				width: get-rem-desktop(25); height: get-rem-desktop(25);
+				top: get-rem-desktop(20); right: get-rem-desktop(20);
+				cursor: pointer;
+				z-index: 50;
+				
+				&:before, &:after {
+					content: "";
+					position: absolute;
+					width: 100%; height: 1px;
+					background: $colour-black;
+					top: 50%; left: 50%;
+				}
+				
+				&:before {
+					transform: translate(-50%,-50%) rotate(-45deg);
+				}
+				
+				&:after {
+					transform: translate(-50%,-50%) rotate(45deg);
+				}
+				
+				@media only screen and (max-width: 768px) {
+					width: get-rem-mobile(25); height: get-rem-mobile(25);
+					top: get-rem-mobile(20); right: get-rem-mobile(20);
+				}
+				
+			}
+			
+			//Image Column
+			.image-column {
+				position: absolute;
+				width: 50%; height: 100%;
+				top: 0; left: 0;
+				
+				@media only screen and (max-width: 768px) {
+					display: none;	
+				}
+				
+			}
+			
+			//Text Column
+			.text-column {
+				position: absolute;
+				width: 50%; height: 100%;
+				top: 0; right: 0;
+				overflow-y: scroll;
+				
+				.inner-column {
+					width: 100%; height: auto;
+					padding: get-rem-desktop(59) get-rem-desktop(53) get-rem-desktop(59) get-rem-desktop(61);
+				}
+				
+				.people-titles {
+					width: 100%; height: auto;
+					margin-bottom: get-rem-desktop(38);
+				}
+				
+				@media only screen and (max-width: 768px) {
+					width: 100%;	
+					
+					.inner-column {
+						padding: get-rem-mobile(30) get-rem-mobile(50) get-rem-mobile(50) get-rem-mobile(20);
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		//––VISIBLE
+		&.visible {
+			#popup-modal {
+				opacity: 1;
+				pointer-events: all;
+				transition: opacity 800ms cubic-bezier(0.25,0.1,0.25,1) 100ms;
+			}
+		}
+		
+	}
+	
+}
+
+/*
+PAGE WRAP ------------------
+*/
+
+.page-wrap#people-page {
+
+	//01–––TEXT SECTION
+	.text-panel {
+		width: 100%; height: auto;
+		text-align: center;
+		padding: get-rem-desktop(191) 0 get-rem-desktop(215) 0;
+		
+		.text-wrap {
+			width: percentage(1113/1760);
+			margin: 0 auto;
+		}
+		
+		@media only screen and (max-width: 768px) {
+			
+		}
+		
+	}
+	
+	//02–––SENIOR LEADERSHIP
+	.senior-leadership-panel {
+		width: 100%; height: auto;
+		background-color: #FFFCF1;
+		padding: get-rem-desktop(75) 0 get-rem-desktop(120) 0;
+		
+		@media only screen and (max-width: 768px) {
+			padding: get-rem-mobile(28) 0 get-rem-mobile(69) 0;
+		}
+		
+		//PANEL TITLE
+		h2.panel-title {
+			width: 100%; height: auto;
+			text-align: center;
+			margin-bottom: get-rem-desktop(46);
+			
+			@media only screen and (max-width: 768px) {
+				margin-bottom: get-rem-mobile(36);
+			}
+			
+		}
+		
+		//SENIOR LEADERSHIP GRID
+		.senior-leadership-grid {
+			width: 100%; height: auto;
+			max-width: percentage(1520/1760);
+			display: flex;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			column-gap: percentage(79/1760);
+			row-gap: get-rem-desktop(80);
+			margin: 0 auto;
+			
+			@media only screen and (max-width: 768px) {
+				max-width: 100%;	
+				column-gap: 0px;
+				row-gap: get-rem-mobile(69);
+			}
+			
+			.person-wrap {
+				width: percentage(454/1520);
+				
+				//––Photo
+				.photo {
+					width: 100%; height: auto;
+					@include aspect-ratio(100, 100);
+					overflow: hidden;
+					margin-bottom: get-rem-desktop(22);
+				}
+				
+				//––Name / Job Title
+				.name-job-title {
+					width: 100%; height: auto;
+					margin-bottom: get-rem-desktop(30);
+					
+					h1 { font-family: $austin-text; margin-bottom: 0px; }
+					
+				}
+				
+				//––Bio
+				h6.bio {
+					width: 100%; height: auto;
+					text-align: justify;
+				}
+				
+				//––Bio Opener
+				h3.person-bio-opener {
+					cursor: pointer;
+					
+					a { color: #5A5A5A; }
+					
+				}
+				
+				@media only screen and (max-width: 768px) {
+					width: 100%;	
+					
+					//––Photo
+					.photo {
+						margin-bottom: get-rem-mobile(30);
+					}
+					
+					//––Name / Job Title
+					.name-job-title {
+						margin-bottom: get-rem-mobile(29);
+						text-align: center;
+						
+						h1 { font-size: get-rem-mobile(30); }
+						
+					}
+					
+					//––Bio Opener
+					h3.person-bio-opener {
+						margin-top: get-rem-mobile(17);
+						text-align: center;
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	//03–––WIDER TEAM
+	.wider-team-panel {
+		width: 100%; height: auto;
+		background-color: #EEE9DF;
+		padding: get-rem-desktop(42) 0 get-rem-desktop(265) 0;
+		
+		@media only screen and (max-width: 768px) {
+			padding: get-rem-mobile(50) 0 get-rem-mobile(172) 0;
+		}
+		
+		//PANEL TITLE
+		h2.panel-title {
+			width: 100%; height: auto;
+			text-align: center;
+			margin-bottom: get-rem-desktop(132);
+			
+			@media only screen and (max-width: 768px) {
+				margin-bottom: get-rem-mobile(62);
+			}
+			
+		}
+		
+		//WIDER TEAM GRID
+		.wider-team-grid {
+			width: 100%; height: auto;
+			max-width: percentage(1520/1760);
+			display: flex;
+			align-items: flex-start;
+			justify-content: flex-start;
+			flex-wrap: wrap;
+			column-gap: percentage(79/1760);
+			row-gap: get-rem-desktop(94);
+			margin: 0 auto;
+			
+			@media only screen and (max-width: 768px) {
+				max-width: 100%;
+				column-gap: percentage(9/365);	
+				row-gap: get-rem-mobile(28);
+			}
+			
+			.person-wrap {
+				width: percentage(454/1520);
+			
+				.inner-person {
+					will-change: opacity;
+					transition: opacity 250ms cubic-bezier(0.25,0.1,0.25,1);
+				}
+				
+				@media only screen and (max-width: 768px) {
+					width: percentage(178/365);
+				}
+			
+				//––Name / Job Title
+				.name-job-title {
+					width: 100%; height: auto;
+					margin-bottom: get-rem-desktop(13);
+					
+					h1 { font-family: $austin-text; margin-bottom: 0px; }
+					
+					@media only screen and (max-width: 768px) {
+						margin-bottom: get-rem-mobile(7);
+					}
+					
+				}
+				
+				//––Bio Opener
+				h3.person-bio-opener {
+					cursor: pointer;
+					
+					a { color: #5A5A5A; }
+					
+				}
+				
+				//–HIDDEN 
+				&.hidden {
+					display: none;
+					.inner-person {
+						opacity: 0;
+					}
+				}
+					
+			}
+			
+		}
+		
+		//VIEW MORE
+		.view-more-posts {
+			position: absolute;
+			bottom: get-rem-desktop(-205); left: 50%;
+			transform: translateX(-50%);
+			margin-bottom: 0px;
+			
+			@media only screen and (max-width: 768px) {
+				bottom: get-rem-mobile(-120);
+			}
+			
+		}
+		
+	}
+	
+	//04–––FOUNDER PANEL
+	.image-text-panel.founder-panel {
+		
+		//TEXT COLUMN
+		.text-column {
+			
+			.text-wrap {
+				width: percentage(686/960);
+				
+				//––Signature
+				img.signature {
+					width: get-rem-desktop(265); height: auto;
+					margin: 0 auto;
+					margin-top: get-rem-desktop(49);
+				}
+				
+				//––Bio Opener
+				h3.person-bio-opener {
+					cursor: pointer;
+					margin-top: get-rem-desktop(16);
+					
+					a { color: #5A5A5A; }
+					
+				}
+				
+				@media only screen and (max-width: 768px) {
+					width: percentage(325/402);
+					
+					h1.size-08 {
+						font-size: get-rem-mobile(28);
+						margin-bottom: get-rem-mobile(40);
+					}
+					
+					p { text-align: justify; }
+					
+					//––Signature
+					img.signature {
+						width: get-rem-mobile(241);
+						margin-top: get-rem-mobile(34);
+					}
+					
+					//––Bio Opener
+					h3.person-bio-opener {
+						margin-top: get-rem-mobile(15);						
+					}
+					
+				}
+				
+			}
+				
+		}
+		
+	}
+
+}

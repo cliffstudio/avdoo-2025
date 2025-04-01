@@ -1,0 +1,13 @@
+{% set xlargeImage = {
+	mode: 'crop',
+	width: 2000,
+	quality: 80,
+	format: 'webp'
+} %}
+
+<div class="media-module full-bleed">
+
+	<video class="lazy full-bleed-video" data-src="{{ video }}" data-poster="{{ videoPlaceholder.getUrl(xlargeImage) }}" preload="auto" data-cookiescript="accepted" data-cookiecategory="functionality" loop muted webkit-playsinline="true" playsinline x5-playsinline autoplay crossorigin="anonymous"></video>
+	<div class="video-placeholder" style="background-image:url({{ videoPlaceholder.getUrl(xlargeImage) }});"></div>	
+
+</div>

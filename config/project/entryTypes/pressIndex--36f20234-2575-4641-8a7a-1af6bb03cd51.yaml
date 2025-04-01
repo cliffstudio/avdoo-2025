@@ -1,0 +1,59 @@
+color: null
+fieldLayouts:
+  ff4c5c94-34dc-4046-b150-849e8983e09c:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-18T11:56:02+00:00'
+            elementCondition: null
+            fieldUid: 988ca401-000e-42bb-a470-96a844f8bea3 # Page Titles
+            handle: pressPageTitles
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 26422288-8ea1-41af-8414-076c8f0dbf39
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Page Titles'
+        uid: 4be60f27-3e4b-4ac8-9699-f83abe825dba
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-18T16:28:37+00:00'
+            elementCondition: null
+            fieldUid: 629c7cb8-ada5-4eb5-99a9-f7550f234d98 # Page Nav Bar
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8a4fa58c-0e1b-467d-aeec-6d8590152d1f
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Nav Bar'
+        uid: d00d7f96-b4b5-4349-bd5b-0933ebff4f6c
+        userCondition: null
+handle: pressIndex
+hasTitleField: false
+icon: null
+name: 'Press Index'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

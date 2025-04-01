@@ -1,0 +1,37 @@
+color: null
+fieldLayouts:
+  32c827a2-0e93-4cf2-b167-8f983e200796:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-19T22:18:35+00:00'
+            elementCondition: null
+            fieldUid: 3cf86b14-f7aa-471e-9e9e-62f11a289735 # Text Content
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1de69d97-f5b9-44a7-bea7-8a0ceecf2876
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: cd20b45f-37dd-4638-b5f4-425549b3e933
+        userCondition: null
+handle: textSection
+hasTitleField: false
+icon: null
+name: 'Text Section'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

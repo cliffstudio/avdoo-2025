@@ -1,0 +1,85 @@
+color: null
+fieldLayouts:
+  5d698800-37ff-49b8-9b8b-952205e319bd:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-03-23T01:20:52+00:00'
+            elementCondition: null
+            fieldUid: 57789873-c17c-49b9-8676-e186b7ab3edf # Year
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3a5dbd3d-9db9-4580-ba2a-7ab75eed500f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-23T01:20:52+00:00'
+            elementCondition: null
+            fieldUid: 823e6acc-684a-4e3b-80e5-f5184cd3224e # Image
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 48ccd320-83fa-4c89-8d65-04b65e47ae9e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-23T01:20:52+00:00'
+            elementCondition: null
+            fieldUid: b19bf690-e632-4295-9772-ab09a9f2f642 # Title
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3bd42408-2e02-4266-835d-818f0f57ec15
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-03-23T01:20:52+00:00'
+            elementCondition: null
+            fieldUid: 442312fb-8f4a-4c1b-8574-cd38fdc149e3 # Subtitle
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 42c055c9-c61d-48db-ab15-1c0702e5bc06
+            userCondition: null
+            warning: null
+            width: 50
+        name: Content
+        uid: bb6bec01-04f9-4efd-a4e1-042bb1575924
+        userCondition: null
+handle: timelineSlide
+hasTitleField: false
+icon: null
+name: 'Timeline Slide'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

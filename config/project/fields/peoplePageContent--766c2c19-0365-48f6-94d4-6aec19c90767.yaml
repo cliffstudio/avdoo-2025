@@ -1,0 +1,45 @@
+columnSuffix: null
+handle: peoplePageContent
+instructions: null
+name: 'Page Content'
+searchable: false
+settings:
+  createButtonLabel: 'New Section'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 79abe01f-5a70-47c5-9bae-f800cd7bee9b # Text Section
+    -
+      __assoc__:
+        -
+          - uid
+          - af5f86ce-f1bf-4f3f-a677-cedd3b22e3ef # Image / Text Panel
+    -
+      __assoc__:
+        -
+          - uid
+          - d7ed8cd8-f319-48bd-9bb0-10da18684ed2 # Senior Leadership Panel
+    -
+      __assoc__:
+        -
+          - uid
+          - ab27c443-b559-420e-bee0-d260881e7c2b # Wider Team Panel
+    -
+      __assoc__:
+        -
+          - uid
+          - 07cedad7-162f-45f0-9d38-f51258c8b223 # Founder Panel
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

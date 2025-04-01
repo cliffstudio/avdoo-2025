@@ -1,0 +1,67 @@
+color: null
+fieldLayouts:
+  89cfa49e-f3c2-45d3-981c-1f75e6e9e84d:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-03-22T14:08:22+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 20c39073-af88-45da-99b0-3800ddc40697
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-22T14:11:35+00:00'
+            elementCondition: null
+            fieldUid: ea205e9b-474b-4aa1-bb9e-7c172882d3ab # Facts
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cd17c61c-e8f9-44e8-a0f0-0727f4192129
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: cfed1423-2171-4fea-92e6-d9e43bcb4487
+        userCondition: null
+handle: factsSection
+hasTitleField: true
+icon: null
+name: 'Facts Section'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

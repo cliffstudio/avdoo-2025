@@ -1,0 +1,141 @@
+/*
+FOOTER ------------------
+*/
+
+footer {
+	position: relative;
+	width: 100%; height: auto;
+	background-color: $colour-off-black;
+	color: $colour-cream;
+	padding: get-rem-desktop(58) 0 get-rem-desktop(67) 0;
+	z-index: 100;
+	a { color: $colour-cream; }
+	
+	@media only screen and (max-width: 768px) {
+		padding: get-rem-mobile(39) 0 get-rem-mobile(24) 0;
+	}
+	
+	.outer-content-wrap {
+		display: flex;
+		flex-direction: column;
+		row-gap: get-rem-desktop(75);
+		
+		.column {
+			width: percentage(387/904);
+			
+			&.right {
+				text-align: right;
+			}
+			
+			.inner-column {
+				width: percentage(328/742);
+			}
+			
+		}
+		
+		@media only screen and (max-width: 768px) {
+			row-gap: 0px;
+		}
+		
+	}
+	
+	//TOP ROW
+	.top-row {
+		width: 100%; height: auto;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		
+		//Left Column
+		.column.left {
+			
+			img.logo {
+				width: get-rem-desktop(136);
+				margin-bottom: get-rem-desktop(36);
+			}
+			
+			@media only screen and (max-width: 768px) {
+				img.logo {
+					width: get-rem-mobile(101);
+					margin-bottom: get-rem-mobile(15);
+				}
+				
+				h5.company-info { display: none; }	
+			}
+			
+		}
+		
+		//Right Column
+		.column.right {
+			display: flex;
+			flex-direction: column;
+			row-gap: 0.55em;
+			
+			@media only screen and (max-width: 768px) {
+				display: none;	
+			}
+			
+		}
+		
+	}
+	
+	//BOTTOM ROW
+	.bottom-row {
+		width: 100%; height: auto;
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		
+		@media only screen and (max-width: 768px) {
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			row-gap: get-rem-mobile(112);
+			margin-top: get-rem-desktop(15);
+		}
+		
+		//Left Column
+		.column.left {
+			display: flex;
+			align-items: flex-end;
+			justify-content: flex-start;
+			
+			.inner-column.social-links {
+				h6 { margin-bottom: 0px; }
+			}
+			
+			@media only screen and (max-width: 768px) {
+				width: 100%;
+				flex-direction: column;
+				row-gap: get-rem-desktop(33);
+				
+				.inner-column {
+					width: 100%;
+					a { color: #938D83; }
+				}
+					
+			}
+			
+		}
+		
+		//Right Column
+		.column.right {
+			display: flex;
+			flex-direction: column;
+			row-gap: get-rem-desktop(9);
+			
+			@media only screen and (max-width: 768px) {
+				width: 100%;
+				flex-direction: row-reverse;
+				align-items: flex-end;	
+				justify-content: space-between;
+				
+				h3.copyright { text-align: left; }
+				
+			}
+			
+		}
+	
+	}
+	
+}

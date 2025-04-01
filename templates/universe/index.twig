@@ -1,0 +1,50 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+<main>
+
+	{# START UNIVERSE PAGE CONTENT #}
+	<div id="universe-page" class="page-wrap">
+			
+		{# START UNIVERSE GRID #}
+		{% include '00_site-wide/universe-grid.twig' %}
+		{# END UNIVERSE GRID #}
+		
+		{# START PAGE NAV BAR #}	
+		{% include '00_site-wide/page-nav-bar.twig' %}
+		{# END PAGE NAV BAR #}
+		
+	</div>
+	{# END UNIVERSE PAGE CONTENT #}
+
+	{# START UNIVERSE POPUP OVERLAY #}
+	<div class="universe-popup-overlay">
+		
+		<div class="popup-modal "></div>
+		
+	</div>
+	{# END UNIVERSE POPUP OVERLAY #}
+
+</main>	
+
+<!--START FOOTER-->
+{% include '00_site-wide/footer.twig' %}
+<!--END FOOTER-->
+
+{# START FIXED INTRO STATEMENT #}
+<div class="fixed-intro-statement">
+	<h2 class="size-02">the avdoo universe</h2>
+	<h1 class="size-04">Discover the <em><a class="universe-filter-button underlined-link culture" href="#" data-hook="culture">culture</a></em> that drives us, the <em><a class="universe-filter-button underlined-link people" href="#" data-hook="people">people</a></em> that inspire us, and the <em><a class="universe-filter-button underlined-link work" href="#" data-hook="work">work</a></em> that defines us. </h1>
+</div>
+{# END FIXED INTRO STATEMENT #}
+
+{# START FILTER MENU #}
+<div class="universe-filter-menu">
+	<h2 class="menu-item size-02"><a class="universe-filter-button culture" href="#" data-hook="culture">CULTURE</a></h2>
+	<h2 class="menu-item size-02"><a class="universe-filter-button people" href="#" data-hook="people">PEOPLE</a></h2>
+	<h2 class="menu-item size-02"><a class="universe-filter-button work" href="#" data-hook="work">WORK</a></h2>
+	<h2 class="menu-item size-02"><a class="universe-filter-button all active" href="#" data-hook="all">ALL</a></h2>
+</div>
+{# END FILTER MENU #}
+
+{% endblock %}

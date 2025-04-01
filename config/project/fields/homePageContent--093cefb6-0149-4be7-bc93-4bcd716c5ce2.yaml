@@ -1,0 +1,45 @@
+columnSuffix: null
+handle: homePageContent
+instructions: null
+name: 'Page Content'
+searchable: false
+settings:
+  createButtonLabel: 'New Section'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 79abe01f-5a70-47c5-9bae-f800cd7bee9b # Text Section
+    -
+      __assoc__:
+        -
+          - uid
+          - af5f86ce-f1bf-4f3f-a677-cedd3b22e3ef # Image / Text Panel
+    -
+      __assoc__:
+        -
+          - uid
+          - ee6be1d7-80c7-428d-9bfa-7be885f65d5a # Carousel Section
+    -
+      __assoc__:
+        -
+          - uid
+          - 4272b595-da18-4e92-a993-3059f905a763 # Featured Developments
+    -
+      __assoc__:
+        -
+          - uid
+          - 4fcb12fa-2475-43b1-85e2-7260f9a40e61 # Universe Section
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

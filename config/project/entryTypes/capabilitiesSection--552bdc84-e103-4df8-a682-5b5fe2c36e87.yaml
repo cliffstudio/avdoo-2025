@@ -1,0 +1,67 @@
+color: null
+fieldLayouts:
+  281496f2-479f-4d2e-b44e-112f24981c74:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-03-24T11:13:07+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: ff815a89-fab2-4569-825d-f7adb4cbf62b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-03-24T15:35:02+00:00'
+            elementCondition: null
+            fieldUid: b79e5d2c-1a96-422b-b40d-618f9fb4f551 # Capabilities
+            handle: capabilities
+            includeInCards: false
+            instructions: null
+            label: Capabilities
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ea678b49-7b7e-4845-adb8-9f3611417dde
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: f7f00950-d179-4e65-90b4-45cce99d98c8
+        userCondition: null
+handle: capabilitiesSection
+hasTitleField: true
+icon: null
+name: 'Capabilities Section'
+showSlugField: false
+showStatusField: false
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

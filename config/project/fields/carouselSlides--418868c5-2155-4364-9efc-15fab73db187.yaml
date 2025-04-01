@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: carouselSlides
+instructions: null
+name: 'Carousel Slides'
+searchable: false
+settings:
+  createButtonLabel: 'New Slide'
+  defaultIndexViewMode: cards
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 6a99e23f-a7f4-49e0-9f61-a64a24e005b1 # Carousel Slide
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix
