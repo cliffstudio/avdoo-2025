@@ -220,6 +220,11 @@ function PageLoadFunctions() {
 		ShiftScrollTrigger();
 	}
 	
+	//––SOLID HEADER
+	if(!$('body').hasClass('universe')) {
+		SolidHeader();
+	}
+	
 	//––SCROLL SMOOTHER START
 	SmoothScroller();
 	
@@ -590,6 +595,33 @@ function mediaLazyloading() {
 				$(el).children('.video-placeholder').addClass('hidden');
 			}, 300);
 			
+		}
+	});
+	
+}
+
+//––SOLID HEADER
+
+function SolidHeader() {
+	
+	ScrollTrigger.create({
+		trigger: 'body',
+		start: "2 top",
+		end: "110% bottom",
+		pin: false,
+		pinSpacing:false,
+		markers: false,
+		onEnter: () => {
+			$('header').addClass('solid-header');
+		},
+		onLeave: () => {
+			$('header').removeClass('solid-header');
+		},
+		onLeaveBack: () => {
+			$('header').removeClass('solid-header');
+		},
+		onEnterBack: () => {
+			$('header').addClass('solid-header');
 		}
 	});
 	

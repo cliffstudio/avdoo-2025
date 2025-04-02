@@ -1,5 +1,11 @@
 body.people {
 	
+	header {
+		.outer-content-wrap {
+			filter: invert(100%);
+		}
+	}
+	
 	//00–––PEOPLE POPUP OVERLAY
 	.people-popup-overlay {
 		position: fixed;
