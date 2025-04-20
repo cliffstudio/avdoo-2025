@@ -114,6 +114,128 @@ fieldLayouts:
         name: Category
         uid: b0342ebe-6efc-4de8-bcf1-847b79367636
         userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: '2025-04-18T13:21:06+00:00'
+            elementCondition: null
+            fieldUid: 3c6dae2f-4206-48e0-a633-c70464723e38 # Popup Type
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8dd26784-2071-4f49-8975-4a0068925dd8
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-04-18T13:22:44+00:00'
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 3c6dae2f-4206-48e0-a633-c70464723e38 # Popup Type
+                  layoutElementUid: 8dd26784-2071-4f49-8975-4a0068925dd8
+                  operator: in
+                  uid: 46bbda35-1994-4898-9ece-69832748d243
+                  values:
+                    - textModal
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: 3360f10d-e49f-44de-96fb-4f318b624aed # Popup Header
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7f8a6238-3455-4a44-b79f-a1a4856efa75
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-04-18T13:24:29+00:00'
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 3c6dae2f-4206-48e0-a633-c70464723e38 # Popup Type
+                  layoutElementUid: 8dd26784-2071-4f49-8975-4a0068925dd8
+                  operator: in
+                  uid: 61079878-b9be-4bce-8b49-240e2a1130d0
+                  values:
+                    - textModal
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: cb07ea78-f11a-4d8f-9c74-c7b98efd05ab # Text Content
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 64f5f8f3-2163-4c73-8499-b74c618fddd6
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-04-18T14:24:56+00:00'
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: 3c6dae2f-4206-48e0-a633-c70464723e38 # Popup Type
+                  layoutElementUid: 8dd26784-2071-4f49-8975-4a0068925dd8
+                  operator: in
+                  uid: 76bac81e-abea-4d7d-b29d-2d8764920ab7
+                  values:
+                    - videoModal
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: 029e93c5-94dd-4045-bc74-e522edfed1a6 # Video Module
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0ac8020d-7294-4292-9fdc-29b6d8464e94
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-04-18T13:29:08+00:00'
+            elementCondition: null
+            fieldUid: 7909f48a-c93c-4744-b777-adfa4e087c46 # Link
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f07dbb17-c31a-48f6-b637-17123728f569
+            userCondition: null
+            warning: null
+            width: 100
+        name: Popup
+        uid: 9072b589-4941-413a-adc4-105163461687
+        userCondition: null
 handle: universe
 hasTitleField: true
 icon: earth-africa

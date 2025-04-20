@@ -1,5 +1,23 @@
 # Changelog
 
+## 2.0.22 - 2025-04-15
+
+### Added
+- Add `email` for Azure provider resources for common scenarios.
+
+## 2.0.21 - 2025-04-12
+
+### Changed
+- Update GitHub, GitLab and PayPal provider classes to be proper case.
+
+## 2.0.20 - 2025-03-01
+
+### Changed
+- Update `league/oauth2-client` dependency with refresh token fix. Provides official compatibility with PHP 8.3+.
+
+### Fixed
+- Fix OneCRM provider.
+
 ## 2.0.19 - 2025-01-03
 
 ### Changed

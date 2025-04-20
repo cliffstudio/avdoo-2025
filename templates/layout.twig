@@ -27,8 +27,8 @@
     <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/jquery.min.js" id="jquery-core-js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" id="gsap"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" id="scrollTrigger"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js" id="scrollTo"></script>
     <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/ScrollSmoother.min.js" id="scrollSmoother"></script>
-    <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/inViewport.js" id="in-viewport"></script>
     <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/isotope.pkgd.min.js" id="isotope"></script>
     <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/packery-mode.pkgd.min.js" id="packery-mode"></script>
     <script type="text/javascript" src="{{ alias('@web') }}/assets/js/plugins/imagesloaded.pkgd.min.js" id="imagesLoaded"></script>
@@ -55,6 +55,7 @@
         
         <div class="logo-wrap">
             <img src="{{ alias('@web') }}/assets/svgs/main-logo_dark.svg" />
+            <a class="link" href="{{ siteUrl }}"></a>
         </div>
     
         <h3 class="contact-button header-text"><a class="underlined-link" href="{{ craft.entries.id(21).one().url }}">Contact</a></h3>

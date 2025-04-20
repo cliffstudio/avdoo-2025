@@ -2,7 +2,7 @@
 
 	{% set universeEntries = craft.entries().section('universe').orderBy('RAND()') %}
 	{% set sizeClasses = ['size-01', 'size-02', 'size-03', 'size-04', 'size-05', 'size-06'] %}
-	{% set speedClasses = ['0.9', '0.8', '1.0'] %}
+	{% set speedClasses = ['0.9', '0.7', '1.1'] %}
 	
 	{% for entry in universeEntries %}
 		{% set image = entry.imageModule.one() %}
@@ -11,7 +11,7 @@
 		{% set randomSpeedAttr = random(speedClasses) %}
 		{% set category = entry.universeCategory.one() %}
 		
-		<div class="universe-block {{ orientationClass }} {{ randomSizeClass }}{% if category %} {{ category.slug }}{% endif %}" data-entry-id="{{ entry.id }}" data-speed="{{ randomSpeedAttr }}">
+		<div class="universe-block {{ orientationClass }} {{ randomSizeClass }}{% if category %} {{ category.slug }}{% endif %}" data-entry-id="{{ entry.id }}" data-speed="{{ randomSpeedAttr }}" data-url="{{ entry.url }}">
 			
 			{# Start Media #}
 			<div class="media-wrap">

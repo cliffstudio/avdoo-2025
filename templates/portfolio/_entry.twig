@@ -25,6 +25,10 @@
 		</div>
 		{# END SPLASH PANEL #}
 		
+		{# START DARK HEADER OVERRIDE #}
+		<div class="dark-header-override" style="height: 1px;"></div>
+		{# END DARK HEADER OVERRIDE #}
+		
 		{# START PROPERTY INFO #}
 		<div class="property-info-panel">
 			<div class="outer-content-wrap shift-on-scroll">
@@ -206,6 +210,32 @@
 							{# End Gallery Grid #}
 						
 						</div>
+					</div>
+				
+				{# 05–––HIGHLIGHTS SECTION #}
+				{% case 'highlightsSection' %}
+					
+					<div class="highlights-panel{% if block.title|length %} title-present{% endif %}">
+					
+						{# Start Panel Title #}
+						{% if block.title|length %}
+							<h2 class="size-02 panel-title">{{ block.title }}</h2>
+						{% endif %}
+						{# End Panel Title #}
+						
+						{% set galleryImages = block.gallery.all() %}
+						{% if galleryImages|length %}
+							<div class="highlights-section-carousel">
+								{% for image in galleryImages %}
+									
+									<div class="carousel-slide">
+									{% include '00_site-wide/image-module_fb.twig' %}
+									</div>
+								
+								{% endfor %}
+							</div>
+						{% endif %}
+						
 					</div>
 					
 			{% endswitch %}

@@ -74,6 +74,11 @@ abstract class BaseRelationField extends Field implements
      */
     public const EVENT_DEFINE_SELECTION_CRITERIA = 'defineSelectionCriteria';
 
+    /** @since 5.7.0 */
+    public const DEFAULT_PLACEMENT_BEGINNING = 'beginning';
+    /** @since 5.7.0 */
+    public const DEFAULT_PLACEMENT_END = 'end';
+
     private static bool $validatingRelatedElements = false;
 
     /**
@@ -236,6 +241,13 @@ abstract class BaseRelationField extends Field implements
      * @since 4.4.0
      */
     public ?int $branchLimit = null;
+
+    /**
+     * @var string Default placement
+     * @phpstan-var self::DEFAULT_PLACEMENT_*
+     * @since 5.7.0
+     */
+    public string $defaultPlacement = self::DEFAULT_PLACEMENT_END;
 
     /**
      * @var string|null The view mode
@@ -452,6 +464,7 @@ abstract class BaseRelationField extends Field implements
         $attributes[] = 'sources';
         $attributes[] = 'targetSiteId';
         $attributes[] = 'validateRelatedElements';
+        $attributes[] = 'defaultPlacement';
         $attributes[] = 'viewMode';
         $attributes[] = 'showCardsInGrid';
         $attributes[] = 'allowSelfRelations';
@@ -501,6 +514,7 @@ JS, [
                     $view->namespaceInputId('branch-limit-field'),
                     $view->namespaceInputId('min-relations-field'),
                     $view->namespaceInputId('max-relations-field'),
+                    $view->namespaceInputId('default-placement-field'),
                     $view->namespaceInputId('viewMode-field'),
                 ],
         ]);
@@ -536,7 +550,7 @@ JS, [
             $value = $element->getFieldValue($this->handle);
 
             if ($value instanceof ElementQueryInterface) {
-                $value = $this->_all($value, $element);
+                $value = $this->_all($value, $element)->eagerly();
             }
 
             $arrayValidator = new NumberValidator([
@@ -578,7 +592,8 @@ JS, [
             $value
                 ->site('*')
                 ->unique()
-                ->preferSites([$this->targetSiteId($element)]);
+                ->preferSites([$this->targetSiteId($element)])
+                ->eagerly();
         }
 
         $errorCount = 0;
@@ -653,6 +668,7 @@ JS, [
             $value instanceof ElementQueryInterface &&
             $element?->propagating &&
             $element->isNewForSite &&
+            !$element->resaving &&
             !$element->isNewSite &&
             !$this->targetSiteId &&
             !$this->showSiteMenu
@@ -1044,6 +1060,7 @@ JS, [
             $criteria['orderBy'] = ['structureelements.lft' => SORT_ASC];
         }
 
+        /** @phpstan-ignore-next-line */
         return [
             'elementType' => static::elementType(),
             'map' => $map,
@@ -1099,7 +1116,7 @@ JS, [
      */
     public function afterSave(bool $isNew): void
     {
-        // If the propagation method just changed, resave all the Matrix blocks
+        // If the propagation method just changed, resave all the elements
         if (isset($this->oldSettings)) {
             $oldLocalizeRelations = (bool)($this->oldSettings['localizeRelations'] ?? false);
             if ($this->localizeRelations !== $oldLocalizeRelations) {
@@ -1374,6 +1391,7 @@ JS, [
 
         return [
             'field' => $this,
+            'upperElementType' => $elementType::displayName(),
             'elementType' => $elementType::lowerDisplayName(),
             'pluralElementType' => $elementType::pluralLowerDisplayName(),
             'selectionCondition' => $selectionConditionHtml ?? null,
@@ -1390,7 +1408,7 @@ JS, [
     protected function inputTemplateVariables(array|ElementQueryInterface $value = null, ?ElementInterface $element = null): array
     {
         if ($value instanceof ElementQueryInterface) {
-            $value = $value->all();
+            $value = $value->eagerly()->all();
             ElementHelper::swapInProvisionalDrafts($value);
         } elseif (!is_array($value)) {
             $value = [];
@@ -1452,6 +1470,7 @@ JS, [
             'sourceElementId' => !empty($element->id) ? $element->id : null,
             'disabledElementIds' => $disabledElementIds,
             'limit' => $this->allowLimit ? $this->maxRelations : null,
+            'defaultPlacement' => $this->defaultPlacement,
             'viewMode' => $this->viewMode(),
             'showCardsInGrid' => $this->showCardsInGrid,
             'selectionLabel' => $this->selectionLabel ? Craft::t('site', $this->selectionLabel) : static::defaultSelectionLabel(),

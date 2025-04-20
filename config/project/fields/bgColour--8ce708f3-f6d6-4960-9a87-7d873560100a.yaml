@@ -1,0 +1,33 @@
+columnSuffix: null
+handle: bgColour
+instructions: null
+name: 'BG Colour'
+searchable: false
+settings:
+  allowCustomColors: false
+  palette:
+    -
+      __assoc__:
+        -
+          - color
+          - '#938d83'
+        -
+          - label
+          - Tan
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - color
+          - '#401e20'
+        -
+          - label
+          - Maroon
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Color

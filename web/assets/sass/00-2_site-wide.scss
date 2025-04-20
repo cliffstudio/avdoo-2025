@@ -60,7 +60,7 @@ LOADING OVERLAY(S) ------------------
 	z-index: 5;
 	background-color: rgba(253,252,248,0.2);
 	backdrop-filter: blur(50px);
-	transition: opacity 600ms cubic-bezier(0.25,0.1,0.25,1);
+	transition: opacity 300ms cubic-bezier(0.25,0.1,0.25,1);
 	will-change: opacity;
 	
 	//Hidden
@@ -198,14 +198,26 @@ GALLERY LIGHTBOX ------------------
 					z-index: 30;
 				}
 				
-				//Next
+				//Prev / Next
+				img.prev-arrow,
 				img.next-arrow {
 					position: absolute;
 					width: get-rem-desktop(22); height: auto;
-					top: 50%; right: get-rem-desktop(14);
-					transform: translateY(-50%);
+					top: 50%;
 					z-index: 30;
 					cursor: pointer;
+				}
+				
+				//Prev
+				img.prev-arrow {
+					left: get-rem-desktop(14);
+					transform: translateY(-50%) rotate(180deg);
+				}
+				
+				//Next
+				img.next-arrow {
+					right: get-rem-desktop(14);
+					transform: translateY(-50%);
 				}
 				
 				@media only screen and (max-width: 768px) {
@@ -217,11 +229,23 @@ GALLERY LIGHTBOX ------------------
 						top: get-rem-mobile(10); right: get-rem-mobile(10);
 					}
 					
+					//Prev / Next
+					img.prev-arrow,
+					img.next-arrow {
+						width: get-rem-mobile(16);
+						top: initial;
+						bottom: get-rem-mobile(10);
+					}
+					
+					//Prev
+					img.prev-arrow {
+						left: get-rem-mobile(10);
+						transform: translateY(0px) rotate(180deg);
+					}
+					
 					//Next
 					img.next-arrow { 
-						width: get-rem-mobile(16);
 						right: get-rem-mobile(10);	
-						top: initial; bottom: get-rem-mobile(10);
 						transform: translateY(0px);
 					}
 					

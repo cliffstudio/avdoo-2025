@@ -17,6 +17,10 @@
 		{% include '00_site-wide/two-up-splash-panel.twig' %}
 		{# END TWO UP SPLASH PANEL #}
 		
+		{# START DARK HEADER OVERRIDE #}
+		<div class="dark-header-override" style="height: 1px;"></div>
+		{# END DARK HEADER OVERRIDE #}
+		
 		{# START PAGE CONTENT #}
 		{% for block in entry.peoplePageContent.all() %}
 			{% switch block.type %}
@@ -140,8 +144,10 @@
 						
 						{# Start Image Column #}
 						<div class="image-column">
-							{% set image = block.imageModule.one() %}
-							{% include '00_site-wide/image-module_fb.twig' %}
+							<div class="outer-media-wrap" data-speed="0.9">
+								{% set image = block.imageModule.one() %}
+								{% include '00_site-wide/image-module_fb.twig' %}
+							</div>
 						</div>
 						{# End Image Column #}
 						

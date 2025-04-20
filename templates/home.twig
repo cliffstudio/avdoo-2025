@@ -22,7 +22,7 @@
 				{% for block in entry.splashLeftSide.all() %}
 					{% if block.type == 'leftSide' %}
 						
-						<div class="background">
+						<div class="background" data-speed="0.9">
 							{% set image = block.imageModule.one() %}
 							{% include '00_site-wide/image-module_fb.twig' %}
 						</div>
@@ -64,7 +64,7 @@
 				{% for block in entry.splashRightSide.all() %}
 					{% if block.type == 'rightSide' %}
 						
-						<div class="background">
+						<div class="background" data-speed="0.7">
 							{% set image = block.imageModule.one() %}
 							{% include '00_site-wide/image-module_fb.twig' %}
 						</div>
@@ -101,6 +101,10 @@
 			</div>
 			{# End Right Side #}
 			
+			{# Start Down Arrow #}
+			<img class="down-arrow" src="{{ alias('@web') }}/assets/svgs/down-arrow.svg" />
+			{# End Down Arrow #}
+			
 			{# Start Logo #}
 			<div class="logo-wrap">
 				<img src="{{ alias('@web') }}/assets/svgs/main-logo_light.svg" />
@@ -109,6 +113,10 @@
 			
 		</div>
 		{# START PAGE SPLASH #}
+
+		{# START DARK HEADER OVERRIDE #}
+		<div class="dark-header-override" style="height: 1px;"></div>
+		{# END DARK HEADER OVERRIDE #}
 
 		{# START PAGE CONTENT #}
 		{% for block in entry.homePageContent.all() %}
@@ -218,9 +226,14 @@
 							{% for selectedDevelopment in selectedDevelopments %}
 								
 								<div class="carousel-slide">
+									<a class="big-link" href="{{ selectedDevelopment.url  }}"></a>
 									
 									<div class="image">
-										{% set image = selectedDevelopment.thumbnailImageModule.one() %}
+										{% if selectedDevelopment.altThumbnailImage|length %}
+											{% set image = selectedDevelopment.altThumbnailImage.one() %}
+										{% else %}
+											{% set image = selectedDevelopment.thumbnailImageModule.one() %}
+										{% endif %}
 										{% include '00_site-wide/image-module_fb.twig' %}
 									</div>
 									

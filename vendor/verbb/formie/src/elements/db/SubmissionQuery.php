@@ -254,7 +254,23 @@ class SubmissionQuery extends ElementQuery
             return [];
         }
 
-        // Use Formie's custom fields
+        // Craft will try and load custom fields when dealing with provisional drafts, which is rough for performance
+        // As submissions don't make use of provisional draft, we can discard this.
+        if ($this->withProvisionalDrafts || $this->provisionalDrafts) {
+            return [];
+        }
+
+        // If restricting to a form, only load the fields we need for performance.
+        if ($formIds = $this->_resolveFormIds()) {
+            $fields = [];
+
+            foreach ($formIds as $formId) {
+                $fields[] = Formie::$plugin->getFields()->getAllFieldsForForm($formId);
+            }
+
+            return array_filter(array_merge(...$fields));
+        }
+
         return Formie::$plugin->getFields()->getAllFields();
     }
 
@@ -306,5 +322,33 @@ class SubmissionQuery extends ElementQuery
                 }
             }
         }
+    }
+
+    private function _resolveFormIds(): array
+    {
+        // If `formId` is directly available
+        if ($this->formId) {
+            return (array)$this->formId;
+        }
+
+        // If working with submission IDs
+        if ($this->id) {
+            return (new Query())
+                ->select(['formId'])
+                ->from(Table::FORMIE_SUBMISSIONS)
+                ->where(['id' => (array)$this->id])
+                ->column();
+        }
+
+        // If working with submission UIDs
+        if ($this->uid) {
+            return (new Query())
+                ->select(['formId'])
+                ->from(Table::FORMIE_SUBMISSIONS)
+                ->where(['uid' => (array)$this->uid])
+                ->column();
+        }
+
+        return [];
     }
 }

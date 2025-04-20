@@ -1,9 +1,51 @@
 body.home {
+	pointer-events: none;
 	header {
+		.menu-opener,
+		.logo-wrap,
+		.contact-button {
+			will-change: filter,opacity;
+			filter: blur(20px);
+			opacity: 0;
+			transition: filter 1000ms cubic-bezier(0.25,0.1,0.25,1), opacity 1100ms cubic-bezier(0.25,0.1,0.25,1);
+		}
+		
 		.outer-content-wrap {
 			filter: invert(100%);
 		}
+		
 	}
+	
+	//––UNBLURRED SPECIFICS
+	&.unblurred {
+		pointer-events: all;
+		
+		header {
+			.menu-opener,
+			.logo-wrap,
+			.contact-button {
+				filter: blur(0px);
+				opacity: 1;
+			}
+		}
+		
+		.page-wrap#home-page {
+			.splash-panel {
+				.side {
+					.title-overlay {
+						filter: blur(0px);
+						opacity: 1;
+					}
+				}
+				.down-arrow {
+					filter: blur(0px);
+					opacity: 1;
+				}
+			}
+		}
+		
+	}
+	
 }
 
 /*
@@ -16,12 +58,14 @@ PAGE WRAP ------------------
 	.splash-panel {
 		width: 100%; height: 100svh;
 		background-color: $colour-off-black;
+		overflow: hidden;
 		
 		//00––Sides
 		.side {
 			position: absolute;
 			width: 50%; height: 100%;
 			top: 0; 
+			z-index: 10;
 			* { color: $colour-white; }
 			
 			@media only screen and (max-width: 768px) {
@@ -34,6 +78,16 @@ PAGE WRAP ------------------
 				width: 100%; height: 100%;
 				top: 0; left: 0;
 				z-index: 10;
+				
+				&:after {
+					content: "";
+					position: absolute;
+					width: 100%; height: 100%;
+					top: 0; left: 0;
+					background-color: rgba(0,0,0, 0.15);
+					z-index: 100;
+				}
+				
 			}
 			
 			//–––Title Overlay
@@ -46,21 +100,24 @@ PAGE WRAP ------------------
 				color: $colour-white;
 				z-index: 20;
 				pointer-events: none;
+				will-change: filter,opacity;
+				filter: blur(20px);
+				opacity: 0;
+				transition: filter 1000ms cubic-bezier(0.25,0.1,0.25,1), opacity 1100ms cubic-bezier(0.25,0.1,0.25,1);
 				
 				h1 { margin-bottom: 0px; }
 				
-				&:before {
-					content: "";
-					position: absolute;
-					width: 100%; height: 300%;
-					top: 50%; left: 50%;
-					transform: translate(-50%,-47%);
-					z-index: 0;
-					opacity: 0.5;
-					background: radial-gradient(53.31% 53.31% at 50% 46.69%, #393939 33.5%, rgba(159, 159, 159, 0.00) 100%);
-					
-					mix-blend-mode: multiply;
-				}
+				// &:before {
+				// 	content: "";
+				// 	position: absolute;
+				// 	width: 100%; height: 300%;
+				// 	top: 50%; left: 50%;
+				// 	transform: translate(-50%,-47%);
+				// 	z-index: 0;
+				// 	opacity: 0.5;
+				// 	background: radial-gradient(53.31% 53.31% at 50% 46.69%, #393939 33.5%, rgba(159, 159, 159, 0.00) 100%);
+				// 	mix-blend-mode: multiply;
+				// }
 				
 				@media only screen and (max-width: 768px) {
 					display: none;	
@@ -90,7 +147,9 @@ PAGE WRAP ------------------
 			//–––Menu Overlay
 			.menu {
 				position: absolute;
-				width: 100%; height: auto;
+				width: fit-content; height: auto;
+				padding: 0 3em;
+				white-space: nowrap;
 				top: 50%; left: 50%;
 				transform: translate(-50%,-50%);
 				text-align: center;
@@ -158,6 +217,23 @@ PAGE WRAP ------------------
 			
 		}
 		
+		//DOWN ARROW
+		.down-arrow {
+			position: absolute;
+			width: get-rem-desktop(41); height: auto;
+			bottom: get-rem-desktop(52); left: 50%;
+			transform: translateX(-50%);
+			cursor: pointer;
+			z-index: 20;
+			filter: blur(20px);
+			opacity: 0;
+			
+			@media only screen and (max-width: 768px) {
+				display: none;	
+			}
+			
+		}
+		
 		//LOGO
 		.logo-wrap {
 			position: absolute;
@@ -178,7 +254,7 @@ PAGE WRAP ------------------
 	//03–––CAROUSEL SECTION
 	.carousel-section {
 		width: 100%; height: auto;
-		padding: get-rem-desktop(97) 0 get-rem-desktop(200) 0;
+		padding: get-rem-desktop(105) 0 get-rem-desktop(200) 0;
 		border-bottom: 1px solid $colour-black;
 		border-width: 0.5px;
 		overflow: hidden;
@@ -301,7 +377,7 @@ PAGE WRAP ------------------
 	.carousel-section.featured-developments {
 		width: 100%; height: auto;
 		background-color: #D3CCC0;
-		padding: get-rem-desktop(79) 0 get-rem-desktop(62) 0;
+		padding: get-rem-desktop(105) 0 get-rem-desktop(62) 0;
 		
 		@media only screen and (max-width: 768px) {
 			padding: get-rem-mobile(46) 0 get-rem-mobile(70) 0;
@@ -323,19 +399,47 @@ PAGE WRAP ------------------
 		.carousel-section-carousel {
 			
 			.carousel-slide {
-				width: percentage(377/1760);
+				width: percentage(345/1760);
 				margin-right: percentage(51/1760);
+				
+				a.big-link {
+					position: absolute;
+					width: 100%; height: 100%;
+					top: 0; left: 0;
+					z-index: 50;
+				}
 				
 				//––Image
 				.image {
 					@include aspect-ratio(377, 282);
 					margin-bottom: get-rem-desktop(24);
+					
+					&:after {
+						content: "";
+						position: absolute;
+						width: 100%; height: get-rem-desktop(10);
+						background-color: #401E20;
+						top: 0; left: 0;
+						z-index: -10;
+						will-change: top;
+						transition: top 250ms cubic-bezier(0.25,0.1,0.25,1);
+					}
+					
 				}
 				
 				//––Text
 				.text {
 					.link {
-						a { color: #938D83; }
+						a { color: #938D83; pointer-events: none; }
+					}
+				}
+				
+				//HOVER
+				&:hover {
+					.image {
+						&:after {
+							top: get-rem-desktop(-10);
+						}
 					}
 				}
 				
@@ -347,6 +451,11 @@ PAGE WRAP ------------------
 					.image {
 						@include aspect-ratio(130, 80);
 						margin-bottom: get-rem-mobile(20);
+						
+						&:after {
+							display: none;
+						}
+						
 					}
 					
 				}

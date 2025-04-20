@@ -232,7 +232,23 @@ fieldLayouts:
             uid: cbc7ccd2-6576-432a-8269-f1ea42fbe2df
             userCondition: null
             warning: null
-            width: 100
+            width: 50
+          -
+            dateAdded: '2025-04-17T09:58:52+00:00'
+            elementCondition: null
+            fieldUid: ee23eee0-31b7-4cda-b63d-134aa4586e5d # Image Module
+            handle: altThumbnailImage
+            includeInCards: false
+            instructions: null
+            label: 'Alt Thumbnail Image'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c455bfb8-a2cb-405e-860d-56d09165bb81
+            userCondition: null
+            warning: null
+            width: 50
           -
             dateAdded: '2025-03-25T11:07:03+00:00'
             elementCondition: null

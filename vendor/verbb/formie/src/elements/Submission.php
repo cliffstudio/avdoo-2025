@@ -11,6 +11,7 @@ use verbb\formie\base\MultiNestedFieldInterface;
 use verbb\formie\base\SingleNestedFieldInterface;
 use verbb\formie\elements\actions\SetSubmissionSpam;
 use verbb\formie\elements\actions\SetSubmissionStatus;
+use verbb\formie\elements\conditions\SubmissionCondition;
 use verbb\formie\elements\db\SubmissionQuery;
 use verbb\formie\events\SubmissionMarkedAsSpamEvent;
 use verbb\formie\events\SubmissionRulesEvent;
@@ -34,6 +35,7 @@ use craft\db\Query;
 use craft\elements\User;
 use craft\elements\actions\Delete;
 use craft\elements\actions\Restore;
+use craft\elements\conditions\ElementConditionInterface;
 use craft\elements\db\ElementQueryInterface;
 use craft\helpers\Cp;
 use craft\helpers\Db;
@@ -91,6 +93,11 @@ class Submission extends CustomElement
     public static function isLocalized(): bool
     {
         return true;
+    }
+
+    public static function createCondition(): ElementConditionInterface
+    {
+        return Craft::createObject(SubmissionCondition::class, [static::class]);
     }
 
     public static function find(): SubmissionQuery
@@ -682,7 +689,8 @@ class Submission extends CustomElement
     public function updateTitle(Form $form): void
     {
         if ($customTitle = Variables::getParsedValue($form->settings->submissionTitleFormat, $this, $form)) {
-            $this->title = $customTitle;
+            // In case any values are encoded for HTML, we should decode them here. This is after sanitization
+            $this->title = html_entity_decode($customTitle);
 
             // Rather than re-save, directly update the content record
             Db::update(Table::ELEMENTS_SITES, ['title' => $customTitle], ['elementId' => $this->id, 'siteId' => $this->siteId]);

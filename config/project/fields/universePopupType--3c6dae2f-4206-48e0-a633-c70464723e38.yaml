@@ -1,0 +1,33 @@
+columnSuffix: null
+handle: universePopupType
+instructions: null
+name: 'Popup Type'
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - 'Text Modal'
+        -
+          - value
+          - textModal
+        -
+          - default
+          - '1'
+    -
+      __assoc__:
+        -
+          - label
+          - 'Video Modal'
+        -
+          - value
+          - videoModal
+        -
+          - default
+          - ''
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

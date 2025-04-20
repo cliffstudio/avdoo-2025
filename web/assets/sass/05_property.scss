@@ -272,6 +272,94 @@ PAGE WRAP ------------------
 		
 	}
 	
+	//05–––HIGHLIGHTS PANEL
+	.highlights-panel {
+		width: 100%; height: 100svh;
+		overflow: hidden;
+		background-color: $colour-cream;
+		
+		//Carousel
+		.highlights-section-carousel {
+			position: absolute;
+			width: 100%; height: 100%;
+			top: 0; left: 0;
+			overflow: hidden;
+			z-index: 10;
+			
+			.flickity-viewport,
+			.flickity-slider { height: 100% !important; }
+			
+			.carousel-slide {
+				width: 100%; height: 100%;
+			}
+			
+			//Prev / Next Buttons
+			.flickity-prev-next-button {
+				@include reset-input();
+				position: absolute;
+				width: get-rem-desktop(42); height: get-rem-desktop(42);
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: 199;
+				
+				svg path {
+					fill: #ffffff !important;
+				}
+				
+				&.previous {
+					left: get-rem-desktop(90);
+				}
+				
+				&.next {
+					right: get-rem-desktop(90);
+				}
+				
+				@media only screen and (max-width: 768px) {
+					width: get-rem-mobile(36); height: get-rem-mobile(36);
+					
+					&.previous {
+						left: get-rem-mobile(25);
+					}
+					
+					&.next {
+						right: get-rem-mobile(25);
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		//Title Overlay
+		h2.panel-title {
+			position: absolute;
+			width: 100%; height: auto;
+			text-align: center;
+			top: 0; left: 0;
+			padding: get-rem-desktop(23);
+			z-index: 20;
+		}
+		
+		@media only screen and (max-width: 768px) {
+			height: get-rem-mobile(318);
+			overflow: visible;
+			
+			&.title-present {
+				margin-top: get-rem-mobile(45);
+				
+				//Title Overlay
+				h2.panel-title {
+					padding: 0;
+					top: get-rem-mobile(-45);	
+				}
+				
+			}
+				
+		}
+		
+	}
+	
 	//–––NEXT PROJECT
 	.next-project-module {
 		width: 100%; height: auto;

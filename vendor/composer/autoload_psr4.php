@@ -30,7 +30,7 @@ return array(
     'verbb\\auth\\' => array($vendorDir . '/verbb/auth/src'),
     'samdark\\log\\tests\\' => array($vendorDir . '/samdark/yii2-psr-log-target/tests'),
     'samdark\\log\\' => array($vendorDir . '/samdark/yii2-psr-log-target/src'),
-    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
+    'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/type-resolver/src', $vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'nystudio107\\pluginvite\\' => array($vendorDir . '/nystudio107/craft-plugin-vite/src'),
     'nystudio107\\codeeditor\\' => array($vendorDir . '/nystudio107/craft-code-editor/src'),
     'mikehaertl\\shellcommand\\' => array($vendorDir . '/mikehaertl/php-shellcommand/src'),

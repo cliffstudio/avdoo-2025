@@ -2,8 +2,10 @@
 	
 	{# Start Image Column #}
 	<div class="image-column">
-		{% set image = block.imageModule.one() %}
-		{% include '00_site-wide/image-module_fb.twig' %}
+		<div class="outer-media-wrap" data-speed="0.9">
+			{% set image = block.imageModule.one() %}
+			{% include '00_site-wide/image-module_fb.twig' %}
+		</div>
 	</div>
 	{# End Image Column #}
 	

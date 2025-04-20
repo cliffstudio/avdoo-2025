@@ -7,6 +7,7 @@ use verbb\formie\base\FieldInterface;
 use verbb\formie\base\Integration;
 use verbb\formie\base\IntegrationInterface;
 use verbb\formie\elements\Submission;
+use verbb\formie\fields\conditions\OptionsFieldConditionRule;
 use verbb\formie\fields\data\MultiOptionsFieldData;
 use verbb\formie\fields\data\OptionData;
 use verbb\formie\fields\data\SingleOptionFieldData;
@@ -256,14 +257,9 @@ abstract class OptionsField extends Field implements OptionsFieldInterface, Prev
         return parent::serializeValue($value, $element);
     }
 
-    public function getValueForVariable(mixed $value, Submission $submission, Notification $notification): mixed
+    public function getElementConditionRuleType(): array|string|null
     {
-        // Respect the format picker for "Email Notification Value" 
-        if ($value instanceof SingleOptionFieldData) {
-            return $this->emailValue === 'label' ? $value->label : $value->value;
-        }
-
-        return parent::getValueForVariable($value, $submission, $notification);
+        return OptionsFieldConditionRule::class;
     }
 
     public function getElementValidationRules(): array
@@ -421,6 +417,16 @@ abstract class OptionsField extends Field implements OptionsFieldInterface, Prev
         }
 
         return $value->label ?? '';
+    }
+
+    protected function defineValueForVariable(mixed $value, Submission $submission, Notification $notification): mixed
+    {
+        // Respect the format picker for "Email Notification Value" 
+        if ($value instanceof SingleOptionFieldData) {
+            return $this->emailValue === 'label' ? $value->label : $value->value;
+        }
+
+        return parent::defineValueForVariable($value, $submission, $notification);
     }
 
     protected function getPredefinedOptions(): array

@@ -6,6 +6,7 @@ use craft\base\ElementInterface;
 use craft\base\PreviewableFieldInterface;
 use craft\elements\db\ElementQueryInterface;
 use craft\enums\AttributeStatus;
+use craft\gql\types\QueryArgument;
 use craft\helpers\ElementHelper;
 use craft\helpers\Html;
 use craft\helpers\UrlHelper;
@@ -288,5 +289,10 @@ trait FieldLegacy
     public function afterElementRestore(ElementInterface $element): void
     {
         
+    }
+
+    public function serializeValueForDb(mixed $value, ElementInterface $element): mixed
+    {
+        return $this->serializeValue($value, $element);
     }
 }

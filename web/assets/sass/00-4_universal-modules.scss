@@ -60,7 +60,7 @@ BUTTON(S) --------------------
 	width: fit-content; height: auto;
 	border: 1px solid $colour-black;
 	cursor: pointer;
-	padding: get-rem-desktop(13) get-rem-desktop(10) get-rem-desktop(11) get-rem-desktop(10);
+	padding: get-rem-desktop(13) get-rem-desktop(30) get-rem-desktop(11) get-rem-desktop(30);
 	will-change: background-color,color;
 	transition: background-color 250ms cubic-bezier(0.25,0.1,0.25,1), color 250ms cubic-bezier(0.25,0.1,0.25,1), border-color 250ms cubic-bezier(0.25,0.1,0.25,1);
 	
@@ -205,6 +205,10 @@ TWO UP SPLASH PANEL --------------------
 		transform: translate(-50%,-50%);
 		z-index: 20;
 		
+		span {
+			display: block;
+		}
+		
 		@media only screen and (max-width: 768px) {
 			transform: translate(-50%,-68%);
 			
@@ -232,12 +236,12 @@ CENTERED INTRO TEXT PANEL --------------------
 
 .centred-intro-text-panel {
 	width: 100%; height: auto;
-	min-height: get-rem-desktop(680);
+	// min-height: get-rem-desktop(680);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	padding: get-rem-desktop(140) 0 get-rem-desktop(150) 0;
+	padding: get-rem-desktop(105) 0;
 	border-bottom: 1px solid $colour-black;
 	border-width: 0.5px;
 	
@@ -283,6 +287,12 @@ IMAGE / TEXT PANEL --------------------
 		width: 50%; height: auto;
 		@include aspect-ratio(960, 1080);
 		overflow: hidden;
+		
+		.outer-media-wrap {
+			position: absolute;
+			width: 100%; height: 100%;
+			top: 0; left: 0;
+		}
 		
 		@media only screen and (max-width: 768px) {
 			width: 100%;	
@@ -403,9 +413,12 @@ PAGE NAV BAR --------------------
 		* { margin-bottom: 0px; }
 		
 		span.arrow {
+			display: block;
 			font-family: "Neuton", serif;
 			@include font-size(20px, 35px);
 			font-weight: 400; font-style: normal;
+			will-change: transform;
+			transition: transform 300ms cubic-bezier(0.25,0.1,0.25,1);
 		}
 		
 		a {
@@ -415,8 +428,23 @@ PAGE NAV BAR --------------------
 			z-index: 50;
 		}
 		
-		&.left { justify-content: flex-start; }
-		&.right { justify-content: flex-end; }
+		&.left { 
+			justify-content: flex-start; 
+			&:hover {
+				span.arrow {
+					transform: translateX(-0.3rem);
+				}
+			}
+		}
+		&.right { 
+			justify-content: flex-end; 
+			&:hover {
+				span.arrow {
+					transform: translateX(0.3rem);
+				}
+			}
+			
+		}
 		
 		@media only screen and (max-width: 768px) {
 
@@ -713,11 +741,11 @@ TABBED CAROUSEL PANEL --------------------
 				}
 				
 				&.previous {
-					display: none !important;
+					left: calc(50% + get-rem-desktop(80));
 				}
 				
 				&.next {
-					right: get-rem-desktop(93);
+					right: get-rem-desktop(80);
 				}
 				
 				@media only screen and (max-width: 768px) {

@@ -33,6 +33,7 @@
 	
 		{% for entry in pressEntries %}
 			<article>
+				<a class="big-link" href="{{ entry.pressArticleLink }}" target="_blank"></a>
 				<div class="article-thumbnail">
 					{% set image = entry.imageModule.one() %}
 					{% include '00_site-wide/image-module_fb.twig' %}
@@ -45,7 +46,7 @@
 					{{ entry.title }}
 				</h1>
 				{% if entry.pressArticleLink|length %}
-					<h3 class="article-link size-03"><a class="underlined-link" href="{{ entry.pressArticleLink }}">View Article</a></h3>
+					<h3 class="article-link size-03"><a class="underlined-link" href="{{ entry.pressArticleLink }}" target="_blank">View Article</a></h3>
 				{% endif %}
 			</article>
 		{% endfor %}

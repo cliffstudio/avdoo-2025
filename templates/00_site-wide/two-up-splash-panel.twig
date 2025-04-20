@@ -3,18 +3,18 @@
 
 	<div class="two-up-splash-panel">
 		
-		<div class="image-col left">
+		<div class="image-col left" data-speed="0.9">
 		{% set image = twoUpSplash.leftImageModule.one() %}
 		{% include '00_site-wide/image-module_fb.twig' %}
 		</div>
 		
-		<div class="image-col right">
+		<div class="image-col right" data-speed="0.7">
 		{% set image = twoUpSplash.rightImageModule.one() %}
 		{% include '00_site-wide/image-module_fb.twig' %}
 		</div>
 		
 		{% if twoUpSplash.title|length %}
-			<h1 class="title-overlay x-large">{{ twoUpSplash.title }}</h1>
+			<h1 class="title-overlay x-large"><span data-speed="1.2">{{ twoUpSplash.title }}</span></h1>
 		{% endif %}
 		
 	</div>

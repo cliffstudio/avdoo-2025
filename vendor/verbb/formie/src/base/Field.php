@@ -41,6 +41,7 @@ use craft\db\Query;
 use craft\fieldlayoutelements\CustomField;
 use craft\fields\BaseRelationField;
 use craft\gql\types\DateTime as DateTimeType;
+use craft\gql\types\QueryArgument;
 use craft\helpers\Cp;
 use craft\helpers\DateTimeHelper;
 use craft\helpers\Db;
@@ -91,6 +92,7 @@ abstract class Field extends SavableComponent implements CraftFieldInterface, Fi
     public const EVENT_MODIFY_VALUE_FOR_SUMMARY = 'modifyValueForSummary';
     public const EVENT_MODIFY_VALUE_FOR_EMAIL = 'modifyValueForEmail';
     public const EVENT_MODIFY_VALUE_FOR_EMAIL_PREVIEW = 'modifyValueForEmailPreview';
+    public const EVENT_MODIFY_VALUE_FOR_VARIABLE = 'modifyValueForVariable';
     public const EVENT_MODIFY_UNIQUE_QUERY = 'modifyUniqueQuery';
 
     public const TRANSLATION_METHOD_NONE = 'none';
@@ -253,6 +255,9 @@ abstract class Field extends SavableComponent implements CraftFieldInterface, Fi
     private ?bool $_isFresh = null;
     private array $_valueSql = [];
 
+    // Render Options
+    private array $_renderOptions = [];
+
 
     // Public Methods
     // =========================================================================
@@ -323,6 +328,11 @@ abstract class Field extends SavableComponent implements CraftFieldInterface, Fi
     public function getIsCosmetic(): bool
     {
         return false;
+    }
+
+    public function hasEmailPlaceholder(): bool
+    {
+        return true;
     }
 
     public function getIsHidden(): bool
@@ -442,6 +452,11 @@ abstract class Field extends SavableComponent implements CraftFieldInterface, Fi
     {
         // Default to yii\validators\Validator::isEmpty()'s behavior
         return $value === null || $value === [] || $value === '';
+    }
+
+    public function getElementConditionRuleType(): array|string|null
+    {
+        return null;
     }
 
     public function getValueSql(?string $key = null): ?string
@@ -584,7 +599,18 @@ abstract class Field extends SavableComponent implements CraftFieldInterface, Fi
 
     public function getValueForVariable(mixed $value, Submission $submission, Notification $notification): mixed
     {
-        return (string)$this->getEmailHtml($submission, $notification, $value);
+        $value = $this->defineValueForVariable($value, $submission, $notification);
+
+        $event = new ModifyFieldEmailValueEvent([
+            'value' => $value,
+            'field' => $this,
+            'submission' => $submission,
+            'notification' => $notification,
+        ]);
+
+        $this->trigger(static::EVENT_MODIFY_VALUE_FOR_VARIABLE, $event);
+
+        return $event->value;
     }
 
     public function populateValue(mixed $value, ?Submission $submission): void
@@ -1228,6 +1254,14 @@ abstract class Field extends SavableComponent implements CraftFieldInterface, Fi
         if ($templateConfig) {
             $form->setThemeConfig($templateConfig);
         }
+
+        // Save for later
+        $this->_renderOptions = $renderOptions;
+    }
+
+    public function getRenderOptions(): array
+    {
+        return $this->_renderOptions;
     }
 
     public function getFrontEndJsModules(): ?array
@@ -1408,12 +1442,25 @@ abstract class Field extends SavableComponent implements CraftFieldInterface, Fi
         return 'Field_' . $end;
     }
 
+    public function getContentGqlType(): Type|array
+    {
+        return Type::string();
+    }
+
     public function getContentGqlMutationArgumentType(): Type|array
     {
         return [
             'name' => $this->handle,
             'type' => Type::string(),
             'description' => $this->instructions,
+        ];
+    }
+
+    public function getContentGqlQueryArgumentType(): Type|array
+    {
+        return [
+            'name' => $this->handle,
+            'type' => Type::listOf(QueryArgument::getType()),
         ];
     }
 
@@ -1611,6 +1658,11 @@ abstract class Field extends SavableComponent implements CraftFieldInterface, Fi
     protected function defineValueForEmailPreview(FakerFactory $faker): mixed
     {
         return $faker->text;
+    }
+
+    protected function defineValueForVariable(mixed $value, Submission $submission, Notification $notification): mixed
+    {
+        return (string)$this->getEmailHtml($submission, $notification, $value);
     }
 
     protected static function normalizeConfig(array &$config = []): void

@@ -17,6 +17,10 @@
 		{% include '00_site-wide/two-up-splash-panel.twig' %}
 		{# END TWO UP SPLASH PANEL #}
 		
+		{# START DARK HEADER OVERRIDE #}
+		<div class="dark-header-override" style="height: 1px;"></div>
+		{# END DARK HEADER OVERRIDE #}
+		
 		{# START PAGE CONTENT #}
 		{% for block in entry.expertisePageContent.all() %}
 			{% switch block.type %}
@@ -48,7 +52,7 @@
 							{% for factBlock in block.facts.all() %}
 								{% if factBlock.type == 'fact' %}
 								
-									<div class="fact">
+									<div class="fact animated-number-wrapper">
 										<h3 class="size-01 number"><span class="animated-number" data-stat="{{ factBlock.number }}">0</span>{% if factBlock.extraText|length %}{{ factBlock.extraText }}{% endif %}</h3>
 										<h3 class="size-02 sub-text">{{ factBlock.subtext }}</h3>
 									</div>

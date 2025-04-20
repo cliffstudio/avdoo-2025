@@ -6,6 +6,7 @@ use verbb\formie\fields;
 use verbb\formie\fields\Group;
 use verbb\formie\fields\Repeater;
 use verbb\formie\fields\subfields;
+use verbb\formie\helpers\StringHelper;
 use verbb\formie\helpers\Table;
 use verbb\formie\models\FieldLayout;
 use verbb\formie\positions\Hidden as HiddenPosition;
@@ -132,7 +133,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                 'handle' => $this->string(64)->notNull(),
                 'type' => $this->string()->notNull(),
                 'sortOrder' => $this->smallInteger()->unsigned(),
-                'settings' => $this->text(),
+                'settings' => $this->mediumText(),
                 'dateCreated' => $this->dateTime()->notNull(),
                 'dateUpdated' => $this->dateTime()->notNull(),
                 'uid' => $this->uid(),
@@ -207,10 +208,13 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
             // Sub-fields also need to be processed here, before their settings are removed as being invalid
             $layoutConfig = $this->_processLayoutSubFields($layoutConfig);
 
+            // Any extra processing (for some fields)
+            $layoutConfig = $this->_processLayoutFields($layoutConfig);
+
             $formLayout = new FieldLayout($layoutConfig);
 
             if (!Formie::$plugin->getFields()->saveLayout($formLayout)) {
-                echo '    > ' . $form['handle'] . ': Unable to save field layout - ' . Json::encode($formLayout->getErrors()) . PHP_EOL;
+                echo '    > ' . $form['handle'] . ': Unable to save field layout - ' . Json::encode($formLayout->getErrorsTree()) . PHP_EOL;
                 // echo '    > ' . Json::encode($layoutConfig);
 
                 return false;
@@ -544,6 +548,44 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
         return $layoutConfig;
     }
 
+    private function _processLayoutFields(array $layoutConfig): array
+    {
+        foreach (($layoutConfig['pages'] ?? []) as $pageKey => $page) {
+            foreach (($page['rows'] ?? []) as $rowKey => $row) {
+                foreach (($row['fields'] ?? []) as $fieldKey => $field) {
+                    $updatedConfig = false;
+                    $type = $field['type'] ?? null;
+
+                    if (!$type) {
+                        continue;
+                    }
+
+                    if ($field['type'] === 'verbb\formie\fields\formfields\Section') {
+                        // Protect against label/handle being empty in some scenarios
+                        $field['label'] = $field['label'] ?? StringHelper::appendUniqueIdentifier(Craft::t('formie', 'Section Label '));
+                        $field['handle'] = $field['handle'] ?? StringHelper::appendUniqueIdentifier('sectionHandle');
+
+                        $updatedConfig = true;
+                    }
+
+                    if ($field['type'] === 'verbb\formie\fields\formfields\Summary') {
+                        // Protect against label/handle being empty in some scenarios
+                        $field['label'] = $field['label'] ?? StringHelper::appendUniqueIdentifier(Craft::t('formie', 'Summary '));
+                        $field['handle'] = $field['handle'] ?? StringHelper::appendUniqueIdentifier('summaryHandle');
+
+                        $updatedConfig = true;
+                    }
+
+                    if ($updatedConfig) {
+                        $layoutConfig['pages'][$pageKey]['rows'][$rowKey]['fields'][$fieldKey] = $field;
+                    }
+                }
+            }
+        }
+
+        return $layoutConfig;
+    }
+
     private function _getNestedContentTableName(array $field): string
     {
         $settings = Json::decode($field['settings']);
@@ -828,7 +870,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                 'fields' => [
                     [
                         'type' => subfields\Address1::class,
-                        'label' => $settings['address1Label'] ?? Craft::t('formie', 'Address 1'),
+                        'label' => trim($settings['address1Label'] ?? '') ?: Craft::t('formie', 'Address 1'),
                         'handle' => 'address1',
                         'enabled' => $settings['address1Enabled'] ?? true,
                         'required' => $settings['address1Required'] ?? false,
@@ -853,7 +895,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                 'fields' => [
                     [
                         'type' => subfields\Address2::class,
-                        'label' => $settings['address2Label'] ?? Craft::t('formie', 'Address 2'),
+                        'label' => trim($settings['address2Label'] ?? '') ?: Craft::t('formie', 'Address 2'),
                         'handle' => 'address2',
                         'enabled' => $settings['address2Enabled'] ?? false,
                         'required' => $settings['address2Required'] ?? false,
@@ -878,7 +920,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                 'fields' => [
                     [
                         'type' => subfields\Address3::class,
-                        'label' => $settings['address3Label'] ?? Craft::t('formie', 'Address 3'),
+                        'label' => trim($settings['address3Label'] ?? '') ?: Craft::t('formie', 'Address 3'),
                         'handle' => 'address3',
                         'enabled' => $settings['address3Enabled'] ?? false,
                         'required' => $settings['address3Required'] ?? false,
@@ -903,7 +945,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                 'fields' => [
                     [
                         'type' => subfields\AddressCity::class,
-                        'label' =>  $settings['cityLabel'] ?? Craft::t('formie', 'City'),
+                        'label' =>  trim($settings['cityLabel'] ?? '') ?: Craft::t('formie', 'City'),
                         'handle' => 'city',
                         'enabled' => $settings['cityEnabled'] ?? true,
                         'required' => $settings['cityRequired'] ?? false,
@@ -924,7 +966,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\AddressZip::class,
-                        'label' => $settings['zipLabel'] ?? Craft::t('formie', 'ZIP / Postal Code'),
+                        'label' => trim($settings['zipLabel'] ?? '') ?: Craft::t('formie', 'ZIP / Postal Code'),
                         'handle' => 'zip',
                         'enabled' => $settings['zipEnabled'] ?? true,
                         'required' => $settings['zipRequired'] ?? false,
@@ -949,7 +991,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                 'fields' => [
                     [
                         'type' => subfields\AddressState::class,
-                        'label' => $settings['stateLabel'] ?? Craft::t('formie', 'State / Province'),
+                        'label' => trim($settings['stateLabel'] ?? '') ?: Craft::t('formie', 'State / Province'),
                         'handle' => 'state',
                         'enabled' => $settings['stateEnabled'] ?? true,
                         'required' => $settings['stateRequired'] ?? false,
@@ -970,7 +1012,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\AddressCountry::class,
-                        'label' => $settings['countryLabel'] ?? Craft::t('formie', 'Country'),
+                        'label' => trim($settings['countryLabel'] ?? '') ?: Craft::t('formie', 'Country'),
                         'handle' => 'country',
                         'enabled' => $settings['countryEnabled'] ?? true,
                         'required' => $settings['countryRequired'] ?? false,
@@ -1003,7 +1045,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                 'fields' => [
                     [
                         'type' => fields\SingleLineText::class,
-                        'label' => $settings['dateLabel'] ?? Craft::t('formie', 'Date'),
+                        'label' => trim($settings['dateLabel'] ?? '') ?: Craft::t('formie', 'Date'),
                         'handle' => 'date',
                         'enabled' => $settings['includeDate'] ?? true,
                         'required' => $settings['required'] ?? false,
@@ -1024,7 +1066,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => fields\SingleLineText::class,
-                        'label' => $settings['timeLabel'] ?? Craft::t('formie', 'Time'),
+                        'label' => trim($settings['timeLabel'] ?? '') ?: Craft::t('formie', 'Time'),
                         'handle' => 'time',
                         'enabled' => $settings['includeTime'] ?? true,
                         'required' => $settings['required'] ?? false,
@@ -1055,7 +1097,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                 'fields' => [
                     [
                         'type' => subfields\DateYearDropdown::class,
-                        'label' => $settings['yearLabel'] ?? Craft::t('formie', 'Year'),
+                        'label' => trim($settings['yearLabel'] ?? '') ?: Craft::t('formie', 'Year'),
                         'handle' => 'year',
                         'enabled' => true,
                         'placeholder' => $settings['yearPlaceholder'] ?? null,
@@ -1063,7 +1105,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\DateMonthDropdown::class,
-                        'label' => $settings['monthLabel'] ?? Craft::t('formie', 'Month'),
+                        'label' => trim($settings['monthLabel'] ?? '') ?: Craft::t('formie', 'Month'),
                         'handle' => 'month',
                         'enabled' => true,
                         'placeholder' => $settings['monthPlaceholder'] ?? null,
@@ -1079,7 +1121,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\DateHourDropdown::class,
-                        'label' => $settings['hourLabel'] ?? Craft::t('formie', 'Hour'),
+                        'label' => trim($settings['hourLabel'] ?? '') ?: Craft::t('formie', 'Hour'),
                         'handle' => 'hour',
                         'enabled' => true,
                         'placeholder' => $settings['hourPlaceholder'] ?? null,
@@ -1087,7 +1129,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\DateMinuteDropdown::class,
-                        'label' => $settings['minueLabel'] ?? Craft::t('formie', 'Minute'),
+                        'label' => trim($settings['minueLabel'] ?? '') ?: Craft::t('formie', 'Minute'),
                         'handle' => 'minute',
                         'enabled' => true,
                         'placeholder' => $settings['minutePlaceholder'] ?? null,
@@ -1095,7 +1137,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\DateSecondDropdown::class,
-                        'label' => $settings['secondLabel'] ?? Craft::t('formie', 'Second'),
+                        'label' => trim($settings['secondLabel'] ?? '') ?: Craft::t('formie', 'Second'),
                         'handle' => 'second',
                         'enabled' => false,
                         'placeholder' => $settings['secondPlaceholder'] ?? null,
@@ -1103,7 +1145,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\DateAmPmDropdown::class,
-                        'label' => $settings['ampmLabel'] ?? Craft::t('formie', 'AM/PM'),
+                        'label' => trim($settings['ampmLabel'] ?? '') ?: Craft::t('formie', 'AM/PM'),
                         'handle' => 'ampm',
                         'enabled' => false,
                         'placeholder' => $settings['ampmPlaceholder'] ?? null,
@@ -1124,7 +1166,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                 'fields' => [
                     [
                         'type' => subfields\DateYearNumber::class,
-                        'label' => $settings['yearLabel'] ?? Craft::t('formie', 'Year'),
+                        'label' => trim($settings['yearLabel'] ?? '') ?: Craft::t('formie', 'Year'),
                         'handle' => 'year',
                         'enabled' => true,
                         'placeholder' => $settings['yearPlaceholder'] ?? null,
@@ -1134,7 +1176,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\DateMonthNumber::class,
-                        'label' => $settings['monthLabel'] ?? Craft::t('formie', 'Month'),
+                        'label' => trim($settings['monthLabel'] ?? '') ?: Craft::t('formie', 'Month'),
                         'handle' => 'month',
                         'enabled' => true,
                         'placeholder' => $settings['monthPlaceholder'] ?? null,
@@ -1154,7 +1196,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\DateHourNumber::class,
-                        'label' => $settings['hourLabel'] ?? Craft::t('formie', 'Hour'),
+                        'label' => trim($settings['hourLabel'] ?? '') ?: Craft::t('formie', 'Hour'),
                         'handle' => 'hour',
                         'enabled' => true,
                         'placeholder' => $settings['hourPlaceholder'] ?? null,
@@ -1164,7 +1206,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\DateMinuteNumber::class,
-                        'label' => $settings['minueLabel'] ?? Craft::t('formie', 'Minute'),
+                        'label' => trim($settings['minueLabel'] ?? '') ?: Craft::t('formie', 'Minute'),
                         'handle' => 'minute',
                         'enabled' => true,
                         'placeholder' => $settings['minutePlaceholder'] ?? null,
@@ -1174,7 +1216,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\DateSecondNumber::class,
-                        'label' => $settings['secondLabel'] ?? Craft::t('formie', 'Second'),
+                        'label' => trim($settings['secondLabel'] ?? '') ?: Craft::t('formie', 'Second'),
                         'handle' => 'second',
                         'enabled' => false,
                         'placeholder' => $settings['secondPlaceholder'] ?? null,
@@ -1184,7 +1226,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\DateAmPmDropdown::class,
-                        'label' => $settings['ampmLabel'] ?? Craft::t('formie', 'AM/PM'),
+                        'label' => trim($settings['ampmLabel'] ?? '') ?: Craft::t('formie', 'AM/PM'),
                         'handle' => 'ampm',
                         'enabled' => false,
                         'placeholder' => $settings['ampmPlaceholder'] ?? null,
@@ -1205,7 +1247,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                 'fields' => [
                     [
                         'type' => subfields\NamePrefix::class,
-                        'label' => $settings['prefixLabel'] ?? Craft::t('formie', 'Prefix'),
+                        'label' => trim($settings['prefixLabel'] ?? '') ?: Craft::t('formie', 'Prefix'),
                         'handle' => 'prefix',
                         'enabled' => $settings['prefixEnabled'] ?? false,
                         'required' => $settings['prefixRequired'] ?? false,
@@ -1222,7 +1264,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\NameFirst::class,
-                        'label' => $settings['firstNameLabel'] ?? Craft::t('formie', 'First Name'),
+                        'label' => trim($settings['firstNameLabel'] ?? '') ?: Craft::t('formie', 'First Name'),
                         'handle' => 'firstName',
                         'enabled' => $settings['firstNameEnabled'] ?? true,
                         'required' => $settings['firstNameRequired'] ?? false,
@@ -1239,7 +1281,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\NameMiddle::class,
-                        'label' => $settings['middleNameLabel'] ?? Craft::t('formie', 'Middle Name'),
+                        'label' => trim($settings['middleNameLabel'] ?? '') ?: Craft::t('formie', 'Middle Name'),
                         'handle' => 'middleName',
                         'enabled' => $settings['middleNameEnabled'] ?? false,
                         'required' => $settings['middleNameRequired'] ?? false,
@@ -1256,7 +1298,7 @@ class m231125_000000_craft5 extends BaseContentRefactorMigration
                     ],
                     [
                         'type' => subfields\NameLast::class,
-                        'label' => $settings['lastNameLabel'] ?? Craft::t('formie', 'Last Name'),
+                        'label' => trim($settings['lastNameLabel'] ?? '') ?: Craft::t('formie', 'Last Name'),
                         'handle' => 'lastName',
                         'enabled' => $settings['lastNameEnabled'] ?? true,
                         'required' => $settings['lastNameRequired'] ?? false,

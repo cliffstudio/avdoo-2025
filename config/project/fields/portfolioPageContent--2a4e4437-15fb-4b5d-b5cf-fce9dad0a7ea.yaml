@@ -33,6 +33,11 @@ settings:
         -
           - uid
           - 1f7f5b36-6bfd-4543-8a3f-1eefbd28f976 # Gallery Section
+    -
+      __assoc__:
+        -
+          - uid
+          - db856bf9-7edd-4235-bf61-afa26676bc8c # Highlights Section
   includeTableView: false
   maxEntries: null
   minEntries: null

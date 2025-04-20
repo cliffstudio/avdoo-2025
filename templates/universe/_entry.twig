@@ -1,0 +1,122 @@
+{% extends "/layout.twig" %}
+
+{% block content %}
+{% set popupType = entry.universePopupType %}
+	
+	{# START TEXT MODAL #}
+	{% if popupType == 'textModal' %}
+		
+		<div id="popup-modal" class="text-modal">
+			<div class="close-button"></div>
+			
+			{# Start Image Column #}
+			<div class="image-column">
+				
+				<div class="bg">
+					{% set image = entry.imageModule.one() %}
+					{% include '00_site-wide/image-module_fb.twig' %}
+				</div>
+				
+				<div class="titles-overlay">				
+					{% if entry.subtitle|length %}
+						<h1 class="size-09"><em>{{ entry.subtitle }}</em></h1>
+					{% endif %}
+					<h1 class="size-09">{{ entry.title }}</h1>
+				</div>
+				
+				{% set linkOverlay = entry.linkElement %}
+				{% if linkOverlay|length %}
+					
+					<div class="link-overlay">
+						<h1 class="size-09"><em>
+						<a href="{{ linkOverlay.url }}" target="{{ linkOverlay.target }}" rel="noopener noreferrer">
+							{{ linkOverlay.label ?: linkOverlay.url }}
+						</a>
+						</em></h1>
+					</div>
+					
+				{% endif %}
+				
+			</div>
+			{# End Image Column #}
+			
+			{# Start Text Column #}
+			<div class="text-column">
+				<div class="inner-column">
+					
+					{% if entry.popupHeader|length %}
+						<h1 class="modal-title size-09">{{ entry.popupHeader }}</h1>
+					{% endif %}
+					
+					{% if entry.textContent|length %}
+						{{ entry.textContent|replace({'<p>':'<h1 class="size-09">', '</p>':'</h1>'})|raw }}
+					{% endif %}
+					
+					{% set linkOverlay = entry.linkElement %}
+					{% if linkOverlay|length %}
+						
+						<div class="link-overlay mobile">
+							<h1 class="size-09"><em>
+							<a href="{{ linkOverlay.url }}" target="{{ linkOverlay.target }}" rel="noopener noreferrer">
+								{{ linkOverlay.label ?: linkOverlay.url }}
+							</a>
+							</em></h1>
+						</div>
+						
+					{% endif %}
+					
+				</div>
+			</div>
+			{# End Text Column #}
+			
+		</div>
+	
+	{# START VIDEO MODAL #}
+	{% elseif popupType == 'videoModal' %}
+		
+		<div id="popup-modal" class="video-modal">
+			<div class="close-button"></div>
+			
+			{# Start Video #}
+			{% set popupVideo = entry.videoModule.one() %}
+			{% if popupVideo %}
+				
+				<div class="media-module full-bleed">
+				
+					<video class="lazy full-bleed-video" data-src="{{ popupVideo.url }}" data-poster="{{ alias('@web') }}/assets/images/video-ph.webp" preload="auto" data-cookiescript="accepted" data-cookiecategory="functionality" loop muted webkit-playsinline="true" playsinline x5-playsinline autoplay crossorigin="anonymous"></video>
+					<div class="video-placeholder" style="background-image:url({{ alias('@web') }}/assets/images/video-ph.webp);"></div>	
+				
+				</div>
+				
+			{% endif %}
+			{# End Video #}
+			
+			{# Start Title Overlay #}
+			<div class="titles-overlay">				
+				{% if entry.subtitle|length %}
+					<h1 class="size-09"><em>{{ entry.subtitle }}</em></h1>
+				{% endif %}
+				<h1 class="size-09">{{ entry.title }}</h1>
+			</div>
+			{# End Title Overlay #}
+			
+			{# Start Link Overlay #}
+			{% set linkOverlay = entry.linkElement %}
+			{% if linkOverlay|length %}
+				
+				<div class="link-overlay">
+					<h1 class="size-09"><em>
+					<a href="{{ linkOverlay.url }}" target="{{ linkOverlay.target }}" rel="noopener noreferrer">
+						{{ linkOverlay.label ?: linkOverlay.url }}
+					</a>
+					</em></h1>
+				</div>
+				
+			{% endif %}
+			{# End Link Overlay #}
+			
+		</div>
+		
+	{% endif %}
+	
+{% endblock %}

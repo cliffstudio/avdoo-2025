@@ -1,5 +1,20 @@
 # Changelog
 
+## 3.0.8 - 2025-04-16
+
+### Added
+- Add plugin settings and general layouts for easier consistency in plugins.
+
+## 3.0.7 - 2025-04-11
+
+### Fixed
+- Fix an error on Craft 5.7+.
+
+## 3.0.6 - 2025-04-03
+
+### Fixed
+- Fix an error when calling `self::$plugin` for modules or plugins that don’t define this property.
+
 ## 3.0.5 - 2024-11-13
 
 ### Fixed

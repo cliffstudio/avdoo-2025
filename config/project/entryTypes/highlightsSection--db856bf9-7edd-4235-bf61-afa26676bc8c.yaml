@@ -1,0 +1,67 @@
+color: null
+fieldLayouts:
+  8bdb3ebf-56f9-468d-93af-a00970b73e83:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-04-17T12:07:51+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 7cc75d0b-92e6-4032-aeec-659228785488
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-04-17T12:11:17+00:00'
+            elementCondition: null
+            fieldUid: 5f6b13a2-8f09-4cbf-a660-449cf3604a04 # Gallery
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7740500a-745a-4fcb-89b2-60973b72b01a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 8d0022fb-f6de-4c20-9703-bc34f2a9133f
+        userCondition: null
+handle: highlightsSection
+hasTitleField: true
+icon: null
+name: 'Highlights Section'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

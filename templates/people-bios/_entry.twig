@@ -5,12 +5,14 @@
 	<div id="popup-modal">
 		<div class="close-button"></div>
 		
+		{% if entry.imageModule|length %}
 		<div class="image-column">
 			{% set image = entry.imageModule.one() %}
 			{% include '00_site-wide/image-module_fb.twig' %}
 		</div>
+		{% endif %}
 		
-		<div class="text-column">
+		<div class="text-column{% if entry.imageModule|length %}{% else %} no-image{% endif %}">
 			<div class="inner-column">
 				<div class="people-titles">
 					<h1 class="size-08">{{ entry.title }}</h1>
