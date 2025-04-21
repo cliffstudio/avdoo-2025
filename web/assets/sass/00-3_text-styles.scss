@@ -13,62 +13,62 @@ h1 {
 	font-weight: 300;
 	
 	&.x-large {
-		@include font-size(60px, 150px);
+		@include font-size(60px, 150px*0.8);
 		line-height: 50%;
 	}
 	
 	&.size-01 {
-		@include font-size(60px, 120px);
+		@include font-size(60px, 120px*0.8);
 		line-height: 100%;
 	}
 	
 	&.size-02 {
-		@include font-size(50px, 100px);
+		@include font-size(50px, 100px*0.8);
 		line-height: 100%;
 	}
 	
 	&.size-03 {
-		@include font-size(45px, 80px);
+		@include font-size(45px, 80px*0.8);
 		line-height: 93.75%;
 	}
 	
 	&.size-04 {
-		@include font-size(35px, 75px);
+		@include font-size(35px, 75px*0.8);
 		line-height: 93.33%;
 	}
 	
 	&.size-05 {
-		@include font-size(28px, 60px);
+		@include font-size(28px, 60px*0.8);
 		line-height: 100%;
 	}
 	
 	&.size-06 {
 		font-family: $austin-text;
-		@include font-size(30px, 55px);
+		@include font-size(30px, 55px*0.8);
 		line-height: 127%;
 	}
 	
 	&.size-07 {
 		font-family: $austin-text;
-		@include font-size(24px, 50px);
+		@include font-size(24px, 50px*0.8);
 		line-height: 110%;
 	}
 	
 	&.size-08 {
 		font-family: $austin-text;
-		@include font-size(24px, 40px);
+		@include font-size(24px, 40px*0.8);
 		line-height: 112.5%;
 	}
 	
 	&.size-09 {
 		font-family: $austin-text;
-		@include font-size(20px, 30px);
+		@include font-size(20px, 30px*0.8);
 		line-height: 100%;
 	}
 	
 	&.size-10 {
 		font-family: $austin-text;
-		@include font-size(16px, 20px);
+		@include font-size(16px, 20px*0.8);
 		line-height: 120%;
 	}
 	
@@ -89,27 +89,27 @@ h2 {
 	font-weight: 400;
 	
 	&.size-01 {
-		@include font-size(25px, 40px);
+		@include font-size(25px, 40px*0.8);
 		line-height: 125%;
 		text-transform: uppercase;
 	}
 	
 	&.size-02 {
-		@include font-size(14px, 32px);
+		@include font-size(14px, 32px*0.8);
 		letter-spacing: 0.05em;
 		line-height: 218%;
 		text-transform: uppercase;
 	}
 	
 	&.size-03 {
-		@include font-size(14px, 25px);
+		@include font-size(14px, 25px*0.8);
 		letter-spacing: 0.05em;
 		line-height: 280%;
 		text-transform: uppercase;
 	}
 	
 	&.size-04 {
-		font-size: 20px;
+		font-size: 20px*0.8;
 		letter-spacing: 0.02em;
 		line-height: normal;
 		text-transform: uppercase;
@@ -124,30 +124,30 @@ h3 {
 	letter-spacing: 0.02em;
 	
 	&.size-01 {
-		@include font-size(40px, 80px);
+		@include font-size(40px, 80px*0.8);
 		line-height: 75%;
 		letter-spacing: 0px;
 	}
 	
 	&.size-02 {
-		@include font-size(14px, 25px);
+		@include font-size(14px, 25px*0.8);
 		line-height: 120%;
 		letter-spacing: 0.02em;
 	}
 	
 	&.size-03 {
-		@include font-size(14px, 20px);
+		@include font-size(14px, 20px*0.8);
 		line-height: normal;
 	}
 	
 	&.size-04 {
-		font-size: 14px;
+		font-size: 14px*0.85;
 		line-height: 157%;
 		letter-spacing: 0.02em;
 	}
 	
 	&.header-text {
-		@include font-size(12px, 16px);
+		@include font-size(12px, 16px*0.85);
 		letter-spacing: 0.02em;
 	}
 	
@@ -157,7 +157,7 @@ h3 {
 
 h4 {
 	font-family: $kostic-serif;
-	@include font-size(18px, 24px);
+	@include font-size(18px, 24px*0.8);
 	line-height: calc(30 / 24) + em;
 	margin-bottom: 1em;
 }
@@ -166,7 +166,7 @@ h4 {
 
 h5 {
 	font-family: $kostic-serif;
-	@include font-size(18px, 22px);
+	@include font-size(18px, 22px*0.8);
 	line-height: normal;
 	margin-bottom: 1em;
 }
@@ -175,7 +175,7 @@ h5 {
 
 h6 {
 	font-family: $kostic-serif;
-	@include font-size(18px, 20px);
+	@include font-size(18px, 20px*0.8);
 	line-height: normal;
 	margin-bottom: 1em;
 }
@@ -184,12 +184,12 @@ h6 {
 
 p {
 	font-family: $kostic-serif;
-	@include font-size(18px, 30px);
+	@include font-size(18px, 30px*0.8);
 	line-height: 120%;
 	margin-bottom: 1em;
 	
 	&.size-02 {
-		@include font-size(18px, 28px);
+		@include font-size(18px, 28px*0.8);
 		line-height: normal;
 	}
 	
@@ -212,7 +212,7 @@ textarea {
 	@include input-placeholder($colour-black);
 	font-family: $haas-grotesk;
 	letter-spacing: 0.02em;
-	@include font-size(14px, 25px);
+	@include font-size(14px, 25px*0.8);
 	line-height: 120%;
 	border-bottom: 1px solid $colour-black;
 	border-width: 0.5px;
@@ -243,7 +243,7 @@ button[type=submit] {
 	@include reset-input();
 	font-family: $school-book;
 	font-weight: 400;
-	font-size: 20px; 
+	font-size: 20px*0.8; 
 	letter-spacing: 0.02em;
 	line-height: 0.8em;
 	text-transform: uppercase;
