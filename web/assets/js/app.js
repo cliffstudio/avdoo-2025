@@ -255,27 +255,55 @@ $(document).ready(function() {
 	$(document).on('click', 'a.universe-filter-button', function(e) {
 		e.preventDefault();
 		
+		var thisUniverseFilter = $(this);
 		var universeFilterHook = $(this).attr('data-hook'),
 			selectedUniverseFilters = $('a.universe-filter-button.' + universeFilterHook),
 			unselectedUniverseFilters = $('a.universe-filter-button').not(selectedUniverseFilters),
 			selectedUniversePosts = $('.universe-block.' + universeFilterHook),
 			otherUniversePosts = $('.universe-block').not(selectedUniversePosts);
-		
+				
 		//adjust menu classes
 		unselectedUniverseFilters.removeClass('active');
 		selectedUniverseFilters.addClass('active');
 		
-		//filter universe blocks
-		if($(this).hasClass('all')) {
-			
-			$('.universe-block').removeClass('hidden');
-			
-		} else {
+		//first hide all blocks
+		$('.universe-block').addClass('hidden');
 		
-			otherUniversePosts.addClass('hidden');
-			selectedUniversePosts.removeClass('hidden');
-		
-		}
+		setTimeout(function() {
+			
+			//then remove all unselected ones
+			if(thisUniverseFilter.hasClass('all')) {
+				$('.universe-block').show();
+			} else {
+				otherUniversePosts.hide();
+				selectedUniversePosts.show();
+			}
+			
+			DisableBodyScroll();
+			
+			//scroll to top of page
+			if($(window).width() > 768) {
+				let previouslyCreatedSmoother = ScrollSmoother.get();	
+				previouslyCreatedSmoother.scrollTo('6', false);
+				
+				ScrollTrigger.refresh();
+			} else {
+				$('html, body').animate({
+					scrollTop: 6
+				}, {
+					duration: 1,
+					easing: 'easeInOutCubic'
+				});	
+			}
+			
+			//then fade the selected ones back in
+			setTimeout(function() {
+				$('.universe-block').removeClass('hidden');
+				
+				EnableBodyScroll();
+			}, 50);
+			
+		}, 600);
 		
 		//hide intro statement
 		if(!$('.fixed-intro-statement').hasClass('hidden')) {
