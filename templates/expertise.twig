@@ -215,7 +215,11 @@
 										</div>
 										
 										<div class="image-column">
-											{% set image = capabilityBlock.imageModule.one() %}
+											{% if capabilityBlock.imageModule2|length %}
+												{% set image = capabilityBlock.imageModule2.one() %}
+											{% else %}
+												{% set image = capabilityBlock.imageModule.one() %}
+											{% endif %}
 											{% include '00_site-wide/image-module_fb.twig' %}
 										</div>
 										

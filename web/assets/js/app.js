@@ -544,7 +544,7 @@ function CarouselSectionCarousel() {
 		fade: false,
 		autoPlay: false,
 		pauseAutoPlayOnHover: false,
-		wrapAround: false,
+		wrapAround: true,
 		draggable: draggableVar,
 		cellAlign: 'left',
 		lazyLoad: 2,

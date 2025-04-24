@@ -37,6 +37,7 @@ fieldLayouts:
             width: 50
           -
             dateAdded: '2025-03-26T22:51:40+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: 0cee4245-682f-4229-9cbe-8541ff4a8458 # Subtitle
             handle: null
@@ -53,12 +54,13 @@ fieldLayouts:
             width: 50
           -
             dateAdded: '2025-03-24T15:35:00+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: ee23eee0-31b7-4cda-b63d-134aa4586e5d # Image Module
             handle: null
             includeInCards: false
             instructions: null
-            label: null
+            label: Image
             providesThumbs: false
             required: false
             tip: null
@@ -66,9 +68,27 @@ fieldLayouts:
             uid: d46e9bf5-b11f-4fad-877f-7b4515717021
             userCondition: null
             warning: null
-            width: 100
+            width: 50
+          -
+            dateAdded: '2025-04-24T11:42:54+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: ee23eee0-31b7-4cda-b63d-134aa4586e5d # Image Module
+            handle: imageModule2
+            includeInCards: false
+            instructions: null
+            label: 'Alt Image'
+            providesThumbs: false
+            required: false
+            tip: 'this field isn''t required, if you want to set a separate image / crop for when the module opens up, you''d add it here.'
+            type: craft\fieldlayoutelements\CustomField
+            uid: b8a08a58-6051-43a4-8306-0dd709fe87fd
+            userCondition: null
+            warning: null
+            width: 50
           -
             dateAdded: '2025-03-24T15:35:00+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: 7007aefc-e507-440d-a974-1e8234039db3 # Info
             handle: null

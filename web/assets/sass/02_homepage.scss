@@ -290,7 +290,8 @@ PAGE WRAP ------------------
 		.carousel-section-carousel {
 			width: 100%; height: auto;
 			overflow: visible !important;
-			* { overflow: visible !important; }
+			.flickity-viewport,
+			.flickity-slider { overflow: visible !important; }
 			
 			.carousel-slide {
 				width: get-rem-desktop(520); height: auto;
