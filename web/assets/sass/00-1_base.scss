@@ -31,9 +31,6 @@ body {
 	font-family: $kostic-serif;
 	-webkit-text-size-adjust: 100%;
 	margin: 0; padding: 0;
-	opacity: 0;
-	will-change: opacity;
-	transition: opacity 1000ms cubic-bezier(0.25,0.1,0.25,1);
 	
 	a {
 		position: relative;
@@ -58,9 +55,17 @@ body {
 		
 	}
 	
+	#smooth-wrapper {
+		opacity: 0;
+		will-change: opacity;
+		transition: opacity 1000ms cubic-bezier(0.25,0.1,0.25,1);
+	}
+	
 	//LOADED
 	&.loaded {
-		opacity: 1;
+		#smooth-wrapper {
+			opacity: 1;
+		}
 	}
 	
 }

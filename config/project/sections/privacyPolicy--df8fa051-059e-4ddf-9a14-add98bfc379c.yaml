@@ -1,0 +1,28 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: ee90f9e2-2375-40b7-9a3c-7b9c7e973289 # Text Page
+handle: privacyPolicy
+maxAuthors: 1
+name: 'Privacy Policy'
+previewTargets:
+  -
+    __assoc__:
+      -
+        - label
+        - 'Primary entry page'
+      -
+        - urlFormat
+        - '{url}'
+      -
+        - refresh
+        - '1'
+propagationMethod: all
+siteSettings:
+  966432a0-b4ee-458a-a839-f2381951a549: # Avdoo
+    enabledByDefault: true
+    hasUrls: true
+    template: text.twig
+    uriFormat: privacy-policy
+type: single

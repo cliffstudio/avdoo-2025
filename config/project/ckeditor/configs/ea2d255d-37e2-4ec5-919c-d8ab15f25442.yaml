@@ -1,0 +1,17 @@
+headingLevels: false
+name: 'Text Page Styles'
+options:
+  heading:
+    options:
+      -
+        model: paragraph
+        title: Paragraph
+        view:
+          classes: body-copy
+          name: p
+toolbar:
+  - heading
+  - bulletedList
+  - bold
+  - italic
+  - link

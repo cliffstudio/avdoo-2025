@@ -1,0 +1,34 @@
+{% extends "layout.twig" %}
+
+{% block title %}
+	{{ entry.title }} - Avdoo
+{% endblock %}
+
+{% block content %}
+<main>
+	
+	{# START TEXT PAGE CONTENT #}
+	<div id="text-page" class="page-wrap">
+		<div class="outer-content-wrap">
+			<div class="text-wrap shift-on-scroll">
+				
+				{% if entry.title|length %}
+					<h2 class="size-02 page-title">{{ entry.title }}</h2>
+				{% endif %}
+				
+				{% if entry.textPageTextContent|length %}
+					{{ entry.textPageTextContent }}
+				{% endif %}
+				
+			</div>
+		</div>
+	</div>
+	{# END TEXT PAGE CONTENT #}
+	
+</main>
+	
+<!--START FOOTER-->
+{% include '00_site-wide/footer.twig' %}
+<!--END FOOTER-->
+	
+{% endblock %}

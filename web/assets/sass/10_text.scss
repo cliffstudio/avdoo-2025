@@ -1,0 +1,39 @@
+/*
+PAGE WRAP ------------------
+*/
+
+.page-wrap#text-page {
+	padding: get-rem-desktop(321) 0 get-rem-desktop(160) 0;
+	
+	.text-wrap {
+		width: percentage(1464/1760);
+		margin: 0 auto;
+		
+		//Page Title
+		h2.page-title {
+			text-align: center;
+			margin-bottom: get-rem-desktop(95);
+		}
+		
+		//Lists
+		ul {
+			padding-left: 1.4em;
+		}
+		
+		//Links
+		a {
+			text-decoration: underline;
+		}
+		
+	}
+	
+	@media only screen and (max-width: 768px) {
+		padding: get-rem-mobile(116) 0 get-rem-mobile(116) 0;
+		
+		.text-wrap {
+			width: 100%;
+		}
+		
+	}
+
+}

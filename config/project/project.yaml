@@ -1,4 +1,4 @@
-dateModified: 1745495007
+dateModified: 1745704660
 email:
   fromEmail: hello@cliff.studio
   fromName: Avdoo
@@ -140,17 +140,23 @@ meta:
     db37ee35-ab34-43ab-af0f-ca227d3585ce: 'Founder Signature' # Founder Signature
     db856bf9-7edd-4235-bf61-afa26676bc8c: 'Highlights Section' # Highlights Section
     dbf4f2a6-e23c-4839-87c5-135267e5613d: 'Contact Form Intro' # Contact Form Intro
+    df8fa051-059e-4ddf-9a14-add98bfc379c: 'Privacy Policy' # Privacy Policy
     e3b4d157-e782-41a9-9d54-503bf17adefb: Timeline # Timeline
     e5c1af38-a5d3-4f83-92ba-75686d0155ec: 'People Text Styles' # People Text Styles
     e14aaedd-fb32-4e58-805a-4cecb9aa611f: 'Contact Details' # Contact Details
     e4131e81-8994-4a71-867c-9622a931ae86: Links # Links
+    e86078f5-6990-4d68-8c41-6c160382acf2: 'Terms of Use' # Terms of Use
+    ea2d255d-37e2-4ec5-919c-d8ab15f25442: 'Text Page Styles' # Text Page Styles
     ea205e9b-474b-4aa1-bb9e-7c172882d3ab: Facts # Facts
     ee6be1d7-80c7-428d-9bfa-7be885f65d5a: 'Carousel Section' # Carousel Section
     ee23eee0-31b7-4cda-b63d-134aa4586e5d: 'Image Module' # Image Module
     ee69ab96-7a58-4ddd-97b9-95bbd0c9f722: 'Link List' # Link List
+    ee90f9e2-2375-40b7-9a3c-7b9c7e973289: 'Text Page' # Text Page
     ef82962e-bbeb-4e31-a83e-3f96354ee908: 'Legal Menu' # Legal Menu
     efe3b258-cc1b-42cf-a263-0c4fb294df9f: 'Quote Text' # Quote Text
+    f6ea911c-6015-493d-97fd-8df53180ca6a: 'Cookie Policy' # Cookie Policy
     f7131f64-96f7-49dd-9bac-97bdcf769056: People # People
+    fcc339ba-657d-4876-a0b8-4e0a59116bdd: 'Text Content' # Text Content
     fd629fb3-70d7-4c3f-a045-81ea4c4f820d: Footer # Footer
     fdf722ff-1e93-4f41-b3d8-643fbdca5f45: Bio # Bio
 plugins:

@@ -1,0 +1,22 @@
+columnSuffix: null
+handle: textPageTextContent
+instructions: null
+name: 'Text Content'
+searchable: false
+settings:
+  availableTransforms: ''
+  availableVolumes: '*'
+  ckeConfig: ea2d255d-37e2-4ec5-919c-d8ab15f25442 # Text Page Styles
+  createButtonLabel: null
+  defaultTransform: null
+  purifierConfig: null
+  purifyHtml: false
+  showUnpermittedFiles: false
+  showUnpermittedVolumes: false
+  showWordCount: false
+  sourceEditingGroups:
+    - __ADMINS__
+  wordLimit: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\ckeditor\Field

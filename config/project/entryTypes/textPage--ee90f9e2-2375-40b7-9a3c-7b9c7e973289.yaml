@@ -1,0 +1,68 @@
+color: null
+fieldLayouts:
+  6ee33619-7c6b-4c06-b4da-3356fa902f2a:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: '2025-04-26T20:55:00+00:00'
+            disabled: false
+            elementCondition: null
+            id: null
+            includeInCards: false
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            providesThumbs: false
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: e6526a5c-ca77-4285-b00e-2fc13f9b5a5e
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-04-26T21:00:12+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: fcc339ba-657d-4876-a0b8-4e0a59116bdd # Text Content
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 51a661a7-2c03-43f7-b414-914703820bf5
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: a56711e6-cb60-4869-8c2c-6098c07aefd6
+        userCondition: null
+handle: textPage
+hasTitleField: true
+icon: newspaper
+name: 'Text Page'
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

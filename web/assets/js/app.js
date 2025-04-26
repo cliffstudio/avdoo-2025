@@ -403,14 +403,14 @@ function PageLoadFunctions() {
 		ShiftScrollTrigger();
 	}
 	
+	//––SOLID HEADER
+	if(!$('body').hasClass('universe')) {
+		SolidHeader();
+	}
+	
 	//––DARK HEADER OVERRIDE TRIGGER
 	if ($(".dark-header-override").length) {
 		DarkHeaderOverride();
-	}
-	
-	//––SOLID HEADER
-	if(!$('body').hasClass('universe')) {
-		// SolidHeader();
 	}
 
 	//––RESIZE FUNCTION
@@ -861,24 +861,72 @@ function mediaLazyloading() {
 
 function SolidHeader() {
 	
+	if ($(".dark-header-override").length) {
+		
+		ScrollTrigger.create({
+			trigger: '.dark-header-override',
+			start: "-50 top",
+			end: "110% bottom",
+			pin: false,
+			pinSpacing:false,
+			markers: false,
+			onEnter: () => {
+				$('header').addClass('solid-header');
+			},
+			onLeave: () => {
+			},
+			onLeaveBack: () => {
+			},
+			onEnterBack: () => {
+				$('header').removeClass('solid-header');
+			}
+		});
+		
+	} else {
+	
+		ScrollTrigger.create({
+			trigger: 'body',
+			start: "2 top",
+			end: "110% bottom",
+			pin: false,
+			pinSpacing:false,
+			markers: false,
+			onEnter: () => {
+				$('header').addClass('solid-header');
+			},
+			onLeave: () => {
+				$('header').removeClass('solid-header');
+			},
+			onLeaveBack: () => {
+				$('header').removeClass('solid-header');
+			},
+			onEnterBack: () => {
+				$('header').addClass('solid-header');
+			}
+		});
+	
+	}
+	
+}
+
+//––DARK HEADER OVERRIDE
+
+function DarkHeaderOverride() {
+	
 	ScrollTrigger.create({
-		trigger: 'body',
-		start: "2 top",
+		trigger: '.dark-header-override',
+		start: "-50 top",
 		end: "110% bottom",
 		pin: false,
 		pinSpacing:false,
 		markers: false,
 		onEnter: () => {
-			$('header').addClass('solid-header');
+			$('header').addClass('dark-header-override');
 		},
-		onLeave: () => {
-			$('header').removeClass('solid-header');
-		},
-		onLeaveBack: () => {
-			$('header').removeClass('solid-header');
-		},
+		onLeave: () => {},
+		onLeaveBack: () => {},
 		onEnterBack: () => {
-			$('header').addClass('solid-header');
+			$('header').removeClass('dark-header-override');
 		}
 	});
 	
@@ -980,29 +1028,6 @@ function ShiftScrollTrigger() {
 			markers:false
 		});
 	
-	});
-	
-}
-
-//––DARK HEADER OVERRIDE
-
-function DarkHeaderOverride() {
-	
-	ScrollTrigger.create({
-		trigger: '.dark-header-override',
-		start: "-50 top",
-		end: "110% bottom",
-		pin: false,
-		pinSpacing:false,
-		markers: false,
-		onEnter: () => {
-			$('header').addClass('dark-header-override');
-		},
-		onLeave: () => {},
-		onLeaveBack: () => {},
-		onEnterBack: () => {
-			$('header').removeClass('dark-header-override');
-		}
 	});
 	
 }

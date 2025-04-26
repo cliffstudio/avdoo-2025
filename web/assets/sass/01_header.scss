@@ -2,11 +2,12 @@
 
 header {
 	position: fixed;
+	display: block;
 	width: 100%; height: auto;
 	top: 0; left: 0;
 	padding: get-rem-desktop(54) 0 get-rem-desktop(20) 0;
-	will-change: background-color, transform;
-	transition: background-color 500ms cubic-bezier(0.25,0.1,0.25,1), transform 500ms cubic-bezier(0.25,0.1,0.25,1);
+	will-change: background-color, transform, backdrop-filter;
+	transition: background-color 500ms cubic-bezier(0.25,0.1,0.25,1), backdrop-filter 500ms cubic-bezier(0.25,0.1,0.25,1), transform 500ms cubic-bezier(0.25,0.1,0.25,1);
 	z-index: 500;
 	
 	.outer-content-wrap {
@@ -75,7 +76,8 @@ header {
 		}
 		
 		@media only screen and (max-width: 768px) {
-			top: 0;	
+			top: get-rem-mobile(3);	
+			transform: translateY(0px);
 			width: get-rem-mobile(25); height: get-rem-mobile(20);
 		}
 		
@@ -122,11 +124,28 @@ header {
 		}
 	}
 	
+	//––SOLID HEADER
+	&.solid-header {
+		background-color: rgb(255, 252, 241);
+		background-color: rgba(255, 252, 241, 0.3);
+		backdrop-filter: blur(50px);
+		
+		.outer-content-wrap {
+			filter: invert(0%) !important;
+		}
+		
+	}
+	
 	//––MENU OPENED OVERRIDE
 	&.menu-opened-override {
+		background-color: transparent !important;
+		backdrop-filter: blur(0px) !important;
+		transform: translateY(0px) !important;
+		
 		.outer-content-wrap {
 			filter: invert(100%) !important;
 		}
+		
 	}
 	
 	//––HIDDEN HEADER
@@ -134,18 +153,6 @@ header {
 		transform: translateY(-100%);
 		transition: background-color 500ms cubic-bezier(0.25,0.1,0.25,1), transform 300ms cubic-bezier(0.25,0.1,0.25,1);
 	}
-	
-	//––SOLID HEADER
-	// &.solid-header {
-	// 	background-color: #938D83;
-	// 	background-color: rgba(147, 141, 131, 0.9);
-	// 	backdrop-filter: blur(15px);
-	// 	
-	// 	.outer-content-wrap {
-	// 		filter: invert(100%) !important;
-	// 	}
-	// 	
-	// }
 	
 }
 
