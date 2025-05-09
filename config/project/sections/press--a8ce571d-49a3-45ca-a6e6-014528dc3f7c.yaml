@@ -25,4 +25,7 @@ siteSettings:
     hasUrls: true
     template: press/_entry.twig
     uriFormat: 'press/{slug}'
-type: channel
+structure:
+  maxLevels: null
+  uid: 031ec6e0-9cb0-4002-aeae-46f5c543fb8c
+type: structure

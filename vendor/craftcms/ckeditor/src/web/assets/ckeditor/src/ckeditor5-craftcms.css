@@ -30,12 +30,14 @@
   --ck-color-text: var(--text-color) !important;
   --ck-color-toolbar-border: var(--ck-color-base-border) !important;
   --ck-drop-shadow-active: var(--ck-drop-shadow) !important;
-  --ck-drop-shadow: 0 0 0 1px hsl(210, 24%, 16%, 0.1),
-    0 5px 20px hsl(210, 24%, 16%, 0.25) !important;
+  --ck-drop-shadow:
+    0 0 0 1px hsl(210, 24%, 16%, 0.1), 0 5px 20px hsl(210, 24%, 16%, 0.25) !important;
   --ck-spacing-unit: 0.69em !important;
   --ck-powered-by-line-height: 8px;
   --ck-powered-by-padding-vertical: 0px;
   --ck-powered-by-padding-horizontal: 0px;
+  --ck-color-base-background: var(--input-bg) !important;
+  --ck-color-toolbar-background: var(--white) !important;
 }
 
 .ck.ck-sticky-panel .ck-sticky-panel__content_sticky .ck.ck-toolbar {
@@ -93,6 +95,10 @@ a.ck.ck-button:focus {
 }
 
 /* content */
+.ck.ck-content {
+  color: var(--text-color);
+}
+
 .ck.ck-content ul:last-child,
 .ck.ck-content ol:last-child {
   padding-bottom: 0 !important;
@@ -145,10 +151,16 @@ a.ck.ck-button:focus {
   background: var(--ck-color-base-background);
 }
 
+/* nested entries */
 .cke-entry-card {
   margin: 0.9em auto; /* same as images */
   border-radius: var(--large-border-radius);
 }
+
+.ck-toolbar .entry-type-buttons .icon {
+  color: var(--icon-color);
+}
+/* end nested entries
 
 /* start fix for https://github.com/craftcms/ckeditor/issues/345 */
 .so-body .ck-toolbar_grouping {
@@ -161,6 +173,10 @@ a.ck.ck-button:focus {
 
 .so-body .ck.ck-toolbar-dropdown > .ck-dropdown__panel {
   width: 100%;
+}
+
+.so-body .ck.ck-editor .ck-editor__top .ck-sticky-panel .ck-toolbar {
+  z-index: auto;
 }
 /* end fix */
 

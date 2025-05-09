@@ -25,4 +25,7 @@ siteSettings:
     hasUrls: true
     template: portfolio/_entry.twig
     uriFormat: 'portfolio/{slug}'
-type: channel
+structure:
+  maxLevels: null
+  uid: d6da5714-0724-4fca-bac6-800aac2f3e4c
+type: structure

@@ -9,6 +9,7 @@ import {Range} from 'ckeditor5/src/engine';
 import {Collection} from 'ckeditor5/src/utils';
 import {isWidget, WidgetToolbarRepository} from 'ckeditor5/src/widget';
 import {DoubleClickObserver} from '../observers/domevent';
+import CraftEntryTypesButtonView from './entrytypesbuttonview.js';
 
 export default class CraftEntriesUI extends Plugin {
   /**
@@ -29,9 +30,7 @@ export default class CraftEntriesUI extends Plugin {
    * @inheritDoc
    */
   init() {
-    this.editor.ui.componentFactory.add('createEntry', (locale) => {
-      return this._createToolbarEntriesButton(locale);
-    });
+    this._createToolbarEntriesButtons();
 
     this.editor.ui.componentFactory.add('editEntryBtn', (locale) => {
       return this._createEditEntryBtn(locale);
@@ -108,58 +107,36 @@ export default class CraftEntriesUI extends Plugin {
   }
 
   /**
-   * Creates a toolbar button that allows for an entry to be inserted into the editor
+   * Creates toolbar buttons that allow for an entry of given type to be inserted into the editor
    *
-   * @param locale
    * @private
    */
-  _createToolbarEntriesButton(locale) {
+  _createToolbarEntriesButtons() {
     const editor = this.editor;
     const entryTypeOptions = editor.config.get('entryTypeOptions');
-    const insertEntryCommand = editor.commands.get('insertEntry');
 
     if (!entryTypeOptions || !entryTypeOptions.length) {
       return;
     }
 
-    const dropdownView = createDropdown(locale);
-    dropdownView.buttonView.set({
-      label:
-        editor.config.get('createButtonLabel') ||
-        Craft.t('app', 'New {type}', {
-          type: Craft.t('app', 'entry'),
+    this.editor.ui.componentFactory.add(
+      'createEntry',
+      (locale) =>
+        new CraftEntryTypesButtonView(locale, {
+          entriesUi: this,
+          entryTypeOptions: entryTypeOptions,
         }),
-      tooltip: true,
-      withText: true,
-      //commandValue: null,
-    });
-
-    dropdownView.bind('isEnabled').to(insertEntryCommand);
-    addListToDropdown(
-      dropdownView,
-      () =>
-        this._getDropdownItemsDefinitions(entryTypeOptions, insertEntryCommand),
-      {
-        ariaLabel: Craft.t('ckeditor', 'Entry types list'),
-      },
     );
-    // Execute command when an item from the dropdown is selected.
-    this.listenTo(dropdownView, 'execute', (evt) => {
-      this._showCreateEntrySlideout(evt.source.commandValue);
-    });
-
-    return dropdownView;
   }
 
   /**
    * Creates a list of entry type options that go into the insert entry button
    *
    * @param options
-   * @param command
    * @returns {Collection<Record<string, any>>}
    * @private
    */
-  _getDropdownItemsDefinitions(options, command) {
+  _getEntryTypeButtonsCollection(options) {
     const itemDefinitions = new Collection();
     options.map((option) => {
       const definition = {
@@ -168,6 +145,7 @@ export default class CraftEntriesUI extends Plugin {
           commandValue: option.value, //entry type id
           label: option.label || option.value,
           icon: option.icon,
+          color: option.color,
           withText: true,
         }),
       };
@@ -236,6 +214,7 @@ export default class CraftEntriesUI extends Plugin {
    */
   _showEditEntrySlideout(entryId, siteId, modelElement) {
     const editor = this.editor;
+    const model = editor.model;
     const elementEditor = this.getElementEditor();
 
     let $element = this._getCardElement(entryId);
@@ -299,6 +278,19 @@ export default class CraftEntriesUI extends Plugin {
         }
       },
     });
+
+    // set position on the card we just edited and set focus
+    slideout.on('beforeClose', () => {
+      model.change((writer) => {
+        writer.setSelection(writer.createPositionAfter(modelElement));
+        editor.editing.view.focus();
+      });
+    });
+
+    // return focus to the editor
+    slideout.on('close', () => {
+      editor.editing.view.focus();
+    });
   }
 
   /**
@@ -309,6 +301,9 @@ export default class CraftEntriesUI extends Plugin {
    */
   async _showCreateEntrySlideout(entryTypeId) {
     const editor = this.editor;
+    const model = editor.model;
+    const selection = model.document.selection;
+    const range = selection.getFirstRange();
     const nestedElementAttributes = editor.config.get(
       'nestedElementAttributes',
     );
@@ -350,13 +345,29 @@ export default class CraftEntriesUI extends Plugin {
         fresh: 1,
         siteId: data.element.siteId,
       },
+      onSubmit: (ev) => {
+        editor.commands.execute('insertEntry', {
+          entryId: ev.data.id,
+          siteId: ev.data.siteId,
+        });
+      },
     });
 
-    slideout.on('submit', (ev) => {
-      editor.commands.execute('insertEntry', {
-        entryId: ev.data.id,
-        siteId: ev.data.siteId,
+    // set position on before the card we just created and set focus
+    slideout.on('beforeClose', () => {
+      // nullify the trigger element, so the focus is not returned to the "New entry" button in the toolbar
+      slideout.$triggerElement = null;
+      // set position
+      model.change((writer) => {
+        writer.setSelection(
+          writer.createPositionAt(
+            editor.model.document.getRoot(),
+            range.end.path[0],
+          ),
+        );
       });
+      // set focus
+      editor.editing.view.focus();
     });
   }
 }

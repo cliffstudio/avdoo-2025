@@ -244,6 +244,7 @@ CENTERED INTRO TEXT PANEL --------------------
 	padding: get-rem-desktop(150) 0;
 	border-bottom: 1px solid $colour-black;
 	border-width: 0.5px;
+	z-index: 20;
 	
 	.text-wrap {
 		width: percentage(1283/1760);
@@ -799,6 +800,15 @@ GALLERY PANEL --------------------
 
 .gallery-panel {
 	width: 100%; height: auto;
+	&:last-of-type {
+		padding-bottom: get-rem-desktop(190);
+	}
+	
+	@media only screen and (max-width: 768px) {
+		&:last-of-type {
+			padding-bottom: get-rem-mobile(70);
+		}
+	}
 	
 	//Panel Title
 	h2.panel-title {

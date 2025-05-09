@@ -20,6 +20,7 @@ use craft\ckeditor\data\FieldData;
 use craft\ckeditor\data\Markup;
 use craft\ckeditor\events\DefineLinkOptionsEvent;
 use craft\ckeditor\events\ModifyConfigEvent;
+use craft\ckeditor\gql\Generator;
 use craft\ckeditor\web\assets\BaseCkeditorPackageAsset;
 use craft\ckeditor\web\assets\ckeditor\CkeditorAsset;
 use craft\db\FixedOrderExpression;
@@ -56,6 +57,7 @@ use craft\models\Section;
 use craft\models\Volume;
 use craft\services\ElementSources;
 use craft\web\View;
+use GraphQL\Type\Definition\Type;
 use HTMLPurifier_Config;
 use HTMLPurifier_Exception;
 use HTMLPurifier_HTMLDefinition;
@@ -386,6 +388,12 @@ class Field extends HtmlField implements ElementContainerFieldInterface, Mergeab
     public ?int $wordLimit = null;
 
     /**
+     * @var int|null The total number of characters allowed.
+     * @since 4.8.0
+     */
+    public ?int $characterLimit = null;
+
+    /**
      * @var bool Whether the word count should be shown below the field.
      * @since 3.2.0
      */
@@ -430,8 +438,15 @@ class Field extends HtmlField implements ElementContainerFieldInterface, Mergeab
     /**
      * @var string|null The “New entry” button label.
      * @since 4.0.0
+     * @deprecated in 4.8.0
      */
     public ?string $createButtonLabel = null;
+
+    /**
+     * @var bool Whether GraphQL values should be returned as objects with `content`, `chunks`, etc., sub-fields.
+     * @since 4.8.0
+     */
+    public bool $fullGraphqlData = true;
 
     /**
      * @var EntryType[] The field’s available entry types
@@ -459,8 +474,26 @@ class Field extends HtmlField implements ElementContainerFieldInterface, Mergeab
             $config['sourceEditingGroups'] = null;
         }
 
+        if (isset($config['limitUnit'], $config['fieldLimit'])) {
+            if ($config['limitUnit'] === 'chars') {
+                $config['characterLimit'] = (int)$config['fieldLimit'] ?: null;
+            } else {
+                $config['wordLimit'] = (int)$config['fieldLimit'] ?: null;
+            }
+            unset($config['limitUnit'], $config['fieldLimit']);
+        }
+
         if (isset($config['entryTypes']) && $config['entryTypes'] === '') {
             $config['entryTypes'] = [];
+        }
+
+        if (isset($config['graphqlMode'])) {
+            $config['fullGraphqlData'] = ArrayHelper::remove($config, 'graphqlMode') === 'full';
+        }
+
+        // Default fullGraphqlData to false for existing fields
+        if (isset($config['id']) && !isset($config['fullGraphqlData'])) {
+            $config['fullGraphqlData'] = false;
         }
 
         parent::__construct($config);
@@ -476,6 +509,9 @@ class Field extends HtmlField implements ElementContainerFieldInterface, Mergeab
         if ($this->wordLimit === 0) {
             $this->wordLimit = null;
         }
+        if ($this->characterLimit === 0) {
+            $this->characterLimit = null;
+        }
     }
 
     /**
@@ -485,6 +521,7 @@ class Field extends HtmlField implements ElementContainerFieldInterface, Mergeab
     {
         return array_merge(parent::defineRules(), [
             ['wordLimit', 'number', 'min' => 1],
+            ['characterLimit', 'number', 'min' => 1],
         ]);
     }
 
@@ -495,10 +532,31 @@ class Field extends HtmlField implements ElementContainerFieldInterface, Mergeab
     {
         $rules = [];
 
-        if ($this->wordLimit) {
+        if ($this->characterLimit) {
             $rules[] = [
                 function(ElementInterface $element) {
                     $value = strip_tags((string)$element->getFieldValue($this->handle));
+                    if (strlen($value) > $this->characterLimit) {
+                        $element->addError(
+                            "field:$this->handle",
+                            Craft::t('ckeditor', '{field} should contain at most {max, number} {max, plural, one{character} other{characters}}.', [
+                                'field' => Craft::t('site', $this->name),
+                                'max' => $this->characterLimit,
+                            ]),
+                        );
+                    }
+                },
+            ];
+        } elseif ($this->wordLimit) {
+            $rules[] = [
+                function(ElementInterface $element) {
+                    $value = html_entity_decode((string)$element->getFieldValue($this->handle));
+                    $value = preg_replace(
+                        ['/<br>/', '/></'],
+                        [' ', '/> </'],
+                        $value
+                    );
+                    $value = strip_tags($value);
                     if (
                         // regex copied from the WordCount plugin, for consistency
                         preg_match_all('/(?:[\p{L}\p{N}]+\S?)+/u', $value, $matches) &&
@@ -522,9 +580,21 @@ class Field extends HtmlField implements ElementContainerFieldInterface, Mergeab
     /**
      * @inheritdoc
      */
+    public function getContentGqlType(): Type|array
+    {
+        if (!$this->fullGraphqlData) {
+            return parent::getContentGqlType();
+        }
+
+        return Generator::generateType($this);
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function settingsAttributes(): array
     {
-        $attributes = parent::settingsAttributes();
+        $attributes = ArrayHelper::without(parent::settingsAttributes(), 'createButtonLabel');
         $attributes[] = 'entryTypes';
         return $attributes;
     }
@@ -665,7 +735,6 @@ class Field extends HtmlField implements ElementContainerFieldInterface, Mergeab
                     'value' => null,
                 ],
             ], $transformOptions),
-            'defaultCreateButtonLabel' => $this->defaultCreateButtonLabel(),
         ]);
     }
 
@@ -788,6 +857,8 @@ class Field extends HtmlField implements ElementContainerFieldInterface, Mergeab
             'attributes' => [
                 'class' => array_filter([$isRevision ? 'cke-entry-card' : null]),
             ],
+            'hyperlink' => false,
+            'showEditButton' => false,
         ]);
     }
 
@@ -901,7 +972,6 @@ class Field extends HtmlField implements ElementContainerFieldInterface, Mergeab
             'accessibleFieldName' => $this->_accessibleFieldName($element),
             'describedBy' => $this->_describedBy($view),
             'entryTypeOptions' => $this->_getEntryTypeOptions(),
-            'createButtonLabel' => $this->createButtonLabel(),
             'findAndReplace' => [
                 'uiType' => 'dropdown',
             ],
@@ -988,10 +1058,17 @@ JS;
             'textPartLanguage' => static::textPartLanguage(),
         ]);
         $showWordCountJs = Json::encode($this->showWordCount);
-        $wordLimitJs = $this->wordLimit ?: 0;
+        $wordLimitJs = 0;
+        $characterLimitJs = 0;
+        if ($this->characterLimit) {
+            $characterLimitJs = $this->characterLimit;
+        } elseif ($this->wordLimit) {
+            $wordLimitJs = $this->wordLimit;
+        }
 
         $view->registerJs(<<<JS
 (($) => {
+  let instance;
   const config = Object.assign($baseConfigJs, $configOptionsJs);
   if (!jQuery.isPlainObject(config.toolbar)) {
     config.toolbar = {};
@@ -1030,6 +1107,15 @@ JS;
           container.removeClass('error warning');
         }
       }
+      if ($characterLimitJs) {
+        if (stats.characters > $characterLimitJs) {
+          container.addClass('error');
+        } else if (stats.characters >= Math.floor($characterLimitJs * .9)) {
+          container.addClass('warning');
+        } else {
+          container.removeClass('error warning');
+        }
+      }
       onUpdate(stats);
     }
   } else {
@@ -1041,7 +1127,7 @@ JS;
     }
     config.removePlugins.push(...extraRemovePlugins);
   }
-  CKEditor5.craftcms.create($idJs, config);
+  instance = CKEditor5.craftcms.create($idJs, config);
 })(jQuery)
 JS,
             View::POS_END,
@@ -1254,6 +1340,7 @@ JS,
         $entryTypeOptions = array_map(
             fn(EntryType $entryType) => [
                 'icon' => $entryType->icon ? Cp::iconSvg($entryType->icon) : null,
+                'color' => $entryType->getColor()?->value,
                 'label' => Craft::t('site', $entryType->name),
                 'value' => $entryType->id,
             ],
@@ -1261,21 +1348,6 @@ JS,
         );
 
         return $entryTypeOptions;
-    }
-
-    private function createButtonLabel(): string
-    {
-        if (isset($this->createButtonLabel)) {
-            return Craft::t('site', $this->createButtonLabel);
-        }
-        return $this->defaultCreateButtonLabel();
-    }
-
-    private function defaultCreateButtonLabel(): string
-    {
-        return Craft::t('app', 'New {type}', [
-            'type' => Entry::lowerDisplayName(),
-        ]);
     }
 
     /**

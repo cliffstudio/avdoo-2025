@@ -352,8 +352,8 @@ class ComposerStaticInit0bf13ad21b51e65cbc0d53dd656465a8
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'nystudio107\\pluginvite\\' => 
         array (
@@ -6175,6 +6175,9 @@ class ComposerStaticInit0bf13ad21b51e65cbc0d53dd656465a8
         'craft\\ckeditor\\data\\Markup' => __DIR__ . '/..' . '/craftcms/ckeditor/src/data/Markup.php',
         'craft\\ckeditor\\events\\DefineLinkOptionsEvent' => __DIR__ . '/..' . '/craftcms/ckeditor/src/events/DefineLinkOptionsEvent.php',
         'craft\\ckeditor\\events\\ModifyConfigEvent' => __DIR__ . '/..' . '/craftcms/ckeditor/src/events/ModifyConfigEvent.php',
+        'craft\\ckeditor\\gql\\CkeditorData' => __DIR__ . '/..' . '/craftcms/ckeditor/src/gql/CkeditorData.php',
+        'craft\\ckeditor\\gql\\CkeditorMarkup' => __DIR__ . '/..' . '/craftcms/ckeditor/src/gql/CkeditorMarkup.php',
+        'craft\\ckeditor\\gql\\Generator' => __DIR__ . '/..' . '/craftcms/ckeditor/src/gql/Generator.php',
         'craft\\ckeditor\\helpers\\CkeditorConfigSchema' => __DIR__ . '/..' . '/craftcms/ckeditor/src/helpers/CkeditorConfigSchema.php',
         'craft\\ckeditor\\migrations\\BaseConvertMatrixContentMigration' => __DIR__ . '/..' . '/craftcms/ckeditor/src/migrations/BaseConvertMatrixContentMigration.php',
         'craft\\ckeditor\\migrations\\Install' => __DIR__ . '/..' . '/craftcms/ckeditor/src/migrations/Install.php',
@@ -8233,7 +8236,7 @@ class ComposerStaticInit0bf13ad21b51e65cbc0d53dd656465a8
         'verbb\\formie\\events\\PdfTemplateEvent' => __DIR__ . '/..' . '/verbb/formie/src/events/PdfTemplateEvent.php',
         'verbb\\formie\\events\\PlanEvent' => __DIR__ . '/..' . '/verbb/formie/src/events/PlanEvent.php',
         'verbb\\formie\\events\\PruneSubmissionEvent' => __DIR__ . '/..' . '/verbb/formie/src/events/PruneSubmissionEvent.php',
-        'verbb\\formie\\events\\RegisterDateTimeFormatOpionsEvent' => __DIR__ . '/..' . '/verbb/formie/src/events/RegisterDateTimeFormatOpionsEvent.php',
+        'verbb\\formie\\events\\RegisterDateTimeFormatOptionsEvent' => __DIR__ . '/..' . '/verbb/formie/src/events/RegisterDateTimeFormatOptionsEvent.php',
         'verbb\\formie\\events\\RegisterFieldOptionsEvent' => __DIR__ . '/..' . '/verbb/formie/src/events/RegisterFieldOptionsEvent.php',
         'verbb\\formie\\events\\RegisterFieldsEvent' => __DIR__ . '/..' . '/verbb/formie/src/events/RegisterFieldsEvent.php',
         'verbb\\formie\\events\\RegisterIntegrationsEvent' => __DIR__ . '/..' . '/verbb/formie/src/events/RegisterIntegrationsEvent.php',

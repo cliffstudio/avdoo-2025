@@ -501,6 +501,8 @@ class Entry extends Element implements NestedElementInterface, ExpirableElementI
                     $actions[] = DeleteForSite::class;
                 }
             }
+        } else {
+            $actions[] = Copy::class;
         }
 
         // Restore
@@ -1590,7 +1592,7 @@ class Entry extends Element implements NestedElementInterface, ExpirableElementI
                 if (!$entryType) {
                     // Maybe the section/field no longer allows this type,
                     // so get it directly from the Entries service instead
-                    $entryType = Craft::$app->getEntries()->getEntryTypeById($this->_typeId);
+                    $entryType = Craft::$app->getEntries()->getEntryTypeById($this->_typeId, true);
                     if (!$entryType) {
                         throw new InvalidConfigException("Invalid entry type ID: $this->_typeId");
                     }

@@ -28,7 +28,7 @@
 	
 		{# START ARTICLES GRID #}
 		<div class="articles-grid infinite-grid shift-on-scroll">
-		{% set pressQuery = craft.entries().section('press').orderBy('postDate desc') %}
+		{% set pressQuery = craft.entries().section('press') %}
 		{% paginate pressQuery.limit(6) as pageInfo, pressEntries %}
 	
 		{% for entry in pressEntries %}

@@ -53,15 +53,21 @@
 					
 					{# Start Description Row #}
 					{% if entry.portfolioDescription|length %}
-					<div class="description-row">
-						<p class="size-02">{{ entry.portfolioDescription }}</p>
-					</div>
+						<div class="description-row">
+							<p class="size-02">
+								{{ entry.portfolioDescription
+									|replace({'<p>':'', '</p>':''})
+									|raw }}
+							</p>
+						</div>
 					{% endif %}
 					{# End Description Row #}
 					
 					{# Start Info Row #}
 					<div class="info-row">
-						<h3 class="size-03 inner-info-row">{% if entry.portfolioCity|length %}{{ entry.portfolioCity }}{% endif %}{% if entry.portfolioState|length %}, {{ entry.portfolioState }}{% endif %}</h3>
+						{% if entry.portfolioCity|length %}
+						<h3 class="size-03 inner-info-row">{{ entry.portfolioCity }}{% if entry.portfolioState|length %}, {{ entry.portfolioState }}{% endif %}</h3>
+						{% endif %}
 						{% if entry.portfolioUse|length %}<h3 class="size-03 inner-info-row">Use: {{ entry.portfolioUse }}</h3>{% endif %}
 						{% if entry.portfolioSize|length %}<h3 class="size-03 inner-info-row">Size: {{ entry.portfolioSize }}</h3>{% endif %}
 					</div>
@@ -137,7 +143,7 @@
 										<div class="text-column">
 											<div class="text-wrap">
 												{% if capabilityBlock.title|length %}
-													<h1 class="capability-title size-03">{{ capabilityBlock.title }}</h1>
+													<h1 class="capability-title size-03{% if capabilityBlock.subtitle|length %}{% else %} no-subtitle{% endif %}">{{ capabilityBlock.title }}</h1>
 												{% endif %}
 												{% if capabilityBlock.subtitle|length %}
 													<h2 class="capability-subtitle size-02">{{ capabilityBlock.subtitle }}</h2>
@@ -188,7 +194,7 @@
 				{# 04–––GALLERY SECTION #}
 				{% case 'gallerySection' %}
 					
-					<div class="gallery-panel">
+					<section class="gallery-panel">
 						<div class="outer-content-wrap shift-on-scroll">
 							
 							{# Start Panel Title #}
@@ -214,7 +220,7 @@
 							{# End Gallery Grid #}
 						
 						</div>
-					</div>
+					</section>
 				
 				{# 05–––HIGHLIGHTS SECTION #}
 				{% case 'highlightsSection' %}
@@ -247,13 +253,29 @@
 		{# END PAGE CONTENT #}
 		
 		{# START NEXT PROJECT #}
-		{% set nextProject = entry.getNext({ section: 'portfolio' }) %}
+		{% set nextProject = null %}
+		{% set next = entry.getNext({ section: 'portfolio' }) %}
+		{% set keepLooking = true %}
+		
+		{% for i in 0..10 %}
+			{% if keepLooking and next %}
+				{% if not next.portfolioComingSoon %}
+					{% set nextProject = next %}
+					{% set keepLooking = false %}
+				{% else %}
+					{% set next = next.getNext() %}
+				{% endif %}
+			{% else %}
+				{% set keepLooking = false %}
+			{% endif %}
+		{% endfor %}
+		
 		{% if nextProject %}
 			<div class="next-project-module shift-on-scroll">
-			
 				<h2 class="size-02">next project</h2>
-				<h1 class="size-03"><a class="underlined-link" href="{{ nextProject.url }}">{{ nextProject.title }}</a></h1>
-			
+				<h1 class="size-03">
+					<a class="underlined-link" href="{{ nextProject.url }}">{{ nextProject.title }}</a>
+				</h1>
 			</div>
 		{% endif %}
 		{# END NEXT PROJECT #}
@@ -267,9 +289,9 @@
 
 </main>	
 			
-<!--START FOOTER-->
+{# START FOOTER #}
 {% include '00_site-wide/footer.twig' %}
-<!--END FOOTER-->
+{# END FOOTER #}
 	
 {# START GALLERY LIGHTBOX OVERLAY #}
 {% include '00_site-wide/gallery-lightbox.twig' %}

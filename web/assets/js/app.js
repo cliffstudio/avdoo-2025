@@ -8,6 +8,22 @@ $(document).ready(function() {
 	gsap.registerPlugin(ScrollTrigger,ScrollToPlugin,ScrollSmoother)
 	
 	
+	function logAspectRatio() {
+		const width = $(window).width();
+		const height = $(window).height();
+		const base = 16;
+		const ratio = height / width;
+		const scaledHeight = (base * ratio).toFixed(2);
+	
+		console.log(`Aspect Ratio: ${base}:${scaledHeight}`);
+	  }
+	
+	  // Initial call
+	  logAspectRatio();
+	
+	  // Bind to resize
+	  $(window).on('resize', logAspectRatio);
+	
 	PageLoadFunctions();
 	
 	
@@ -20,7 +36,15 @@ $(document).ready(function() {
 		var scrollAmount = $(this).scrollTop();
 		
 		//IF SCROLLING UPWARDS OR DOWNWARDS
-		var headerHiddenMarker = $('header').outerHeight();
+		if($(window).width() > 768) {
+			var headerHiddenMarker = $('header').outerHeight();
+		} else {
+			if($('body').hasClass('home')) {
+				var headerHiddenMarker = $(window).height() * 0.75;
+			} else {
+				var headerHiddenMarker = $('header').outerHeight();
+			}
+		}
 		
 		if (scrollAmount > lastScrollTop && (scrollAmount > headerHiddenMarker )) {
 			
@@ -32,6 +56,40 @@ $(document).ready(function() {
 		
 		}
 		lastScrollTop = scrollAmount;
+		
+		//HOMEPAGE SPECIFIC (MOBILE LOGO LOCKING)
+		if($(window).width() < 768) {
+			if($('body').hasClass('home')) {
+				
+				if(scrollAmount < 0) {
+					var scrollAmount = 0;	
+				}
+				
+				var scrollWindowWidth = $(window).width();
+				var smallLogoWidth = $('header .logo-wrap').outerWidth(),
+					largeLogoWidth = $('.page-wrap#home-page .splash-panel .logo-wrap.dummy').outerWidth(),
+					smallLogoTop = parseInt($('header').css('padding-top'), 10),
+					largeLogoTop = $('.page-wrap#home-page .splash-panel .logo-wrap.scaling').position().top;				
+				
+				var logoWidthDifference = largeLogoWidth - smallLogoWidth,
+					logoTopDifference = largeLogoTop - smallLogoTop;
+				
+				var scrollLogoDifference = logoWidthDifference / logoTopDifference,
+					scrollLogoWidthDiff = scrollAmount * scrollLogoDifference,
+					scrollLogoFinalWidth = largeLogoWidth - scrollLogoWidthDiff,
+					scrollLogoFinalWidth = Math.floor(scrollLogoFinalWidth);
+				var scrollLogoFinalVW = (scrollLogoFinalWidth / scrollWindowWidth) * 100;
+				
+				$('.page-wrap#home-page .splash-panel .logo-wrap.scaling img').css('width', scrollLogoFinalVW + 'vw');
+				
+				if(scrollLogoFinalWidth < smallLogoWidth) {
+					$('body.home').addClass('logo-scaled');
+				} else {
+					$('body.home').removeClass('logo-scaled');
+				}								
+			
+			}
+		}
 		
 	});
 	
@@ -91,7 +149,7 @@ $(document).ready(function() {
 	//Open / Close Menu
 	$(document).on('click', '.page-wrap#home-page .splash-panel .down-arrow', function(e) {
 		
-		var homepageScrollToAmount = $(window).height() - 85;
+		var homepageScrollToAmount = $(window).height();
 		
 		//scroll to carousel
 		if($(window).width() > 768) {
@@ -218,7 +276,7 @@ $(document).ready(function() {
 	});
 	
 	//Open Universe Modal
-	$(document).on('click', '.page-wrap#universe-page .universe-grid .universe-block', function(e) {
+	$(document).on('click', '.page-wrap#universe-page .universe-grid .universe-block.popup-post-type', function(e) {
 		
 		var universeModalOpener = $(this),
 			universePostURL = universeModalOpener.attr('data-url');
@@ -309,6 +367,24 @@ $(document).ready(function() {
 		if(!$('.fixed-intro-statement').hasClass('hidden')) {
 			$('body.universe .fixed-intro-statement').addClass('hidden');
 			$('body.universe .universe-filter-menu').addClass('visible');
+		}
+		
+	});
+	
+	//Scroll back to top of page
+	$(document).on('click', '.back-to-top', function(e) {		
+		
+		//scroll to carousel
+		if($(window).width() > 768) {
+			let previouslyCreatedSmoother = ScrollSmoother.get();	
+			previouslyCreatedSmoother.scrollTo(0, true);
+		} else {
+			$('html, body').animate({
+				scrollTop: 0
+			}, {
+				duration: 800,
+				easing: 'easeInOutCubic'
+			});	
 		}
 		
 	});
@@ -602,8 +678,10 @@ function TabbedCarousel() {
 	
 	if($(window).width() > 768) {
 		var adaptHeightVar = false;
+		var draggableVar = false;
 	} else {
 		var adaptHeightVar = true;
+		var draggableVar = true;
 	}
 	
 	var $TabbedCarousel = $('.tabbed-carousel');	
@@ -613,7 +691,7 @@ function TabbedCarousel() {
 		autoPlay: false,
 		pauseAutoPlayOnHover: false,
 		wrapAround: true,
-		draggable: false,
+		draggable: draggableVar,
 		cellAlign: 'center',
 		lazyLoad: 2,
 		imagesLoaded: true,
@@ -936,38 +1014,56 @@ function DarkHeaderOverride() {
 
 function AnimatedNumberTrigger() {
 	
-	gsap.utils.toArray(".animated-number-wrapper").forEach(function(elem) {
-		
-		var animatedNumberWrapper = elem;
-		
-		ScrollTrigger.create({
-			trigger: elem,
-			start: 'top 80%',
-			end: 'bottom 80%',
-			onEnter: () => {
-				var animatedStatElement = $(elem).find('span.animated-number');
-				var animatedStat = parseFloat(animatedStatElement.attr('data-stat')); // ensure numeric type
-				var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
-	
-				animatedStatElement.animateNumber(
-					{
-						number: animatedStat,
-						numberStep: comma_separator_number_step
-					},
-					{
-						easing: 'swing',
-						duration: 8000,
-						complete: function(){
-							animatedStatElement.closest('.fact').addClass('animation-complete');
-						}
-					}
-				);
-			},
-			markers: false
-		});
-	
+	ScrollTrigger.create({
+		trigger: '.facts-panel',
+		start: 'top 80%',
+		end: 'bottom 80%',
+		onEnter: () => scrambleThenCount(),
+		markers: false
 	});
 	
+}
+
+function scrambleThenCount(duration = 2.5) {
+	$('.animated-number').each(function(_, el) {
+		const $el = $(el);
+		if ($el.data('animated')) return;
+
+		const finalValue = parseInt($el.data('stat'), 10);
+		const digits = finalValue.toString().length;
+
+		$el.data('animated', true);
+
+		let progress = { value: 0 };
+		let lastUpdate = 0;
+
+		// Animate progress with ease
+		gsap.to(progress, {
+			value: 1,
+			duration: duration,
+			ease: "expo.inOut", // creates a slow finish
+			onUpdate: () => {
+				const now = performance.now();
+				const timeSinceLast = now - lastUpdate;
+
+				// Flicker frequency modulated by current progress
+				// Starts fast, slows near the end
+				const flickerInterval = gsap.utils.mapRange(0, 1, 30, 200, progress.value);
+
+				if (timeSinceLast >= flickerInterval) {
+					let scrambled = '';
+					for (let i = 0; i < digits; i++) {
+						scrambled += Math.floor(Math.random() * 10);
+					}
+					$el.text(scrambled);
+					lastUpdate = now;
+				}
+			},
+			onComplete: () => {
+				$el.text(finalValue);
+			}
+		});
+	});
 }
 
 //––OPACITY ON SCROLL
@@ -980,8 +1076,8 @@ function OpacityScrollTrigger() {
 		
 		ScrollTrigger.create({
 			trigger: elem,
-			start:'top 70%',
-			end:'bottom 70%',
+			start:'top 85%',
+			end:'bottom 85%',
 			onEnter: () => {
 				opacityScrollElement.classList.add('visible');
 			},
@@ -1011,8 +1107,8 @@ function ShiftScrollTrigger() {
 		
 		ScrollTrigger.create({
 			trigger: elem,
-			start:'top 70%',
-			end:'bottom 70%',
+			start:'top 85%',
+			end:'bottom 85%',
 			onEnter: () => {
 				shiftScrollElement.classList.add('visible');
 			},

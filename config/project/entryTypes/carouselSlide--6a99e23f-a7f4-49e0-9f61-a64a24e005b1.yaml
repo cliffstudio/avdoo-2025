@@ -36,7 +36,42 @@ fieldLayouts:
             warning: null
             width: 50
           -
+            dateAdded: '2025-05-07T21:44:40+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 52dcb1ee-127a-468e-919b-25edf5ac3230 # Link
+            handle: null
+            includeInCards: false
+            instructions: 'this is an optional link field that''ll allow you to turn the title into a link.'
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a7991c76-d1ca-4b72-9692-99d0eec599af
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-05-07T16:00:33+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: 0cee4245-682f-4229-9cbe-8541ff4a8458 # Subtitle
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f978274d-0774-4e73-b576-41b39364e3bd
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: '2025-03-30T14:15:44+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: ee23eee0-31b7-4cda-b63d-134aa4586e5d # Image Module
             handle: null
@@ -50,9 +85,10 @@ fieldLayouts:
             uid: ecfdfdce-fb6a-49ea-a1d2-47cf6d677393
             userCondition: null
             warning: null
-            width: 50
+            width: 100
           -
             dateAdded: '2025-03-30T14:15:44+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: 581f2422-3e50-4bed-bfac-2947bbfc9c66 # Description
             handle: null

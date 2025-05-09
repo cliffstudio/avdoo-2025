@@ -2,7 +2,7 @@
 
 	{% set universeEntries = craft.entries().section('universe').orderBy('RAND()') %}
 	{% set sizeClasses = ['size-01', 'size-02', 'size-03', 'size-04', 'size-05', 'size-06'] %}
-	{% set speedClasses = ['0.9', '0.7', '1.1'] %}
+	{% set speedClasses = ['0.9', '0.85', '1.05'] %}
 	
 	{% for entry in universeEntries %}
 		{% set image = entry.imageModule.one() %}
@@ -10,8 +10,9 @@
 		{% set randomSizeClass = random(sizeClasses) %}
 		{% set randomSpeedAttr = random(speedClasses) %}
 		{% set category = entry.universeCategory.one() %}
+		{% set postType = entry.universePostType %}
 		
-		<div class="universe-block {{ orientationClass }} {{ randomSizeClass }}{% if category %} {{ category.slug }}{% endif %}" data-entry-id="{{ entry.id }}" data-speed="{{ randomSpeedAttr }}" data-url="{{ entry.url }}">
+		<div class="universe-block {{ orientationClass }} {{ randomSizeClass }}{% if category %} {{ category.slug }}{% endif %}{% if postType == 'link' %} link-post-type{% elseif postType == 'noClick' %} no-click-post-type{% else %} popup-post-type{% endif %}" data-entry-id="{{ entry.id }}" data-speed="{{ randomSpeedAttr }}" data-url="{{ entry.url }}">
 			
 			{# Start Media #}
 			<div class="media-wrap">
@@ -34,6 +35,17 @@
 				</div>
 			</div>
 			{# End Captions #}
+			
+			{# Start Link #}
+			{% if postType == 'link' %}
+				{% set linkPostLink = entry.universeLink %}
+				{% if linkPostLink|length %}
+					
+					<a class="link" href="{{ linkPostLink.url }}" target="{{ linkPostLink.target }}" rel="noopener noreferrer"></a>
+					
+				{% endif %}
+			{% endif %}
+			{# End Link #}
 			
 		</div>
 		

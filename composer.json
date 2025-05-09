@@ -2,9 +2,9 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "require": {
-    "craftcms/ckeditor": "4.6.0",
-    "craftcms/cms": "5.7.1.1",
-    "verbb/formie": "3.0.25",
+    "craftcms/ckeditor": "4.8.0",
+    "craftcms/cms": "5.7.5",
+    "verbb/formie": "3.0.27",
     "vlucas/phpdotenv": "^5.4.0"
   },
   "require-dev": {

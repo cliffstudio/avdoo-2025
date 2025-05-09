@@ -110,16 +110,18 @@ PAGE WRAP ------------------
 			width: 100%; height: auto;
 			max-width: get-rem-desktop(455); height: auto;
 			margin: 0 auto;
-			border-bottom: 1px solid #5A5A5A;
-			border-width: 0.5px;
+			border: none;
 			
 			h3.inner-info-row {
 				width: 100%; height: auto;
 				border-top: 1px solid #5A5A5A;
-				border-width: 0.5px;
+				border-width: 0.5px !important;
 				margin-bottom: 0px;
 				padding: get-rem-desktop(3.5) 0;
 				text-align: center;
+				&:last-of-type {
+					border-bottom: 1px solid #5A5A5A;
+				}
 			}
 			
 			@media only screen and (max-width: 768px) {
@@ -195,6 +197,9 @@ PAGE WRAP ------------------
 						
 						h1.capability-title {
 							margin-bottom: get-rem-desktop(10);
+							&.no-subtitle {
+								margin-bottom: get-rem-desktop(50);
+							}
 						}
 						
 						h2.capability-subtitle {
@@ -206,6 +211,9 @@ PAGE WRAP ------------------
 							
 							h1.capability-title {
 								margin-bottom: get-rem-mobile(18);
+								&.no-subtitle {
+									margin-bottom: get-rem-mobile(24);
+								}
 							}
 							h2.capability-subtitle {
 								margin-bottom: get-rem-mobile(24);

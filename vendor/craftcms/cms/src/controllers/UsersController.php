@@ -1441,6 +1441,7 @@ JS);
     {
         $this->getView()->registerAssetBundle(AuthMethodSetupAsset::class);
 
+        $this->response->setNoCacheHeaders();
         return $this->renderTemplate('_special/setup-2fa.twig', templateMode: View::TEMPLATE_MODE_CP);
     }
 

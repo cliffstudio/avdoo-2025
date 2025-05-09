@@ -37,6 +37,7 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2025-03-28T10:33:18+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: 0cee4245-682f-4229-9cbe-8541ff4a8458 # Subtitle
             handle: null
@@ -53,6 +54,7 @@ fieldLayouts:
             width: 50
           -
             dateAdded: '2025-03-28T10:33:18+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: 0cee4245-682f-4229-9cbe-8541ff4a8458 # Subtitle
             handle: credit
@@ -75,6 +77,7 @@ fieldLayouts:
         elements:
           -
             dateAdded: '2025-03-28T10:34:16+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: ee23eee0-31b7-4cda-b63d-134aa4586e5d # Image Module
             handle: null
@@ -97,6 +100,7 @@ fieldLayouts:
         elements:
           -
             dateAdded: '2025-03-28T12:07:36+00:00'
+            editCondition: null
             elementCondition: null
             fieldUid: 9994361f-6fd5-4a90-a024-adffa448b930 # Category
             handle: null
@@ -118,8 +122,38 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
-            dateAdded: '2025-04-18T13:21:06+00:00'
+            dateAdded: '2025-05-08T14:10:22+00:00'
+            editCondition: null
             elementCondition: null
+            fieldUid: aa4b5d98-b832-4865-8ad3-eeacf8c76772 # Post Type
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c681bffe-ab73-48c2-9e62-53506790227f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: '2025-04-18T13:21:06+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: aa4b5d98-b832-4865-8ad3-eeacf8c76772 # Post Type
+                  layoutElementUid: c681bffe-ab73-48c2-9e62-53506790227f
+                  operator: in
+                  uid: 57c947cc-0926-4ac1-8b27-45cfffb03d50
+                  values:
+                    - popup
+              elementType: craft\elements\Entry
+              fieldContext: global
             fieldUid: 3c6dae2f-4206-48e0-a633-c70464723e38 # Popup Type
             handle: null
             includeInCards: false
@@ -135,6 +169,7 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2025-04-18T13:22:44+00:00'
+            editCondition: null
             elementCondition:
               class: craft\elements\conditions\entries\EntryCondition
               conditionRules:
@@ -146,6 +181,14 @@ fieldLayouts:
                   uid: 46bbda35-1994-4898-9ece-69832748d243
                   values:
                     - textModal
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: aa4b5d98-b832-4865-8ad3-eeacf8c76772 # Post Type
+                  layoutElementUid: c681bffe-ab73-48c2-9e62-53506790227f
+                  operator: in
+                  uid: ffb8806e-b9a4-405b-aea4-e4db3ad1092c
+                  values:
+                    - popup
               elementType: craft\elements\Entry
               fieldContext: global
             fieldUid: 3360f10d-e49f-44de-96fb-4f318b624aed # Popup Header
@@ -163,6 +206,7 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2025-04-18T13:24:29+00:00'
+            editCondition: null
             elementCondition:
               class: craft\elements\conditions\entries\EntryCondition
               conditionRules:
@@ -174,6 +218,14 @@ fieldLayouts:
                   uid: 61079878-b9be-4bce-8b49-240e2a1130d0
                   values:
                     - textModal
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: aa4b5d98-b832-4865-8ad3-eeacf8c76772 # Post Type
+                  layoutElementUid: c681bffe-ab73-48c2-9e62-53506790227f
+                  operator: in
+                  uid: e2a76b24-ff56-4e22-801d-1a8b88e7e252
+                  values:
+                    - popup
               elementType: craft\elements\Entry
               fieldContext: global
             fieldUid: cb07ea78-f11a-4d8f-9c74-c7b98efd05ab # Text Content
@@ -191,6 +243,7 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2025-04-18T14:24:56+00:00'
+            editCondition: null
             elementCondition:
               class: craft\elements\conditions\entries\EntryCondition
               conditionRules:
@@ -202,6 +255,14 @@ fieldLayouts:
                   uid: 76bac81e-abea-4d7d-b29d-2d8764920ab7
                   values:
                     - videoModal
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: aa4b5d98-b832-4865-8ad3-eeacf8c76772 # Post Type
+                  layoutElementUid: c681bffe-ab73-48c2-9e62-53506790227f
+                  operator: in
+                  uid: f0ec21e9-4f79-4467-8584-29045a54914a
+                  values:
+                    - popup
               elementType: craft\elements\Entry
               fieldContext: global
             fieldUid: 029e93c5-94dd-4045-bc74-e522edfed1a6 # Video Module
@@ -219,7 +280,20 @@ fieldLayouts:
             width: 100
           -
             dateAdded: '2025-04-18T13:29:08+00:00'
-            elementCondition: null
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: aa4b5d98-b832-4865-8ad3-eeacf8c76772 # Post Type
+                  layoutElementUid: c681bffe-ab73-48c2-9e62-53506790227f
+                  operator: in
+                  uid: 3b52dc77-a21a-4a56-89bd-9af1525ffb43
+                  values:
+                    - popup
+              elementType: craft\elements\Entry
+              fieldContext: global
             fieldUid: 7909f48a-c93c-4744-b777-adfa4e087c46 # Link
             handle: null
             includeInCards: false
@@ -233,7 +307,36 @@ fieldLayouts:
             userCondition: null
             warning: null
             width: 100
-        name: Popup
+          -
+            dateAdded: '2025-05-08T14:20:37+00:00'
+            editCondition: null
+            elementCondition:
+              class: craft\elements\conditions\entries\EntryCondition
+              conditionRules:
+                -
+                  class: craft\fields\conditions\OptionsFieldConditionRule
+                  fieldUid: aa4b5d98-b832-4865-8ad3-eeacf8c76772 # Post Type
+                  layoutElementUid: c681bffe-ab73-48c2-9e62-53506790227f
+                  operator: in
+                  uid: 93d38587-926b-4aa5-8a8f-1a7ebcc40df8
+                  values:
+                    - link
+              elementType: craft\elements\Entry
+              fieldContext: global
+            fieldUid: c7b062ad-d58a-4c63-969f-795b3d879340 # Link
+            handle: null
+            includeInCards: false
+            instructions: null
+            label: null
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e2dabdee-d69a-43d2-b6eb-e492c82b3ad3
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
         uid: 9072b589-4941-413a-adc4-105163461687
         userCondition: null
 handle: universe

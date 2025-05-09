@@ -10,7 +10,7 @@ use verbb\formie\base\SubFieldInterface;
 use verbb\formie\base\SubField;
 use verbb\formie\elements\Submission;
 use verbb\formie\events\ModifyDateTimeFormatEvent;
-use verbb\formie\events\RegisterDateTimeFormatOpionsEvent;
+use verbb\formie\events\RegisterDateTimeFormatOptionsEvent;
 use verbb\formie\events\ModifyFrontEndSubFieldsEvent;
 use verbb\formie\fields\subfields\DateYear;
 use verbb\formie\gql\types\generators\FieldAttributeGenerator;
@@ -350,7 +350,10 @@ class Date extends SubField implements PreviewableFieldInterface, SortableFieldI
             $operator = $this->minDateOffset === 'add' ? '+' : '-';
             $interval = "{$operator}{$this->minDateOffsetNumber} {$this->minDateOffsetType}";
 
-            return self::toDateTime(DateTimeHelper::now())->modify($interval)->setTime(0, 0, 0);
+            $date = (new DateTime('now', new DateTimeZone('UTC')))->modify($interval);
+            $date->setTime(0, 0, 0);
+
+            return $date;
         }
 
         if ($this->minDateOption === 'date' && $this->minDate) {
@@ -366,7 +369,10 @@ class Date extends SubField implements PreviewableFieldInterface, SortableFieldI
             $operator = $this->maxDateOffset === 'add' ? '+' : '-';
             $interval = "{$operator}{$this->maxDateOffsetNumber} {$this->maxDateOffsetType}";
 
-            return self::toDateTime(DateTimeHelper::now())->modify($interval)->setTime(23, 59, 59);
+            $date = (new DateTime('now', new DateTimeZone('UTC')))->modify($interval);
+            $date->setTime(23, 59, 59);
+
+            return $date;
         }
 
         if ($this->maxDateOption === 'date' && $this->maxDate) {
@@ -1472,7 +1478,7 @@ class Date extends SubField implements PreviewableFieldInterface, SortableFieldI
             ['label' => 'DD.MM.YYYY', 'value' => 'd.m.Y'],
         ];
 
-        $event = new RegisterDateTimeFormatOpionsEvent([
+        $event = new RegisterDateTimeFormatOptionsEvent([
             'field' => $this,
             'options' => $options,
         ]);
@@ -1491,7 +1497,7 @@ class Date extends SubField implements PreviewableFieldInterface, SortableFieldI
             ['label' => '59:59 (MM:SS)', 'value' => 'i:s'],
         ];
 
-        $event = new RegisterDateTimeFormatOpionsEvent([
+        $event = new RegisterDateTimeFormatOptionsEvent([
             'field' => $this,
             'options' => $options,
         ]);

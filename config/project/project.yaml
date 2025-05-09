@@ -1,4 +1,4 @@
-dateModified: 1745704660
+dateModified: 1746743317
 email:
   fromEmail: hello@cliff.studio
   fromName: Avdoo
@@ -61,6 +61,7 @@ meta:
     48af43a3-402f-405f-a299-1a77f1631683: 'Restricted Editor' # Restricted Editor
     049e4a9f-aa51-49d5-8312-6cf5e348dcd3: 'Two Up Splash Panel' # Two Up Splash Panel
     52b4dd4c-9480-435c-a83e-aab10b7010e2: 'Full Bleed Image Section' # Full Bleed Image Section
+    52dcb1ee-127a-468e-919b-25edf5ac3230: Link # Link
     52f8c504-8a68-48f2-b2a4-591cc6e63d11: 'Quote Section' # Quote Section
     64ddfa6f-31ee-46e6-ac79-c6e20e9b6521: 'Job Title' # Job Title
     65ae3946-acb4-49fa-8461-b6e2e0f4d27f: Portfolio # Portfolio
@@ -99,6 +100,7 @@ meta:
     4272b595-da18-4e92-a993-3059f905a763: 'Featured Developments' # Featured Developments
     4385c3d2-cea2-4e6f-ac18-671edd53f857: Subtext # Subtext
     5883cee1-b0dd-49e2-82a3-4fd3b9ea9540: 'Timeline Section' # Timeline Section
+    6501e5bf-4c4e-4c2c-9989-8663ec30776d: 'Universe Posts' # Universe Posts
     6545ab23-2ecb-4d5b-bd49-9cbd69a67a39: 'Quote Credit' # Quote Credit
     7007aefc-e507-440d-a974-1e8234039db3: Info # Info
     7598d079-b479-444f-ab97-3973d90a0f6b: 'Press Index' # Press Index
@@ -113,6 +115,7 @@ meta:
     a8ce571d-49a3-45ca-a6e6-014528dc3f7c: Press # Press
     a92f7955-7e53-499e-adab-e6e93a58c620: People # People
     a50047c0-ce38-4826-a4b8-999db29295ee: 'Splash Type' # Splash Type
+    aa4b5d98-b832-4865-8ad3-eeacf8c76772: 'Post Type' # Post Type
     ab3c550a-c1f1-4f06-bff9-f75e479365a8: Contact # Contact
     ab27c443-b559-420e-bee0-d260881e7c2b: 'Wider Team Panel' # Wider Team Panel
     af5f86ce-f1bf-4f3f-a677-cedd3b22e3ef: 'Image / Text Panel' # Image / Text Panel
@@ -128,6 +131,7 @@ meta:
     be003824-00b0-4e16-b298-bd049a72b32d: 'Large Title' # Large Title
     bf67df2a-1162-4167-8d5d-fad71a2520fb: Subtitle # Subtitle
     c4fdd5ce-34b0-424a-8625-0d1236549f54: 'Senior Leadship' # Senior Leadship
+    c7b062ad-d58a-4c63-969f-795b3d879340: Link # Link
     c15e3498-3743-44be-af9f-e1107ed5685c: Address # Address
     c198bddd-11b9-486b-af6c-21e20f930cd6: 'Facts Section' # Facts Section
     ca8886e9-5d32-41a9-aada-2d7218e52d6b: Number # Number
@@ -137,9 +141,11 @@ meta:
     ceb2b2c6-dc64-4698-94d5-3c2faab355f6: Size # Size
     d5a18269-b0df-499a-82fd-cac649133c18: New # New
     d7ed8cd8-f319-48bd-9bb0-10da18684ed2: 'Senior Leadership Panel' # Senior Leadership Panel
+    d419799a-2b37-4e2d-8fb1-0e10217a6b17: 'Large Image Section' # Large Image Section
     db37ee35-ab34-43ab-af0f-ca227d3585ce: 'Founder Signature' # Founder Signature
     db856bf9-7edd-4235-bf61-afa26676bc8c: 'Highlights Section' # Highlights Section
     dbf4f2a6-e23c-4839-87c5-135267e5613d: 'Contact Form Intro' # Contact Form Intro
+    ddbccb80-6f07-46d1-b0d1-38a9646c0782: Link # Link
     df8fa051-059e-4ddf-9a14-add98bfc379c: 'Privacy Policy' # Privacy Policy
     e3b4d157-e782-41a9-9d54-503bf17adefb: Timeline # Timeline
     e5c1af38-a5d3-4f83-92ba-75686d0155ec: 'People Text Styles' # People Text Styles

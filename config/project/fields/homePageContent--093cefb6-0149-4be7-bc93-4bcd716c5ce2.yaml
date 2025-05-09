@@ -6,6 +6,7 @@ searchable: false
 settings:
   createButtonLabel: 'New Section'
   defaultIndexViewMode: cards
+  enableVersioning: false
   entryTypes:
     -
       __assoc__:
@@ -32,6 +33,11 @@ settings:
         -
           - uid
           - 4fcb12fa-2475-43b1-85e2-7260f9a40e61 # Universe Section
+    -
+      __assoc__:
+        -
+          - uid
+          - d419799a-2b37-4e2d-8fb1-0e10217a6b17 # Large Image Section
   includeTableView: false
   maxEntries: null
   minEntries: null

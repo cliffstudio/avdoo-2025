@@ -41,7 +41,7 @@
 								<ul>
 									{% for linkedEntry in linkedEntries %}
 										<li>
-											<a href="{{ linkedEntry.url }}">
+											<a href="{% if linkedEntry.portfolioComingSoon %}{{ url('portfolio') }}{% else %}{{ linkedEntry.url }}{% endif %}">
 												<h1 class="size-08">{{ linkedEntry.title }}</h1>
 											</a>
 										</li>
@@ -108,7 +108,11 @@
 			{# End Down Arrow #}
 			
 			{# Start Logo #}
-			<div class="logo-wrap">
+			<div class="logo-wrap scaling">
+				<img src="{{ alias('@web') }}/assets/svgs/main-logo_light.svg" />
+			</div>
+			
+			<div class="logo-wrap dummy">
 				<img src="{{ alias('@web') }}/assets/svgs/main-logo_light.svg" />
 			</div>
 			{# End Logo #}
@@ -160,9 +164,18 @@
 											{% include '00_site-wide/image-module_fb.twig' %}
 										</div>
 										
-										<div class="text">	
+										<div class="text">
 											{% if carouselSlideBlock.title|length %}
-												<h4 class="title{% if carouselSlideBlock.description|length %}{% else %} grey{% endif %}">{{ carouselSlideBlock.title }}</h4>
+												<h4 class="title{% if carouselSlideBlock.description|length %}{% else %} grey{% endif %}">
+													{% if carouselSlideBlock.slideLink|length %}
+														<a href="{{ carouselSlideBlock.slideLink }}">{{ carouselSlideBlock.title }}</a>
+													{% else %}	
+														{{ carouselSlideBlock.title }}
+													{% endif %}
+												</h4>
+											{% endif %}
+											{% if carouselSlideBlock.subtitle|length %}
+												<h4 class="subtitle">{{ carouselSlideBlock.subtitle }}</h4>
 											{% endif %}
 											
 											{% if carouselSlideBlock.description|length %}
@@ -189,6 +202,9 @@
 										<div class="text">	
 											{% if carouselSlideBlock.title|length %}
 												<h4 class="title{% if carouselSlideBlock.description|length %}{% else %} grey{% endif %}">{{ carouselSlideBlock.title }}</h4>
+											{% endif %}
+											{% if carouselSlideBlock.subtitle|length %}
+												<h4 class="subtitle">{{ carouselSlideBlock.subtitle }}</h4>
 											{% endif %}
 											
 											{% if carouselSlideBlock.description|length %}
@@ -241,7 +257,11 @@
 									
 									<div class="text">
 										<h3 class="title size-02">{{ selectedDevelopment.title }}</h3>
-										<h3 class="link size-02"><a class="underlined-link" href="{{ selectedDevelopment.url }}">Case Study ></a></h3>
+										{% if selectedDevelopment.portfolioComingSoon %}
+											<h3 class="link size-02"><a class="underlined-link" href="{{ url('portfolio') }}">Portfolio ></a></h3>
+										{% else %}
+											<h3 class="link size-02"><a class="underlined-link" href="{{ selectedDevelopment.url }}">View Project ></a></h3>
+										{% endif %}
 									</div>
 								
 								</div>
@@ -259,7 +279,8 @@
 					<div class="universe-section">
 						
 						{# Start Universe Grid #}
-						{% include '00_site-wide/universe-grid.twig' %}
+						{% set universePosts = block.universePosts.all() %}
+						{% include '00_site-wide/universe-grid_home.twig' %}
 						{# End Universe Grid #}
 						
 						{# Start Text #}
@@ -269,11 +290,24 @@
 							
 							<div class="button">
 								<h2 class="size-04">OUR UNIVERSE  ></h2>
-								<a href="/" rel="noopener noreferrer"></a>
+								<a href="{{ url('universe') }}" rel="noopener noreferrer"></a>
 							</div>
 						</div>
 						{% endif %}
 						{# End Text #}
+						
+					</div>
+				
+				{# 06–––LARGE IMAGE SECTION #}
+				{% case 'largeImageSection' %}
+					
+					<div class="large-image-section">
+						{% set image = block.imageModule.one() %}
+						{% include '00_site-wide/image-module_fb.twig' %}
+						
+						{% if block.largeImageLink|length %}
+							<a class="link" href="{{ block.largeImageLink }}"></a>
+						{% endif %}
 						
 					</div>
 					

@@ -1,0 +1,32 @@
+columnSuffix: null
+handle: slideLink
+instructions: null
+name: Link
+searchable: false
+settings:
+  fullGraphqlData: true
+  maxLength: 255
+  showLabelField: false
+  typeSettings:
+    __assoc__:
+      -
+        - entry
+        -
+          __assoc__:
+            -
+              - sources
+              -
+                - singles
+                - 'section:a92f7955-7e53-499e-adab-e6e93a58c620' # People
+                - 'section:70ac8027-90bd-41ac-9160-0d79d10f4f7d' # Portfolio
+            -
+              - showUnpermittedSections
+              - ''
+            -
+              - showUnpermittedEntries
+              - ''
+  types:
+    - entry
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Link

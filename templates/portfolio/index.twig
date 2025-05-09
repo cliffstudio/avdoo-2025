@@ -28,7 +28,7 @@
 			{# START PORTFOLIO GRID #}
 			<div class="portfolio-grid">
 			
-				{% set portfolioEntries = craft.entries().section('portfolio').orderBy('postDate desc') %}
+				{% set portfolioEntries = craft.entries().section('portfolio').all %}
 			
 				{% for entry in portfolioEntries %}
 					<article class="{{ entry.portfolioThumbnailSize }} {{ entry.portfolioComingSoon ? 'coming-soon' : 'available' }} shift-on-scroll">
@@ -39,7 +39,7 @@
 							{% include '00_site-wide/image-module_fb.twig' %}
 							
 							{% if entry.portfolioComingSoon %}
-							<h1 class="size-03 coming-soon">Coming Soon</h1>
+							<h1 class="size-03 coming-soon" style="display: none !important;">Coming Soon</h1>
 							{% endif %}
 						</div>
 						{# End Thumbnail Image #}
