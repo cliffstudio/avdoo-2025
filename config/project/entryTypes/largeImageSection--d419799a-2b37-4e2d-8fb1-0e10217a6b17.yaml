@@ -13,12 +13,29 @@ fieldLayouts:
             handle: null
             includeInCards: false
             instructions: null
-            label: null
+            label: 'Image (Desktop)'
             providesThumbs: false
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: 381a5a21-b2c2-4f99-b8c2-50a97a0ae116
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: '2025-05-10T22:18:55+00:00'
+            editCondition: null
+            elementCondition: null
+            fieldUid: ee23eee0-31b7-4cda-b63d-134aa4586e5d # Image Module
+            handle: imageModuleMobile
+            includeInCards: false
+            instructions: null
+            label: 'Image (Mobile)'
+            providesThumbs: false
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4ee7176f-27cc-4ae8-a7c9-47e92b532b6f
             userCondition: null
             warning: null
             width: 50
@@ -38,7 +55,7 @@ fieldLayouts:
             uid: 13538646-e168-4e42-8732-f9015fe4b22b
             userCondition: null
             warning: null
-            width: 50
+            width: 100
         name: Content
         uid: d3a3126e-5862-45ef-bceb-4e9287053f8a
         userCondition: null

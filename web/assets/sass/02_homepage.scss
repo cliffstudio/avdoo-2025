@@ -338,13 +338,19 @@ PAGE WRAP ------------------
 		//CAROUSEL
 		.carousel-section-carousel {
 			width: 100%; height: auto;
+			@include calc( width, '100% + #{get-rem-desktop(80)}');
 			overflow: visible !important;
 			.flickity-viewport,
 			.flickity-slider { overflow: visible !important; }
 			
+			@media only screen and (max-width: 768px) {
+				@include calc( width, '100% + #{get-rem-mobile(20)}');
+			}
+			
 			.carousel-slide {
 				width: get-rem-desktop(520); height: auto;
 				width: 29.5%;
+				@include calc( width, '29.5% - #{get-rem-desktop(80)}');
 				margin-right: percentage(53/1760);
 				
 				//––Image
@@ -386,7 +392,7 @@ PAGE WRAP ------------------
 				}
 				
 				@media only screen and (max-width: 1240px) {
-					width: 37.5%;
+					width: 36%;
 					.text {
 						padding-right: 0px;
 					}
@@ -397,7 +403,7 @@ PAGE WRAP ------------------
 				}
 				
 				@media (min-aspect-ratio: 16/9) {
-					width: 23.5%;	
+					width: 22%;	
 					margin-right: percentage(30/1760);
 					.text {
 						padding-right: 0px;
@@ -435,6 +441,7 @@ PAGE WRAP ------------------
 				
 				&.next {
 					right: get-rem-desktop(-40);
+					right: get-rem-desktop(40);
 				}
 				
 				//––Disabled
@@ -447,6 +454,13 @@ PAGE WRAP ------------------
 					display: none;	
 				}
 				
+			}
+			
+			//––HIDE NAV SPECIFICS
+			&.hide-nav {
+				.flickity-prev-next-button {
+					display: none !important;	
+				}
 			}
 			
 		}
@@ -480,7 +494,7 @@ PAGE WRAP ------------------
 			
 			.carousel-slide {
 				width: percentage(345/1760);
-				margin-right: percentage(51/1760);
+				margin-right: get-rem-desktop(51);
 				
 				a.big-link {
 					position: absolute;
@@ -697,6 +711,36 @@ PAGE WRAP ------------------
 		height: 65vh;
 		overflow: hidden;
 		
+		@media only screen and (max-width: 768px) {
+			height: auto;	
+		}
+		
+		//BG Image
+		.bg {
+			width: 100%; height: auto;
+			z-index: 10;
+			
+			&.desktop {
+				position: absolute;
+				width: 100%; height: 100%;
+				top: 0; left: 0;
+				display: block;
+			}
+			
+			&.mobile {
+				position: relative;
+				width: 100%; height: auto;
+				display: none;
+			}
+			
+			@media only screen and (max-width: 768px) {
+				&.desktop { display: none; }
+				&.mobile { display: block; }
+			}
+			
+		}
+		
+		//Link
 		a.link {
 			position: absolute;
 			width: 100%; height: 100%;

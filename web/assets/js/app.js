@@ -389,6 +389,27 @@ $(document).ready(function() {
 		
 	});
 	
+	jQuery('body').on('click', '.page-wrap#contact-page .button a', function (e) {
+		if (/#/.test(this.href)) {
+			var thisHref = $(this).attr('href');
+			var topOfElement = $(thisHref).offset().top;
+			
+			if($(window).width() > 768) {
+				let previouslyCreatedSmoother = ScrollSmoother.get();	
+				previouslyCreatedSmoother.scrollTo(topOfElement, true);
+			} else {
+				$('html, body').animate({
+					scrollTop: topOfElement
+				}, {
+					duration: 800,
+					easing: 'easeInOutCubic'
+				});	
+			}
+			
+			e.preventDefault();
+		}
+	});
+	
 
 });
 
@@ -614,29 +635,40 @@ function CarouselSectionCarousel() {
 		var draggableVar = true;
 	}
 	
-	var $carouselSectionCarousel = $('.carousel-section-carousel');
-	$carouselSectionCarousel.flickity({
-		cellSelector: '.carousel-slide',
-		fade: false,
-		autoPlay: false,
-		pauseAutoPlayOnHover: false,
-		wrapAround: true,
-		draggable: draggableVar,
-		cellAlign: 'left',
-		lazyLoad: 2,
-		imagesLoaded: true,
-		adaptiveHeight: false,
-		prevNextButtons: true,
-		setGallerySize: true,
-		pageDots: false,
-		contain: true,
-		accessibility: false,
-		arrowShape: 'M 6.1,50L53.1,3.1l-2.6-2.6L.9,50l49.6,49.5,2.6-2.6L6.1,50 Z'
-	});
+	$('.carousel-section-carousel').each(function () {
 	
-	//Lazyload Function
-	$carouselSectionCarousel.on( 'lazyLoad.flickity', function( event, cellElement ) {
-		$(cellElement).addClass('image-loaded');
+		var $carouselSectionCarousel = $(this);
+		$carouselSectionCarousel.flickity({
+			cellSelector: '.carousel-slide',
+			fade: false,
+			autoPlay: false,
+			pauseAutoPlayOnHover: false,
+			wrapAround: true,
+			draggable: draggableVar,
+			cellAlign: 'left',
+			lazyLoad: 2,
+			imagesLoaded: true,
+			adaptiveHeight: false,
+			prevNextButtons: true,
+			setGallerySize: true,
+			pageDots: false,
+			contain: true,
+			accessibility: false,
+			arrowShape: 'M 6.1,50L53.1,3.1l-2.6-2.6L.9,50l49.6,49.5,2.6-2.6L6.1,50 Z'
+		});
+		var flktyCarousels = $carouselSectionCarousel.data('flickity');
+		
+		//hide arrows if there aren't many slides
+		var totalSlides = flktyCarousels.slides.length;
+		if(totalSlides < 4) {
+			$carouselSectionCarousel.addClass('hide-nav');
+		}
+		
+		//Lazyload Function
+		$carouselSectionCarousel.on( 'lazyLoad.flickity', function( event, cellElement ) {
+			$(cellElement).addClass('image-loaded');
+		});
+		
 	});
 	
 }

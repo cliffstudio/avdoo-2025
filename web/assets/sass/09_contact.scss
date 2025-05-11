@@ -132,6 +132,19 @@ PAGE WRAP ------------------
 			
 		}
 		
+		//FORM ALERT
+		.fui-alert {
+			width: 100%; 
+			text-align: center;
+			color: $colour-maroon;
+			margin-bottom: get-rem-desktop(75);
+			
+			@media only screen and (max-width: 768px) {
+				margin-bottom: get-rem-mobile(75);
+			}
+			
+		}
+		
 		//FORM
 		.fui-form {
 			width: 100%; height: auto;

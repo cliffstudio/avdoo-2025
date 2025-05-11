@@ -302,12 +302,22 @@
 				{% case 'largeImageSection' %}
 					
 					<div class="large-image-section">
-						{% set image = block.imageModule.one() %}
-						{% include '00_site-wide/image-module_fb.twig' %}
 						
+						<div class="bg desktop">
+							{% set image = block.imageModule.one() %}
+							{% include '00_site-wide/image-module_fb.twig' %}
+						</div>
+						
+						<div class="bg mobile">
+							{% set image = block.imageModuleMobile.one() %}
+							{% include '00_site-wide/image-module_regular.twig' %}
+						</div>
+						
+						{# Start Link #}
 						{% if block.largeImageLink|length %}
 							<a class="link" href="{{ block.largeImageLink }}"></a>
 						{% endif %}
+						{# End Link #}
 						
 					</div>
 					

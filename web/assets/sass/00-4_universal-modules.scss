@@ -273,6 +273,7 @@ IMAGE / TEXT PANEL --------------------
 	align-items: stretch;
 	justify-content: space-between;
 	width: 100%; height: auto;
+	max-height: 100vh;
 	border-bottom: 1px solid $colour-black;
 	border-width: 0.5px;
 	margin-top: -0.5px;
@@ -281,6 +282,7 @@ IMAGE / TEXT PANEL --------------------
 		align-items: flex-start;
 		flex-direction: column;
 		flex-wrap: wrap;	
+		max-height: initial;
 	}
 	
 	//IMAGE COLUMN
