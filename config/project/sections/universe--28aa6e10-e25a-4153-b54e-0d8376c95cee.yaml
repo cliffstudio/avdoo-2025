@@ -25,4 +25,7 @@ siteSettings:
     hasUrls: true
     template: universe/_entry.twig
     uriFormat: 'universe/{slug}'
-type: channel
+structure:
+  maxLevels: null
+  uid: b122db2d-520a-41f6-8d65-a43a406fab56
+type: structure

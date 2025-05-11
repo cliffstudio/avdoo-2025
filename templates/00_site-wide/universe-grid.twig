@@ -1,6 +1,6 @@
 <div class="universe-grid">		
 
-	{% set universeEntries = craft.entries().section('universe').orderBy('RAND()') %}
+	{% set universeEntries = craft.entries().section('universe').all %}
 	{% set sizeClasses = ['size-01', 'size-02', 'size-03', 'size-04', 'size-05', 'size-06'] %}
 	{% set speedClasses = ['0.9', '0.85', '1.05'] %}
 	
