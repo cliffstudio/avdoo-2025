@@ -802,15 +802,12 @@ GALLERY PANEL --------------------
 
 .gallery-panel {
 	width: 100%; height: auto;
-	&:last-of-type {
+	&.last-one {
 		padding-bottom: get-rem-desktop(190);
-	}
-	&:nth-last-child(2) {
-		padding-bottom: 0px !important;
 	}
 	
 	@media only screen and (max-width: 768px) {
-		&:last-of-type {
+		&.last-one {
 			padding-bottom: get-rem-mobile(70);
 		}
 	}
