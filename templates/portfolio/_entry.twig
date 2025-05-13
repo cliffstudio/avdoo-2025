@@ -1,5 +1,25 @@
 {% extends "layout.twig" %}
 {% block content %}
+
+{# START NEXT PROJECT CHECKER #}
+{% set nextProject = null %}
+{% set next = entry.getNext({ section: 'portfolio' }) %}
+{% set keepLooking = true %}
+
+{% for i in 0..10 %}
+	{% if keepLooking and next %}
+		{% if not next.portfolioComingSoon %}
+			{% set nextProject = next %}
+			{% set keepLooking = false %}
+		{% else %}
+			{% set next = next.getNext() %}
+		{% endif %}
+	{% else %}
+		{% set keepLooking = false %}
+	{% endif %}
+{% endfor %}
+{# END NEXT PROJECT CHECKER #}
+
 <main>
 	
 	{# START PROPERTY PAGE CONTENT #}
@@ -197,7 +217,7 @@
 			{# 04–––GALLERY SECTION #}
 			{% elseif block.type == 'gallerySection' %}
 				
-				<section class="gallery-panel{% if block.id == lastBlock.id %} last-one{% endif %}">
+				<section class="gallery-panel{% if block.id == lastBlock.id %} last-one{% endif %}{% if nextProject %} next-project-visible{% endif %}">
 					<div class="outer-content-wrap shift-on-scroll">
 						
 						{# Start Panel Title #}
@@ -256,23 +276,6 @@
 		{# END PAGE CONTENT #}
 		
 		{# START NEXT PROJECT #}
-		{% set nextProject = null %}
-		{% set next = entry.getNext({ section: 'portfolio' }) %}
-		{% set keepLooking = true %}
-		
-		{% for i in 0..10 %}
-			{% if keepLooking and next %}
-				{% if not next.portfolioComingSoon %}
-					{% set nextProject = next %}
-					{% set keepLooking = false %}
-				{% else %}
-					{% set next = next.getNext() %}
-				{% endif %}
-			{% else %}
-				{% set keepLooking = false %}
-			{% endif %}
-		{% endfor %}
-		
 		{% if nextProject %}
 			<div class="next-project-module shift-on-scroll">
 				<h2 class="size-02">next project</h2>
