@@ -57,7 +57,7 @@
 							</div>
 							
 							<div class="info-col">
-								<h3 class="size-03 info-row">{% if entry.portfolioCity|length %}{{ entry.portfolioCity }}{% endif %}{% if entry.portfolioState|length %}, {{ entry.portfolioState }}{% endif %}</h3>
+								<h3 class="size-03 info-row">{% if entry.portfolioCity|length %}{{ entry.portfolioCity }}{% endif %}{% if entry.portfolioState|length %}{% if entry.portfolioCity|length %}, {% endif %}{{ entry.portfolioState }}{% endif %}</h3>
 								{% if entry.portfolioUse|length %}<h3 class="size-03 info-row">Use: {{ entry.portfolioUse }}</h3>{% endif %}
 								{% if entry.portfolioSize|length %}<h3 class="size-03 info-row">Size: {{ entry.portfolioSize }}</h3>{% endif %}
 								{% if entry.portfolioArchitect|length %}<h3 class="size-03 info-row">Architect: {{ entry.portfolioArchitect }}</h3>{% endif %}

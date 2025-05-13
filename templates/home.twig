@@ -16,6 +16,16 @@
 		{# START PAGE SPLASH #}
 		<div class="splash-panel">
 			
+			{# Start Video BG's #}
+			<div class="video-loading-bg desktop">
+				<video id="home-loading-video_desktop" class="lazy full-bleed-video home-loading-video" data-src="https://cliff-studio.b-cdn.net/509_Avdoo/avdoo-finalnologo_LR.mp4" data-poster="{{ alias('@web') }}/assets/images/avdoo-finalnologo_LR.webp" preload="auto" data-cookiescript="accepted" data-cookiecategory="functionality" muted webkit-playsinline="true" playsinline x5-playsinline crossorigin="anonymous"></video>
+			</div>
+			
+			<div class="video-loading-bg mobile">
+				<video id="home-loading-video_mobile" class="lazy full-bleed-video home-loading-video" data-src="https://cliff-studio.b-cdn.net/509_Avdoo/avdoo-mobile-animation_LR.mp4" data-poster="{{ alias('@web') }}/assets/images/avdoo-mobile-animation_LR.webp" preload="auto" data-cookiescript="accepted" data-cookiecategory="functionality" muted webkit-playsinline="true" playsinline x5-playsinline crossorigin="anonymous"></video>
+			</div>
+			{# End Video BG's #}
+			
 			{# Start Left Side #}
 			<div class="side left">
 			
@@ -257,11 +267,7 @@
 									
 									<div class="text">
 										<h3 class="title size-02">{{ selectedDevelopment.title }}</h3>
-										{% if selectedDevelopment.portfolioComingSoon %}
-											<h3 class="link size-02"><a class="underlined-link" href="{{ url('portfolio') }}">Portfolio ></a></h3>
-										{% else %}
-											<h3 class="link size-02"><a class="underlined-link" href="{{ selectedDevelopment.url }}">View Project ></a></h3>
-										{% endif %}
+										<h3 class="link size-02"><a class="underlined-link" href="{{ selectedDevelopment.url }}">View Project ></a></h3>
 									</div>
 								
 								</div>

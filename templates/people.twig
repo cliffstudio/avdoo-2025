@@ -105,13 +105,13 @@
 							<div class="wider-team-grid">
 							{% for widerTeamPerson in widerTeamPersons %}
 								
-								<div class="person-wrap{% if loop.index > 3 %} hidden{% endif %}">
+								<div class="person-wrap{% if loop.index > 6 %} hidden{% endif %}">
 									<div class="inner-person">
 										
 										<div class="name-job-title">
 											<h1 class="size-08 name">{{ widerTeamPerson.title }}</h1>
 											{% if widerTeamPerson.peopleJobTitle|length %}
-												<h1 class="size-08 job-title">{{ widerTeamPerson.peopleJobTitle }}</h1>
+												<h1 class="size-08 job-title"><em>{{ widerTeamPerson.peopleJobTitle }}</em></h1>
 											{% endif %}
 										</div>
 										
@@ -125,7 +125,7 @@
 							{# End Wider Team Grid #}
 							
 							{# Start View More Button #}
-							{% if totalEntries > 3 %}
+							{% if totalEntries > 6 %}
 							<div class="view-more-posts">
 								<img class="plus" src="{{ alias('@web') }}/assets/svgs/view-more-plus.svg" />
 								<h2 class="size-04">view more</h2>

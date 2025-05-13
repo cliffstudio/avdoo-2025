@@ -2,7 +2,7 @@
 
 {% block content %}
 
-	<div id="popup-modal">
+	<div id="popup-modal" class="{% if entry.imageModule|length %}{% else %}no-image-present{% endif %}">
 		<div class="close-button"></div>
 		
 		{% if entry.imageModule|length %}
@@ -12,7 +12,7 @@
 		</div>
 		{% endif %}
 		
-		<div class="text-column{% if entry.imageModule|length %}{% else %} no-image{% endif %}">
+		<div class="text-column">
 			<div class="inner-column">
 				<div class="people-titles">
 					<h1 class="size-08">{{ entry.title }}</h1>
@@ -23,7 +23,7 @@
 				
 				<div class="people-bio">
 				{% if entry.peopleBio|length %}
-					<h6>{{ entry.peopleBio|replace({'<p>':'','</p>':''})|raw }}</h6>
+					<h6>{{ entry.peopleBio|nl2br }}</h6>
 				{% endif %}
 				</div>
 			</div>

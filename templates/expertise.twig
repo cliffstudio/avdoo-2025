@@ -53,7 +53,7 @@
 								{% if factBlock.type == 'fact' %}
 								
 									<div class="fact animated-number-wrapper">
-										<h3 class="size-01 number"><span class="animated-number" data-stat="{{ factBlock.number }}">0</span>{% if factBlock.extraText|length %}{{ factBlock.extraText }}{% endif %}</h3>
+										<h3 class="size-01 number"><span class="animated-number" data-stat="{{ factBlock.number }}">0</span>{% if factBlock.extraText|length %}<span class="extra-text">{{ factBlock.extraText }}</span>{% endif %}</h3>
 										<h3 class="size-02 sub-text">{{ factBlock.subtext }}</h3>
 									</div>
 									
@@ -94,8 +94,10 @@
 												
 												<div class="slide-info">
 													{% if timelineSlideBlock.timelineImage|length %}
+														<div class="slide-image">
 														{% set image = timelineSlideBlock.timelineImage.one() %}
-														{% include '00_site-wide/image-module_regular.twig' %}
+														{% include '00_site-wide/image-module_fb.twig' %}
+														</div>
 													{% endif %}
 													<div class="timeline-text">
 														{% if timelineSlideBlock.timelineTitle|length %}

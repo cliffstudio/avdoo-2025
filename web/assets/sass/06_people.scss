@@ -93,12 +93,7 @@ body.people {
 					width: 100%; height: auto;
 					margin-bottom: get-rem-desktop(38);
 				}
-				
-				//––No image specific
-				&.no-image {
-					width: 100%;
-				}
-				
+
 				@media only screen and (max-width: 768px) {
 					width: 100%;	
 					
@@ -106,6 +101,17 @@ body.people {
 						padding: get-rem-mobile(30) get-rem-mobile(60) get-rem-mobile(50) get-rem-mobile(20);
 					}
 					
+				}
+				
+			}
+			
+			//––NO IMAGE PRESENT SPECIFICS
+			&.no-image-present {
+				@include aspect-ratio(1281, 460);
+				
+				//Text Column
+				.text-column {
+					width: 100%;	
 				}
 				
 			}

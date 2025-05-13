@@ -8,22 +8,6 @@ $(document).ready(function() {
 	gsap.registerPlugin(ScrollTrigger,ScrollToPlugin,ScrollSmoother)
 	
 	
-	function logAspectRatio() {
-		const width = $(window).width();
-		const height = $(window).height();
-		const base = 16;
-		const ratio = height / width;
-		const scaledHeight = (base * ratio).toFixed(2);
-	
-		console.log(`Aspect Ratio: ${base}:${scaledHeight}`);
-	  }
-	
-	  // Initial call
-	  logAspectRatio();
-	
-	  // Bind to resize
-	  $(window).on('resize', logAspectRatio);
-	
 	PageLoadFunctions();
 	
 	
@@ -243,37 +227,37 @@ $(document).ready(function() {
 	});
 	
 	//Hovering over number facts to animate them again
-	$(document).on('mouseenter', '.page-wrap#expertise-page .facts-panel .facts .fact.animation-complete', function(e) {
-		
-		var thisAnimatedFactWrap = $(this);
-		var thisAnimatedFact = thisAnimatedFactWrap.find('span.animated-number');
-		var animatedStat = parseFloat(thisAnimatedFact.attr('data-stat'));
-		var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
-	
-		// Remove animation-complete class
-		thisAnimatedFactWrap.removeClass('animation-complete');
-	
-		// Properly reset animateNumber internal state to zero
-		thisAnimatedFact.prop('number', 0).text('0');
-	
-		// Slight delay ensures DOM updates
-		setTimeout(function() {
-			thisAnimatedFact.animateNumber(
-				{
-					number: animatedStat,
-					numberStep: comma_separator_number_step
-				},
-				{
-					easing: 'swing',
-					duration: 8000,
-					complete: function(){
-						thisAnimatedFactWrap.addClass('animation-complete');
-					}
-				}
-			);
-		}, 50);
-	
-	});
+	// $(document).on('mouseenter', '.page-wrap#expertise-page .facts-panel .facts .fact.animation-complete', function(e) {
+	// 	
+	// 	var thisAnimatedFactWrap = $(this);
+	// 	var thisAnimatedFact = thisAnimatedFactWrap.find('span.animated-number');
+	// 	var animatedStat = parseFloat(thisAnimatedFact.attr('data-stat'));
+	// 	var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
+	// 
+	// 	// Remove animation-complete class
+	// 	thisAnimatedFactWrap.removeClass('animation-complete');
+	// 
+	// 	// Properly reset animateNumber internal state to zero
+	// 	thisAnimatedFact.prop('number', 0).text('0');
+	// 
+	// 	// Slight delay ensures DOM updates
+	// 	setTimeout(function() {
+	// 		thisAnimatedFact.animateNumber(
+	// 			{
+	// 				number: animatedStat,
+	// 				numberStep: comma_separator_number_step
+	// 			},
+	// 			{
+	// 				easing: 'swing',
+	// 				duration: 8000,
+	// 				complete: function(){
+	// 					thisAnimatedFactWrap.addClass('animation-complete');
+	// 				}
+	// 			}
+	// 		);
+	// 	}, 50);
+	// 
+	// });
 	
 	//Open Universe Modal
 	$(document).on('click', '.page-wrap#universe-page .universe-grid .universe-block.popup-post-type', function(e) {
@@ -593,6 +577,72 @@ function SmoothScroller() {
 
 }
 
+//––HOMEPAGE LOADING VIDEO FUNCTION
+
+function HomepageLoadingVideoFunction() {
+	var splashLeftSide = $('.page-wrap#home-page .splash-panel .side.left');
+	var splashRightSide = $('.page-wrap#home-page .splash-panel .side.right');
+	
+	//––DESKTOP SPECIFIC
+	if($(window).width() > 768) {
+		const desktopLoadingVideo = document.getElementById('home-loading-video_desktop');
+
+		desktopLoadingVideo.play().then(() => {
+			// Playback started successfully
+			setTimeout(() => {
+				splashLeftSide.addClass('visible');
+			}, 5220);
+		
+			setTimeout(() => {
+				splashRightSide.addClass('visible');
+			}, 6090);
+			
+			//unblur content into view
+			setTimeout(() => {
+				$('body.home').addClass('unblurred');
+				
+				setTimeout(function() {
+					EnableBodyScroll();
+				}, 1200);
+				
+			}, 6900);
+			
+		}).catch(error => {
+			console.error('Video failed to play:', error);
+		});
+		
+	//––MOBILE SPECIFIC
+	} else {
+		const mobileLoadingVideo = document.getElementById('home-loading-video_mobile');
+		
+		mobileLoadingVideo.play().then(() => {
+			// Playback started successfully
+			setTimeout(() => {
+				splashLeftSide.addClass('visible');
+			}, 4240);
+		
+			setTimeout(() => {
+				splashRightSide.addClass('visible');
+			}, 4090);
+			
+			//unblur content into view
+			setTimeout(() => {
+				$('body.home').addClass('unblurred');
+				
+				setTimeout(function() {
+					EnableBodyScroll();
+				}, 1200);
+				
+			}, 4900);
+			
+		}).catch(error => {
+			console.error('Video failed to play:', error);
+		});
+		
+	}
+	
+}
+
 //––HOMEPAGE SPECIFIC FUNCTION
 
 function Homepage() {
@@ -612,17 +662,7 @@ function Homepage() {
 			easing: 'easeInOutCubic'
 		});	
 	}
-	
-	//unblur content into view
-	setTimeout(function() {
-		$('body.home').addClass('unblurred');
 		
-		setTimeout(function() {
-			EnableBodyScroll();
-		}, 1200);
-		
-	}, 1500);
-	
 }
 
 //––CAROUSEL SECTION CAROUSEL
@@ -678,6 +718,7 @@ function CarouselSectionCarousel() {
 function TimelineCarousel() {
 	
 	var $timelineCarousel = $('.timeline-carousel');
+	
 	$timelineCarousel.flickity({
 		cellSelector: '.timeline-slide',
 		fade: false,
@@ -697,9 +738,30 @@ function TimelineCarousel() {
 		arrowShape: 'M 6.1,50L53.1,3.1l-2.6-2.6L.9,50l49.6,49.5,2.6-2.6L6.1,50 Z'
 	});
 	
-	//Lazyload Function
-	$timelineCarousel.on( 'lazyLoad.flickity', function( event, cellElement ) {
+	// Add 'image-loaded' class on lazyload
+	$timelineCarousel.on('lazyLoad.flickity', function(event, cellElement) {
 		$(cellElement).addClass('image-loaded');
+	});
+	
+	// Manually check if navigation buttons should be disabled
+	function updateButtonStates() {
+		const flkty = $timelineCarousel.data('flickity');
+		if (!flkty) return;
+	
+		const $prevButton = $timelineCarousel.find('.flickity-prev-next-button.previous');
+		const $nextButton = $timelineCarousel.find('.flickity-prev-next-button.next');
+		
+		if (flkty.slides.length <= 1 || flkty.size.innerWidth >= flkty.slideableWidth) {
+			$prevButton.attr('disabled', 'true');
+			$nextButton.attr('disabled', 'true');
+		} else {
+			$prevButton.removeAttr('disabled');
+			$nextButton.removeAttr('disabled');
+		}
+	}
+	
+	$timelineCarousel.on( 'select.flickity', function( event, index ) {
+		updateButtonStates();
 	});
 	
 }
@@ -774,6 +836,16 @@ function GalleryGrid() {
 			}
 		});					
 	});	
+	
+	// Hook into Isotope's layout complete event
+	$galleryGrid.on('arrangeComplete', function() {
+		// Refresh ScrollTrigger after Isotope layout
+		ScrollTrigger.refresh();
+	});
+	
+	$galleryGrid.on('layoutComplete', function() {
+		ScrollTrigger.refresh();
+	});
 	
 }
 
@@ -962,6 +1034,11 @@ function mediaLazyloading() {
 				$(el).children('.video-placeholder').addClass('hidden');
 			}, 150);
 			
+			//HOME LOADING VIDEO SPECIFICS
+			if($(el).hasClass('home-loading-video')) {
+				HomepageLoadingVideoFunction();
+			}
+			
 		}
 	});
 	
@@ -1059,6 +1136,7 @@ function AnimatedNumberTrigger() {
 function scrambleThenCount(duration = 2.5) {
 	$('.animated-number').each(function(_, el) {
 		const $el = $(el);
+		var extraText = $(this).siblings('.extra-text');
 		if ($el.data('animated')) return;
 
 		const finalValue = parseInt($el.data('stat'), 10);
@@ -1093,6 +1171,7 @@ function scrambleThenCount(duration = 2.5) {
 			},
 			onComplete: () => {
 				$el.text(finalValue);
+				$el.siblings('.extra-text').addClass('visible');
 			}
 		});
 	});

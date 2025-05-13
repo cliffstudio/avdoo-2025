@@ -77,19 +77,16 @@ PAGE WRAP ------------------
 						display: inline-block;
 					}
 					
-					.number-layer {
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
+					.extra-text {
 						opacity: 0;
-						transition: opacity 0.05s ease;
 						pointer-events: none;
-					}
-					
-					.number-layer.visible {
-						opacity: 1;
-						position: relative;
+						will-change: opacity;
+						transition: opacity 700ms cubic-bezier(0.25,0.1,0.25,1) 400ms;
+						
+						&.visible {
+							opacity: 1;
+						}
+						
 					}
 					
 				}
@@ -147,7 +144,7 @@ PAGE WRAP ------------------
 		//TIMELINE CAROUSEL – DESKTOP
 		.timeline-carousel-wrap {
 			width: 100%; height: auto;
-			padding-left: get-rem-desktop(148);
+			padding-left: get-rem-desktop(60);
 			
 			@media only screen and (max-width: 768px) {
 				display: none;	
@@ -186,6 +183,11 @@ PAGE WRAP ------------------
 						//––Slide Info
 						.slide-info {
 							width: 100%; height: auto;
+							
+							.slide-image {
+								width: 100%; height: auto;
+								@include aspect-ratio(199, 149);
+							}
 							
 							.timeline-text {
 								width: 100%; height: auto;

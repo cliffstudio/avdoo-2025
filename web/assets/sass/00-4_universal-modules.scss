@@ -805,6 +805,9 @@ GALLERY PANEL --------------------
 	&:last-of-type {
 		padding-bottom: get-rem-desktop(190);
 	}
+	&:nth-last-child(2) {
+		padding-bottom: 0px !important;
+	}
 	
 	@media only screen and (max-width: 768px) {
 		&:last-of-type {
@@ -889,6 +892,7 @@ GALLERY PANEL --------------------
 				opacity: 0;
 				will-change: opacity;
 				transition: opacity 250ms cubic-bezier(0.25,0.1,0.25,1);
+				display: none !important;
 			}
 			
 			.loading-overlay {
