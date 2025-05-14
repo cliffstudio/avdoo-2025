@@ -602,11 +602,11 @@ function HomepageLoadingVideoFunction() {
 			// Playback started successfully
 			setTimeout(() => {
 				splashLeftSide.addClass('visible');
-			}, 5120);
+			}, 5000);
 		
 			setTimeout(() => {
 				splashRightSide.addClass('visible');
-			}, 6000);
+			}, 5850);
 			
 			//unblur content into view
 			setTimeout(() => {
@@ -614,23 +614,27 @@ function HomepageLoadingVideoFunction() {
 				//scale down logo on desktop
 				$('.page-wrap#home-page .splash-panel .logo-wrap').addClass('desktop-scaled');
 				
-				//then unblur other content
-				setTimeout(() => {
-					$('body.home').addClass('unblurred');
-					
-					setTimeout(() => {
-						EnableBodyScroll();
-						
-						sessionStorage.setItem("homepageVisited", "true");
-						$('body').addClass("loader-has-run");
-						
-					}, 1200);
-				}, 500);
+				$('body.home').addClass('unblurred');
 				
-			}, 6900);
-			
+				setTimeout(() => {
+					EnableBodyScroll();
+					
+					sessionStorage.setItem("homepageVisited", "true");
+					$('body').addClass("loader-has-run");
+					
+				}, 1200);
+				
+			}, 6700);
+		
+		//if error (e.g. low power mode) don't run animation	
 		}).catch(error => {
 			console.error('Video failed to play:', error);
+			
+			EnableBodyScroll();
+			
+			sessionStorage.setItem("homepageVisited", "true");
+			$('body').addClass("loader-has-run");
+			
 		});
 		
 	//––MOBILE SPECIFIC
@@ -641,11 +645,11 @@ function HomepageLoadingVideoFunction() {
 			// Playback started successfully
 			setTimeout(() => {
 				splashLeftSide.addClass('visible');
-			}, 4090);
+			}, 4200);
 		
 			setTimeout(() => {
 				splashRightSide.addClass('visible');
-			}, 4240);
+			}, 4600);
 			
 			//unblur content into view
 			setTimeout(() => {
@@ -659,10 +663,17 @@ function HomepageLoadingVideoFunction() {
 					
 				}, 1200);
 				
-			}, 4900);
-			
+			}, 5200);
+		
+		//if error (e.g. low power mode) don't run animation	
 		}).catch(error => {
 			console.error('Video failed to play:', error);
+			
+			EnableBodyScroll();
+			
+			sessionStorage.setItem("homepageVisited", "true");
+			$('body').addClass("loader-has-run");
+			
 		});
 		
 	}
@@ -1046,7 +1057,7 @@ function fileFields() {
 function mediaLazyloading() {
 	
 	var myLazyLoad = new LazyLoad({
-		threshold: 500,
+		threshold: 1200,
 		callback_loaded: (el) => {
 			
 			//Fade out loading overlays

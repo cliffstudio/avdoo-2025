@@ -316,6 +316,7 @@ IMAGE / TEXT PANEL --------------------
 		
 		.text-wrap {
 			width: percentage(617/960);
+			max-width: get-rem-desktop(590);
 			h1 { margin-bottom: get-rem-desktop(38); }
 			
 			.button {
@@ -331,6 +332,7 @@ IMAGE / TEXT PANEL --------------------
 			
 			.text-wrap {
 				width: percentage(325/402);
+				max-width: 100%;
 				
 				h2 { margin-bottom: get-rem-mobile(14); }
 				h1 { margin-bottom: get-rem-mobile(23); }

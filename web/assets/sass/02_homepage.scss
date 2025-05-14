@@ -32,7 +32,6 @@ body.home {
 		
 		header {
 			.menu-opener,
-			.logo-wrap,
 			.contact-button {
 				filter: blur(0px);
 				opacity: 1;
@@ -48,14 +47,29 @@ body.home {
 						opacity: 1;
 					}
 				}
+				.down-arrow {
+					filter: blur(0px);
+					opacity: 1;
+				}
+			}
+		}
+		
+	}
+	
+	&.loader-has-run {
+		
+		header {
+			.logo-wrap {
+				opacity: 1;
+			}
+		}
+		
+		.page-wrap#home-page {
+			.splash-panel {
 				@media only screen and (min-width: 768px) {
 					.logo-wrap {
 						opacity: 0 !important;
 					}
-				}
-				.down-arrow {
-					filter: blur(0px);
-					opacity: 1;
 				}
 			}
 		}
@@ -301,7 +315,7 @@ PAGE WRAP ------------------
 		//LOGO
 		.logo-wrap {
 			position: absolute;
-			width: percentage(260/640);
+			width: 31%;
 			height: auto;
 			top: 50%; left: 50%;
 			transform: translate(-50%,-72%);
