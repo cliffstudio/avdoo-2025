@@ -18,11 +18,11 @@
 			
 			{# Start Video BG's #}
 			<div class="video-loading-bg desktop">
-				<video id="home-loading-video_desktop" class="lazy full-bleed-video home-loading-video" data-src="https://cliff-studio.b-cdn.net/509_Avdoo/avdoo-finalnologo_LR.mp4" data-poster="{{ alias('@web') }}/assets/images/avdoo-finalnologo_LR.webp" preload="auto" data-cookiescript="accepted" data-cookiecategory="functionality" muted webkit-playsinline="true" playsinline x5-playsinline crossorigin="anonymous"></video>
+				<video id="home-loading-video_desktop" class="lazy full-bleed-video home-loading-video" data-src="https://cliff-studio.b-cdn.net/509_Avdoo/avdoo-finalnologo_LR_2.mp4" data-poster="{{ alias('@web') }}/assets/images/avdoo-finalnologo_LR.webp" preload="auto" data-cookiescript="accepted" data-cookiecategory="functionality" muted webkit-playsinline="true" playsinline x5-playsinline crossorigin="anonymous"></video>
 			</div>
 			
 			<div class="video-loading-bg mobile">
-				<video id="home-loading-video_mobile" class="lazy full-bleed-video home-loading-video" data-src="https://cliff-studio.b-cdn.net/509_Avdoo/avdoo-mobile-animation_LR.mp4" data-poster="{{ alias('@web') }}/assets/images/avdoo-mobile-animation_LR.webp" preload="auto" data-cookiescript="accepted" data-cookiecategory="functionality" muted webkit-playsinline="true" playsinline x5-playsinline crossorigin="anonymous"></video>
+				<video id="home-loading-video_mobile" class="lazy full-bleed-video home-loading-video" data-src="https://cliff-studio.b-cdn.net/509_Avdoo/avdoo-mobile-animation_LR_2.mp4" data-poster="{{ alias('@web') }}/assets/images/avdoo-mobile-animation_LR.webp" preload="auto" data-cookiescript="accepted" data-cookiecategory="functionality" muted webkit-playsinline="true" playsinline x5-playsinline crossorigin="anonymous"></video>
 			</div>
 			{# End Video BG's #}
 			
@@ -51,7 +51,7 @@
 								<ul>
 									{% for linkedEntry in linkedEntries %}
 										<li>
-											<a href="{% if linkedEntry.portfolioComingSoon %}{{ url('portfolio') }}{% else %}{{ linkedEntry.url }}{% endif %}">
+											<a href="{{ linkedEntry.url }}">
 												<h1 class="size-08">{{ linkedEntry.title }}</h1>
 											</a>
 										</li>

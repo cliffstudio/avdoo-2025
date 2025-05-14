@@ -620,31 +620,61 @@ PAGE WRAP ------------------
 		
 		//UNIVERSE GRID
 		.universe-grid {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-wrap: wrap;
-			width: 110%; height: auto;
-			margin-left: -5%; margin-top: get-rem-desktop(-90);
-			column-gap: get-vw-desktop(250px);
-			row-gap: get-vw-desktop(260px);
+			position: absolute;
+			width: 100%; height: 100%;
+			top: 0; left: 0;
+			margin-top: get-rem-desktop(-90);
 			pointer-events: none;
 			z-index: 10;
 			
 			@media only screen and (max-width: 768px) {
 				margin-top: 0px;
 				margin-left: 0px;
-				row-gap: get-rem-mobile(100);
-				column-gap: 50%;	
-				// justify-content: flex-start;
-				width: 150%;
 			}
 			
 			.universe-block {
+				position: absolute;
+				
+				&:nth-child(1) { 
+					width: percentage(293/1316); 
+					top: percentage(66/738); left: 0;
+				}
+				&:nth-child(2) { 
+					width: percentage(184/1316); 
+					top: 0; left: percentage(379/1316);
+				}
+				&:nth-child(3) { 
+					width: percentage(350/1316); 
+					top: 0; right: percentage(60/1316);
+				}
+				&:nth-child(4) { 
+					width: percentage(357/1316); 
+					bottom: -10%; left: percentage(208/1316);
+				}
+				&:nth-child(5) { 
+					width: percentage(276/1316);
+					bottom: -10%; right: percentage(190/1316);
+				}
 				
 				@media only screen and (max-width: 768px) {
-					&:first-child {
-						margin-left: get-rem-mobile(75);
+					&:nth-child(1) { 
+						width: 35%; 
+						top: 0; left: 0;
+					}
+					&:nth-child(2) { 
+						width: 28%; 
+						top: 0; left: initial; right: 7%;
+					}
+					&:nth-child(3) { 
+						width: 32%; 
+						top: initial; bottom: 0; right: 0;
+					}
+					&:nth-child(4) { 
+						width: 45%; 
+						bottom: 0; left: 7%;
+					}
+					&:nth-child(5) { 
+						display: none;
 					}	
 				}
 				
@@ -664,41 +694,6 @@ PAGE WRAP ------------------
 				//Caption
 				.caption-overlay {
 					display: none !important;
-				}
-				
-				//–Landscape Specifics
-				&.landscape {
-					&.size-01 { width: get-vw-desktop(396px); }
-					&.size-02 { width: get-vw-desktop(540px); }
-					&.size-03 { width: get-vw-desktop(620px); }
-					&.size-04 { width: get-vw-desktop(580px); }
-					&.size-05 { width: get-vw-desktop(490px); }
-					&.size-06 { width: get-vw-desktop(480px); }
-					
-					@media only screen and (max-width: 768px) {
-						width: get-rem-mobile(200) !important;	
-					}
-					
-				}
-				
-				//–Portrait Specifics
-				&.portrait {
-					&.size-01 { width: get-vw-desktop(272px); }
-					&.size-02 { width: get-vw-desktop(406px); }
-					&.size-03 { width: get-vw-desktop(381px); }
-					&.size-04 { width: get-vw-desktop(330px); }
-					&.size-05 { width: get-vw-desktop(272px); }
-					&.size-06 { width: get-vw-desktop(406px); }
-					
-					@media only screen and (max-width: 768px) {
-						&.size-01 { width: get-vw-mobile(80px); }
-						&.size-02 { width: get-vw-mobile(102px); }
-						&.size-03 { width: get-vw-mobile(182px); }
-						&.size-04 { width: get-vw-mobile(80px); }
-						&.size-05 { width: get-vw-mobile(102px); }
-						&.size-06 { width: get-vw-mobile(102px); }
-					}
-					
 				}
 				
 			}
