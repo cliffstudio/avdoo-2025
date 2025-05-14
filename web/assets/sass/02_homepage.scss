@@ -2,12 +2,15 @@ body.home {
 	pointer-events: none;
 	header {
 		.menu-opener,
-		.logo-wrap,
 		.contact-button {
 			will-change: filter,opacity;
 			filter: blur(20px);
 			opacity: 0;
 			transition: filter 1000ms cubic-bezier(0.25,0.1,0.25,1), opacity 1100ms cubic-bezier(0.25,0.1,0.25,1);
+		}
+		
+		.logo-wrap {
+			opacity: 0;
 		}
 		
 		.outer-content-wrap {
@@ -17,15 +20,14 @@ body.home {
 		@media only screen and (max-width: 768px) {
 			.logo-wrap {
 				opacity: 0 !important;
-				pointer-events: none;
-				transition: opacity 0ms cubic-bezier(0.25,0.1,0.25,1);
 			}
 		}
 			
 	}
 	
 	//––UNBLURRED SPECIFICS
-	&.unblurred {
+	&.unblurred,
+	&.loader-has-run {
 		pointer-events: all;
 		
 		header {
@@ -40,14 +42,16 @@ body.home {
 		.page-wrap#home-page {
 			.splash-panel {
 				.side {
+					opacity: 1 !important;
 					.title-overlay {
 						filter: blur(0px);
 						opacity: 1;
 					}
 				}
-				.logo-wrap {
-					filter: blur(0px);
-					opacity: 1;
+				@media only screen and (min-width: 768px) {
+					.logo-wrap {
+						opacity: 0 !important;
+					}
 				}
 				.down-arrow {
 					filter: blur(0px);
@@ -297,15 +301,12 @@ PAGE WRAP ------------------
 		//LOGO
 		.logo-wrap {
 			position: absolute;
-			width: get-rem-mobile(250); height: auto;
+			width: percentage(260/640);
+			height: auto;
 			top: 50%; left: 50%;
 			transform: translate(-50%,-72%);
-			display: none;
+			// display: none;
 			z-index: 50;
-			will-change: filter,opacity;
-			filter: blur(20px);
-			opacity: 0;
-			transition: filter 1000ms cubic-bezier(0.25,0.1,0.25,1), opacity 1100ms cubic-bezier(0.25,0.1,0.25,1);
 			
 			&.dummy {
 				opacity: 0 !important;
@@ -321,7 +322,16 @@ PAGE WRAP ------------------
 			
 			}
 			
+			&.desktop-scaled {
+				width: get-rem-desktop(172);
+				transform: translate(-50%,0px);
+				top: get-rem-desktop(40);
+				will-change: width,transform,top;
+				transition: width 500ms cubic-bezier(.23, 1, .32, 1), transform 500ms cubic-bezier(.23, 1, .32, 1), top 500ms cubic-bezier(.23, 1, .32, 1);
+			}
+			
 			@media only screen and (max-width: 768px) {
+				width: get-rem-mobile(250);
 				display: block;	
 			}
 			
@@ -610,9 +620,11 @@ PAGE WRAP ------------------
 	//05–––UNIVERSE SECTION
 	.universe-section {
 		width: 100%; height: 100svh;
+		height: auto;
 		background-color: $colour-maroon;
 		color: #F5F3EC;
 		overflow: hidden;
+		@include aspect-ratio(2630, 1474);
 		
 		@media only screen and (max-width: 768px) {
 			height: get-rem-mobile(486);	

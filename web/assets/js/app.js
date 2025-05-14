@@ -1,5 +1,9 @@
 (function($) {	
-	
+
+if (performance.getEntriesByType("navigation")[0]?.type === "reload") {
+	sessionStorage.removeItem("homepageVisited");
+}
+
 
 //–––––––––––––––––––––––––––––––––––––––––––––––––––––– DOCUMENT READY
 
@@ -421,7 +425,14 @@ function PageLoadFunctions() {
 	
 	//––HOMEPAGE SPECIFIC
 	if($('body').hasClass('home')) {
-		Homepage();
+		const hasVisited = sessionStorage.getItem("homepageVisited") === "true";
+		
+		if (!hasVisited) {
+			Homepage();
+		} else {
+			$('body').addClass("loader-has-run");
+		}
+
 	}
 	
 	//––CAROUSEL SECTION CAROUSEL
@@ -591,19 +602,30 @@ function HomepageLoadingVideoFunction() {
 			// Playback started successfully
 			setTimeout(() => {
 				splashLeftSide.addClass('visible');
-			}, 5220);
+			}, 5120);
 		
 			setTimeout(() => {
 				splashRightSide.addClass('visible');
-			}, 6090);
+			}, 6000);
 			
 			//unblur content into view
 			setTimeout(() => {
-				$('body.home').addClass('unblurred');
 				
-				setTimeout(function() {
-					EnableBodyScroll();
-				}, 1200);
+				//scale down logo on desktop
+				$('.page-wrap#home-page .splash-panel .logo-wrap').addClass('desktop-scaled');
+				
+				//then unblur other content
+				setTimeout(() => {
+					$('body.home').addClass('unblurred');
+					
+					setTimeout(() => {
+						EnableBodyScroll();
+						
+						sessionStorage.setItem("homepageVisited", "true");
+						$('body').addClass("loader-has-run");
+						
+					}, 1200);
+				}, 500);
 				
 			}, 6900);
 			
@@ -619,11 +641,11 @@ function HomepageLoadingVideoFunction() {
 			// Playback started successfully
 			setTimeout(() => {
 				splashLeftSide.addClass('visible');
-			}, 4240);
+			}, 4090);
 		
 			setTimeout(() => {
 				splashRightSide.addClass('visible');
-			}, 4090);
+			}, 4240);
 			
 			//unblur content into view
 			setTimeout(() => {
@@ -631,6 +653,10 @@ function HomepageLoadingVideoFunction() {
 				
 				setTimeout(function() {
 					EnableBodyScroll();
+					
+					sessionStorage.setItem("homepageVisited", "true");
+					$('body').addClass("loader-has-run");
+					
 				}, 1200);
 				
 			}, 4900);
@@ -1036,7 +1062,12 @@ function mediaLazyloading() {
 			
 			//HOME LOADING VIDEO SPECIFICS
 			if($(el).hasClass('home-loading-video')) {
-				HomepageLoadingVideoFunction();
+				const hasVisited = sessionStorage.getItem("homepageVisited") === "true";
+				
+				if (!hasVisited) {
+					HomepageLoadingVideoFunction();
+				}
+				
 			}
 			
 		}
