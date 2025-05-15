@@ -606,7 +606,7 @@ function HomepageLoadingVideoFunction() {
 		
 			setTimeout(() => {
 				splashRightSide.addClass('visible');
-			}, 5850);
+			}, 5550);
 			
 			//unblur content into view
 			setTimeout(() => {
@@ -624,7 +624,7 @@ function HomepageLoadingVideoFunction() {
 					
 				}, 1200);
 				
-			}, 6700);
+			}, 6400);
 		
 		//if error (e.g. low power mode) don't run animation	
 		}).catch(error => {
@@ -649,7 +649,7 @@ function HomepageLoadingVideoFunction() {
 		
 			setTimeout(() => {
 				splashRightSide.addClass('visible');
-			}, 4600);
+			}, 4900);
 			
 			//unblur content into view
 			setTimeout(() => {
@@ -663,7 +663,7 @@ function HomepageLoadingVideoFunction() {
 					
 				}, 1200);
 				
-			}, 5200);
+			}, 5500);
 		
 		//if error (e.g. low power mode) don't run animation	
 		}).catch(error => {

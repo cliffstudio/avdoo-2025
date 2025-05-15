@@ -1,0 +1,16 @@
+enabled: true
+handle: hubspotIntegration
+name: 'Hubspot Integration'
+settings:
+  accessToken: pat-na2-0c546aee-4d5d-4adf-a599-7b7e67fbe0b9
+  companyFieldMapping: null
+  contactFieldMapping: null
+  dealFieldMapping: null
+  formFieldMapping: null
+  formId: null
+  mapToCompany: false
+  mapToContact: false
+  mapToDeal: false
+  mapToForm: false
+sortOrder: 1
+type: verbb\formie\integrations\crm\HubSpot

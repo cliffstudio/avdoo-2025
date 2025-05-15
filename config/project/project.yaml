@@ -1,4 +1,4 @@
-dateModified: 1746994766
+dateModified: 1747307445
 email:
   fromEmail: hello@cliff.studio
   fromName: Avdoo
@@ -65,6 +65,7 @@ meta:
     52f8c504-8a68-48f2-b2a4-591cc6e63d11: 'Quote Section' # Quote Section
     64ddfa6f-31ee-46e6-ac79-c6e20e9b6521: 'Job Title' # Job Title
     65ae3946-acb4-49fa-8461-b6e2e0f4d27f: Portfolio # Portfolio
+    67edd26a-cfc2-4212-9c91-04539952ab9f: 'Hubspot Integration' # Hubspot Integration
     70ac8027-90bd-41ac-9160-0d79d10f4f7d: Portfolio # Portfolio
     71c5ea9f-55a6-43fe-8946-7dc3d868c6cd: New # New
     78c17554-dbd3-4b78-908e-572751622711: 'Article Link' # Article Link
