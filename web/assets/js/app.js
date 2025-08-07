@@ -417,8 +417,10 @@ $(window).resize(function () {
 
 function PageLoadFunctions() {	
 	
-	//Media Lazyloading
-	mediaLazyloading();	
+	//Media Lazyloading - delay slightly to avoid ScrollSmoother interference
+	setTimeout(() => {
+		mediaLazyloading();
+	}, 50);
 	
 	//––SCROLL SMOOTHER START
 	SmoothScroller();
@@ -1057,22 +1059,29 @@ function fileFields() {
 function mediaLazyloading() {
 	
 	var myLazyLoad = new LazyLoad({
-		threshold: 1200,
+		threshold: 800, // Reduced from 1200 to load closer to viewport
 		callback_loaded: (el) => {
 			
-			//Fade out loading overlays
-			setTimeout(function() {
-				$(el).siblings('.loading-overlay').addClass('hidden');
-				$(el).children('.loading-overlay').addClass('hidden');
-			}, 30);
+			// Ensure the element is fully loaded before hiding overlay
+			const $el = $(el);
+			const $loadingOverlay = $el.siblings('.loading-overlay').add($el.children('.loading-overlay'));
+			const $videoPlaceholder = $el.siblings('.video-placeholder').add($el.children('.video-placeholder'));
 			
-			setTimeout(function() {
-				$(el).siblings('.video-placeholder').addClass('hidden');
-				$(el).children('.video-placeholder').addClass('hidden');
-			}, 150);
+			// Force a small delay to ensure the image/video is actually rendered
+			requestAnimationFrame(() => {
+				// Hide loading overlay with increased timeout
+				setTimeout(function() {
+					$loadingOverlay.addClass('hidden');
+				}, 100); // Increased from 30ms to 100ms
+				
+				// Hide video placeholder with increased timeout
+				setTimeout(function() {
+					$videoPlaceholder.addClass('hidden');
+				}, 200); // Increased from 150ms to 200ms
+			});
 			
 			//HOME LOADING VIDEO SPECIFICS
-			if($(el).hasClass('home-loading-video')) {
+			if($el.hasClass('home-loading-video')) {
 				const hasVisited = sessionStorage.getItem("homepageVisited") === "true";
 				
 				if (!hasVisited) {
@@ -1081,6 +1090,17 @@ function mediaLazyloading() {
 				
 			}
 			
+		},
+		callback_error: (el) => {
+			// Handle loading errors by still hiding the overlay
+			const $el = $(el);
+			const $loadingOverlay = $el.siblings('.loading-overlay').add($el.children('.loading-overlay'));
+			const $videoPlaceholder = $el.siblings('.video-placeholder').add($el.children('.video-placeholder'));
+			
+			setTimeout(function() {
+				$loadingOverlay.addClass('hidden');
+				$videoPlaceholder.addClass('hidden');
+			}, 200);
 		}
 	});
 	
