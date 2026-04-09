@@ -1,8 +1,17 @@
-/*
-PAGE WRAP ------------------
-*/
-.page-wrap#people-page .text-panel {
-  width: 100%;
-  height: auto;
-  text-align: center;
+/* Error: Undefined mixin.
+ *    ,
+ * 25 |             @include aspect-ratio(1281, 716);
+ *    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   web/assets/sass/06_people.scss 25:4  root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Undefined mixin.\a    \2577 \a 25 \2502              @include aspect-ratio(1281, 716);\a    \2502              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   web/assets/sass/06_people.scss 25:4  root stylesheet";
 }

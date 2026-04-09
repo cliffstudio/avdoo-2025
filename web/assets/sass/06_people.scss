@@ -187,15 +187,15 @@ PAGE WRAP ------------------
 			column-gap: percentage(79/1760);
 			row-gap: get-rem-desktop(80);
 			margin: 0 auto;
-			
+
 			@media only screen and (max-width: 768px) {
-				max-width: 100%;	
-				column-gap: 0px;
+				max-width: 100%;
+				column-gap: 0;
 				row-gap: get-rem-mobile(69);
 			}
-			
+
 			.person-wrap {
-				width: percentage(454/1520);
+				width: calc((100% - 3 * #{percentage(79/1760)}) / 4);
 				
 				//––Photo
 				.photo {
